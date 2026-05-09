@@ -1,611 +1,3459 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang='es'>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aurea Systems — Sistema comercial para clínicas</title>
-  <meta name="description" content="Aurea Systems conecta captación, WhatsApp, cualificación y seguimiento para que tu clínica responda antes, filtre mejor y reduzca citas perdidas." />
-  <link rel="icon" type="image/png" href="./assets/aurea-logo-mark.png" />
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>Aurea Systems — Captación editorial para clínicas</title>
+<meta name='description' content='Aurea Systems convierte inversión publicitaria en primeras valoraciones reales: contenido clínico, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.' />
+<link rel='icon' type='image/png' href='./assets/aurea-logo-mark.png' />
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap' rel='stylesheet' />
+<style>/*
+ * Atelier Zero — canonical landing-page stylesheet.
+ *
+ * This file is the SINGLE SOURCE OF TRUTH for the open-design-landing
+ * skill's visual system. It is consumed by:
+ *
+ *   1. `scripts/compose.ts` — inlined into the standalone HTML output.
+ *   2. `apps/landing-page/app/globals.css` — copied verbatim for the
+ *      Astro static deployable counterpart.
+ *   3. `example.html` — the pre-rendered known-good demo.
+ *
+ * If you change tokens, layout, motion, or component styles, edit them
+ * here. The `@import` at top loads the four Google fonts the system
+ * requires (Inter Tight, Inter, Playfair Display, JetBrains Mono).
+ *
+ * Tokens, grid posture, and motion language are defined by
+ * `design-systems/atelier-zero/DESIGN.md`. Do not invent new colors or
+ * typefaces here; either extend the design system first.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+:root {
+  --paper: #efe7d2;
+  --paper-warm: #ece4cf;
+  --paper-dark: #ddd2b6;
+  --ink: #15140f;
+  --ink-soft: #2a2620;
+  --ink-mute: #5a5448;
+  --ink-faint: #8b8676;
+  --coral: #C8A97E;
+  --coral-soft: #E8D5B5;
+  --mustard: #e9b94a;
+  --olive: #6e7448;
+  --bone: #f7f1de;
+  --line: rgba(21, 20, 15, 0.16);
+  --line-soft: rgba(21, 20, 15, 0.08);
+  --line-faint: rgba(21, 20, 15, 0.05);
+  --shadow: 0 30px 60px -30px rgba(21, 20, 15, 0.18);
+  --serif: 'Playfair Display', 'Times New Roman', serif;
+  --sans: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --body: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            heading: ['"Instrument Serif"', 'serif'],
-            body: ['"Barlow"', 'sans-serif'],
-          },
-          borderRadius: { DEFAULT: '9999px' },
-          colors: {
-            'aurea-deep': '#0A0908',
-            'aurea-soft': '#13110F',
-            'aurea-ink': '#1B1916',
-            'aurea-gold': '#C9A668',
-            'aurea-bgold': '#E0BE7A',
-            'aurea-dgold': '#9B7D3F',
-            'aurea-cream': '#F5F1E8',
-            'aurea-bone': '#E8E2D3',
-            'aurea-ash': '#8B8680',
-            'aurea-sash': '#5C5A55',
-            'aurea-red': '#A4503D',
-            'aurea-green': '#6B8260',
-          }
-        }
-      }
-    };
-  </script>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); }
+body {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
 
-  <!-- React 18 -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-  <!-- Babel standalone -->
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-  <!-- Framer Motion (v11 UMD ya expone como window.Motion; fallback a FramerMotion) -->
-  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
-  <script>
-    if (!window.Motion && window.FramerMotion) window.Motion = window.FramerMotion;
-    if (!window.FramerMotion && window.Motion) window.FramerMotion = window.Motion;
-  </script>
+/* paper texture overlay across the whole page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(106, 92, 56, 0.07) 0, transparent 28%),
+    radial-gradient(circle at 88% 72%, rgba(106, 92, 56, 0.06) 0, transparent 32%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.16  0 0 0 0 0.12  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: auto, auto, 240px 240px;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
 
-  <style>
-    html, body { background: #0A0908; }
-    body {
-      font-family: 'Barlow', sans-serif;
-      color: #F5F1E8;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+.shell { position: relative; z-index: 2; }
+.container {
+  max-width: 1360px;
+  padding: 0 64px;
+  margin: 0 auto;
+  position: relative;
+}
+.container.wide { max-width: 1480px; }
 
-    .liquid-glass {
-      background: rgba(245,241,232,0.025);
-      background-blend-mode: luminosity;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      border: none;
-      box-shadow: inset 0 1px 1px rgba(245,241,232,0.12);
-      position: relative;
-      overflow: hidden;
-    }
-    .liquid-glass::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1.2px;
-      background: linear-gradient(180deg,
-        rgba(224,190,122,0.55) 0%,
-        rgba(224,190,122,0.22) 20%,
-        rgba(245,241,232,0) 42%,
-        rgba(245,241,232,0) 58%,
-        rgba(224,190,122,0.18) 80%,
-        rgba(224,190,122,0.48) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
+/* fixed side rails — rotated brand text on the right edge */
+.side-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-rail.right { right: 0; border-left: 1px solid var(--line-faint); }
+.side-rail.left { left: 0; border-right: 1px solid var(--line-faint); }
+.side-rail .rail-text {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+.side-rail.right .rail-text { transform: rotate(180deg); }
+.side-rail.left .rail-text { writing-mode: vertical-rl; transform: none; }
 
-    .liquid-glass-strong {
-      background: rgba(201,166,104,0.07);
-      background-blend-mode: luminosity;
-      backdrop-filter: blur(45px);
-      -webkit-backdrop-filter: blur(45px);
-      border: none;
-      box-shadow:
-        4px 4px 16px rgba(0,0,0,0.22),
-        inset 0 1px 1px rgba(245,241,232,0.18);
-      position: relative;
-      overflow: hidden;
-    }
-    .liquid-glass-strong::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1.4px;
-      background: linear-gradient(180deg,
-        rgba(224,190,122,0.65) 0%,
-        rgba(224,190,122,0.28) 20%,
-        rgba(245,241,232,0) 42%,
-        rgba(245,241,232,0) 58%,
-        rgba(224,190,122,0.24) 80%,
-        rgba(224,190,122,0.6) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
+/* top metadata strip */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  background: var(--paper);
+  position: relative;
+  z-index: 4;
+}
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.topbar-inner b { color: var(--ink); font-weight: 600; }
+.topbar-inner .coral { color: var(--coral); }
+.topbar-inner > span { white-space: nowrap; }
+.topbar-inner .mid { display: inline-flex; gap: 26px; }
+.topbar-inner .mid > span { white-space: nowrap; }
+.topbar-inner .right { display: inline-flex; gap: 18px; align-items: center; }
+.topbar-inner .right > span,
+.topbar-inner .right > a { white-space: nowrap; }
+.topbar-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
+.topbar .pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  margin-right: 6px;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
 
-    /* keep card content above the gradient ::before border layer */
-    .liquid-glass > *,
-    .liquid-glass-strong > * { position: relative; z-index: 1; }
-  </style>
+/* nav */
+/*
+ * Headroom-style sticky header.
+ *
+ * The element is always `position: sticky`, so the browser docks it to the
+ * top of the viewport once the topbar has scrolled away. The
+ * `<Header />` client island then toggles the `is-hidden` modifier based
+ * on scroll direction, which animates the bar in and out via `transform`.
+ *
+ * When the user is at the very top of the page, the topbar is still
+ * visible above the nav and `position: sticky` simply leaves the nav in
+ * its natural flow position — exactly the brief.
+ */
+.nav {
+  padding: 22px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  transform: translateY(0);
+  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  border-bottom: 1px solid transparent;
+  will-change: transform;
+}
+/*
+ * Subtle visual cue once we leave the top of the page. We can't tell from
+ * CSS alone whether the bar is "stuck"; the deadband + class toggle in
+ * <Header /> approximates it well enough for our purpose. We rely on the
+ * `is-hidden` toggle to flicker the border while moving and a steady
+ * border once docked.
+ */
+.nav.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+  box-shadow: none;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 18px;
+}
+.brand-mark {
+  width: 36px; height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--bone);
+  overflow: hidden;
+  padding: 5px;
+  flex: 0 0 auto;
+}
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.brand-meta {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.3;
+  margin-left: 4px;
+  border-left: 1px solid var(--line);
+  padding-left: 14px;
+}
+.brand-meta b { display: block; color: var(--ink); font-weight: 600; }
+
+.nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.18s ease;
+  position: relative;
+}
+.nav-links a:hover { color: var(--coral); }
+.nav-links a .num {
+  font-size: 9px;
+  color: var(--ink-faint);
+  position: absolute;
+  top: -7px;
+  right: -16px;
+  letter-spacing: 0.04em;
+}
+.nav-side {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta [data-github-stars],
+.nav-cta [data-github-version] {
+  font-variant-numeric: tabular-nums;
+}
+.nav-cta::after {
+  content: '★';
+  color: var(--mustard);
+  font-size: 11px;
+}
+.status-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.status-dot::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* ---------- typography primitives ---------- */
+.label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--coral);
+  display: inline-block;
+}
+.label .ix {
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin-left: 4px;
+}
+.display {
+  font-family: var(--sans);
+  font-weight: 800;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  line-height: 1.0;
+}
+.display em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+}
+.display .dot { color: var(--coral); }
+.lead {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+.meta {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.coord {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.roman {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--coral);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 14px 26px -16px rgba(237, 111, 92, 1);
+}
+.btn-primary:hover { transform: translateY(-1px); background: #e25e4a; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(21, 20, 15, 0.2);
+}
+.btn-ghost:hover { background: rgba(21, 20, 15, 0.04); }
+.btn .arrow {
+  width: 16px; height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+/* helper used inline in headlines */
+.code-inline {
+  font-family: var(--mono);
+  font-size: 14px;
+  background: var(--bone);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  padding: 0;
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+.hero > .container { flex: 0 0 auto; }
+.hero > .container.hero-grid { flex: 1 1 auto; }
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-soft);
+  z-index: 0;
+  display: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 36px;
+  align-items: stretch;
+  width: 100%;
+  position: relative;
+}
+.hero-copy {
+  padding: 4vh 0 4vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.hero-copy .label { margin-bottom: 28px; }
+.hero-copy .lead { margin-bottom: 30px; max-width: 38ch; font-size: 16px; }
+.hero h1 {
+  font-size: clamp(44px, 5vw, 78px);
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+.hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 38px;
+}
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: nowrap;
+  margin-bottom: 28px;
+}
+.hero-stats .stat { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+.hero-stats .stat .ring {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px dashed var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.hero-stats .stat .ring.solid { border-style: solid; }
+.hero-stats .stat .ring.coral { border-color: var(--coral); color: var(--coral); }
+.hero-stats .stat-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-stats .stat-label b { display: block; font-weight: 700; color: var(--ink); font-size: 12px; }
+
+.hero-foot {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hero-foot .meta { line-height: 1.4; }
+
+.hero-art {
+  position: relative;
+  height: calc(100vh - 160px);
+  max-height: 860px;
+  margin-left: auto;
+  margin-right: -12px;
+  width: 100%;
+  overflow: visible;
+}
+.hero-art img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  display: block;
+}
+.hero-flow {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  position: relative;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(200, 169, 126, 0.22), transparent 24%),
+    radial-gradient(circle at 88% 82%, rgba(110, 116, 72, 0.14), transparent 28%),
+    linear-gradient(135deg, rgba(247, 241, 222, 0.96), rgba(236, 228, 207, 0.78));
+  overflow: hidden;
+  padding: clamp(22px, 3.2vw, 42px);
+}
+.hero-flow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(21, 20, 15, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 20, 15, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, rgba(0,0,0,0.88), rgba(0,0,0,0.18));
+  pointer-events: none;
+}
+.flow-kicker {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 18px;
+}
+.flow-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 500px;
+}
+.flow-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 0;
+}
+.flow-path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-dasharray: 12 14;
+  opacity: 0.42;
+  animation: flowDash 1.8s linear infinite;
+}
+.flow-runner {
+  fill: var(--coral);
+  stroke: var(--paper);
+  stroke-width: 6;
+  filter: drop-shadow(0 6px 12px rgba(21, 20, 15, 0.18));
+}
+.flow-card {
+  position: absolute;
+  z-index: 2;
+  width: min(320px, 36%);
+  border: 1px solid var(--line);
+  background: rgba(247, 241, 222, 0.9);
+  backdrop-filter: blur(3px);
+  padding: 16px;
+  color: var(--ink);
+  animation: flowCard 8s ease-in-out infinite;
+}
+.flow-card:nth-of-type(1) { left: 0; top: 9%; animation-delay: 0s; }
+.flow-card:nth-of-type(2) { left: 27%; top: 34%; animation-delay: 2s; }
+.flow-card:nth-of-type(3) { right: 0; top: 10%; animation-delay: 4s; }
+.flow-card:nth-of-type(4) { right: 8%; bottom: 3%; animation-delay: 6s; }
+.flow-card .step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+.flow-card h3 {
+  font-family: var(--sans);
+  font-size: clamp(19px, 1.7vw, 27px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 10px;
+}
+.flow-card p {
+  color: var(--ink-mute);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.flow-card .micro {
+  margin-top: 14px;
+  display: grid;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+.flow-card .micro span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 18px;
+}
+.flow-card .micro span::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex: 0 0 auto;
+}
+.flow-card.whatsapp {
+  background: color-mix(in oklch, var(--bone) 90%, var(--olive) 10%);
+}
+.flow-card.agenda {
+  background: color-mix(in oklch, var(--bone) 88%, var(--coral) 12%);
+}
+.flow-card.clinic {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: rgba(247, 241, 222, 0.22);
+}
+.flow-card.clinic p,
+.flow-card.clinic .micro {
+  color: rgba(247, 241, 222, 0.74);
+}
+.flow-card.clinic .micro span::before { background: var(--coral); }
+.flow-timeline {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  margin-top: 18px;
+  padding-top: 14px;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.flow-timeline span {
+  position: relative;
+  padding-left: 18px;
+}
+.flow-timeline span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 6px rgba(200, 169, 126, 0.16);
+}
+@keyframes flowDash {
+  to { stroke-dashoffset: -26; }
+}
+@keyframes flowCard {
+  0%, 100% {
+    transform: translateY(0);
+    border-color: var(--line);
+  }
+  7%, 22% {
+    transform: translateY(-5px);
+    border-color: var(--coral);
+  }
+  32% {
+    transform: translateY(0);
+    border-color: var(--line);
+  }
+}
+/* image annotations */
+.annot {
+  position: absolute;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.annot.has-line::before {
+  content: '';
+  position: absolute;
+  background: var(--ink-faint);
+}
+.annot-tl { top: 14px; left: 14px; }
+.annot-tr { top: 14px; right: 14px; text-align: right; }
+.annot-bl { bottom: 14px; left: 14px; }
+.annot-br { bottom: 14px; right: 14px; text-align: right; }
+.annot.coord { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; text-transform: none; }
+
+.hero-art .index {
+  position: absolute;
+  right: 12px;
+  top: 36%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  background: rgba(239, 231, 210, 0.7);
+  padding: 10px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+}
+.hero-art .index span { display: block; line-height: 1.6; }
+.hero-art .index span .n { color: var(--coral); margin-right: 6px; font-weight: 700; }
+.hero-art .index span.on { color: var(--ink); font-weight: 700; }
+.hero-art .index span.on .n { color: var(--coral); }
+
+.hero-art .corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-color: var(--ink-faint);
+  border-style: solid;
+  border-width: 0;
+}
+.hero-art .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.hero-art .corner.tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.hero-art .corner.bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.hero-art .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+/* ---------- common section header ---------- */
+section { position: relative; padding: 130px 0; }
+section.tight { padding: 90px 0; }
+.sec-rule {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.sec-rule .roman {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--coral);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+.sec-rule .meta-grp { display: inline-flex; gap: 26px; }
+.sec-rule .dot-mark { color: var(--coral); }
+
+.section-header { margin-bottom: 70px; }
+.section-header .label { margin-bottom: 32px; }
+.section-header h2 {
+  font-size: clamp(40px, 4.6vw, 66px);
+  max-width: 22ch;
+}
+.section-header .lead { margin-top: 22px; }
+
+/* ---------- WIRE / GLOBAL TICKER ----------
+ *
+ * Slim editorial strip between the hero and the About section. Two
+ * counter-scrolling marquees (cities → and contributors ←) signal that
+ * the project is global and community-driven, without disrupting the
+ * existing roman-numeral section count. Pure CSS animation; the track
+ * content is duplicated in markup so the loop wraps seamlessly.
+ */
+.wire {
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0 28px;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.wire-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.wire-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-right: 1px solid var(--line);
+  padding-right: 24px;
+  min-height: 56px;
+}
+.wire-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wire-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.wire-title {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wire-title b {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.wire-title span {
+  color: var(--ink-faint);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.wire-rows {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.wire-row {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-x 52s linear infinite;
+  will-change: transform;
+}
+.wire-row.reverse .marquee-track {
+  animation-direction: reverse;
+  animation-duration: 64s;
+}
+.wire-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.wire-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.wire-item .wire-dot {
+  color: var(--coral);
+  font-size: 16px;
+  line-height: 0;
+  position: relative;
+  top: -1px;
+  margin-right: 2px;
+}
+.wire-item .wire-coord {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0;
+}
+.wire-item .wire-name {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  font-weight: 500;
+}
+.wire-item .wire-handle {
+  font-family: var(--mono);
+  color: var(--ink);
+  font-size: 11.5px;
+  font-weight: 500;
+}
+.wire-item .wire-role {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--coral);
+  font-size: 10px;
+}
+.wire-item.is-link {
+  transition: color 160ms ease;
+}
+.wire-item.is-link:hover .wire-handle {
+  color: var(--coral);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ---------- ABOUT ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about h2 {
+  font-size: clamp(44px, 5.4vw, 78px);
+  margin: 30px 0 36px;
+}
+.about .label { margin-bottom: 28px; }
+.about .lead { margin-bottom: 36px; max-width: 42ch; font-size: 17px; }
+.about .footer-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 56px;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.about .footer-row .mark {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+}
+.about .stamp {
+  margin-left: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.4;
+}
+.about .stamp span:first-child { color: var(--coral); }
+.about-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 620px;
+  margin-left: auto;
+}
+.about-art img { width: 100%; height: 100%; object-fit: contain; }
+.about-side-note {
+  position: absolute;
+  right: -8px;
+  top: 26px;
+  text-align: right;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  max-width: 16ch;
+}
+.about-side-note b {
+  display: block;
+  color: var(--coral);
+  width: 36px;
+  height: 1px;
+  background: var(--coral);
+  margin: 0 0 10px auto;
+}
+.about-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 4px;
+  font-family: var(--sans);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  text-align: right;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+}
+.about-caption b { color: var(--ink); display: block; }
+
+/* ---------- CAPABILITIES ---------- */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.capabilities-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 600px;
+}
+.capabilities-art img { width: 100%; height: 100%; object-fit: contain; }
+.capabilities-art .ribbon {
+  position: absolute;
+  right: -42px;
+  top: 50%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.capabilities-art .ribbon b { color: var(--coral); }
+.capabilities-art .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; }
+.capabilities-art .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.capabilities-art .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+.capabilities-copy h2 { font-size: clamp(40px, 4.8vw, 64px); margin: 22px 0 30px; }
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+.card {
+  padding: 28px 26px 32px;
+  background: var(--bone);
+  border-radius: 18px;
+  box-shadow: var(--shadow), inset 0 0 0 1px rgba(21, 20, 15, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+.card:hover { transform: translateY(-3px); }
+.card .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--coral);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.card .num .tag {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+}
+.card .icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.card h3 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.014em;
+  margin-bottom: 14px;
+}
+.card p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  max-width: 24ch;
+}
+.card .arrow-mark {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: all 0.18s ease;
+}
+.card:hover .arrow-mark { background: var(--coral); border-color: var(--coral); color: #fff; }
+.card .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+/* ---------- LABS ---------- */
+.labs-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.labs-head h2 { font-size: clamp(40px, 4.8vw, 68px); }
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.pill {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pill:hover { background: rgba(21, 20, 15, 0.04); }
+.pill.active {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+.pill .count {
+  font-size: 10px;
+  color: var(--ink-faint);
+  border-left: 1px solid var(--line);
+  padding-left: 8px;
+}
+.pill.active .count { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
+.labs-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+.labs-meta .ring {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px dashed var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+}
+.labs-meta .meta-text {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  max-width: 28ch;
+}
+.labs-meta .meta-text b { display: block; color: var(--ink); }
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+.lab {
+  display: flex;
+  flex-direction: column;
+}
+.lab-img {
+  aspect-ratio: 4 / 5;
+  background: var(--bone);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.lab-img img { width: 100%; height: 100%; object-fit: cover; }
+.lab-img .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(239, 231, 210, 0.9);
+  color: var(--ink);
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.lab .num-row {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+.lab h4 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.014em;
+  margin-bottom: 8px;
+}
+.lab p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.lab .arrow-mark {
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  margin-top: auto;
+  align-self: flex-start;
+}
+.lab .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.labs-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  border-top: 1px dashed var(--line);
+  padding-top: 22px;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.progress span {
+  width: 26px; height: 2px;
+  background: var(--line);
+  border-radius: 2px;
+}
+.progress span.on { background: var(--coral); }
+
+/* ---------- METHOD ---------- */
+.method-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.method-head h2 { font-size: clamp(44px, 5.2vw, 76px); }
+.method-head .right {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 14px;
+}
+.method-head .plus {
+  color: var(--coral);
+  font-size: 24px;
+  line-height: 1;
+  font-family: var(--sans);
+}
+.method-head .right p {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 22ch;
+  line-height: 1.55;
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  position: relative;
+}
+.method-grid::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  right: 50px;
+  height: 1px;
+  background: var(--line-soft);
+}
+.method-step { position: relative; }
+.method-step .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 78px;
+  color: var(--coral);
+  line-height: 0.85;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  background: var(--paper);
+  display: inline-block;
+  padding-right: 12px;
+  position: relative;
+  z-index: 1;
+}
+.method-step h4 {
+  font-family: var(--sans);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 18px;
+}
+.method-step h4 .arrow-r {
+  color: var(--ink-faint);
+  font-size: 22px;
+  line-height: 1;
+}
+.method-step:last-child h4 .arrow-r { display: none; }
+.method-step p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  max-width: 24ch;
+}
+.method-step .img {
+  aspect-ratio: 1 / 1;
+  background: var(--bone);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.method-step .img img { width: 100%; height: 100%; object-fit: cover; }
+.method-foot {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--line);
+  padding-top: 24px;
+}
+.method-foot .left,
+.method-foot .right {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.method-foot .left {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.method-foot .left .ring {
+  width: 20px; height: 20px;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 50%;
+}
+.method-foot .right b { color: var(--ink); }
+
+/* ---------- WORK ---------- */
+.work {
+  background: #15140f;
+  color: var(--paper);
+  border-radius: 32px;
+  margin: 0 64px;
+  overflow: hidden;
+  position: relative;
+  padding: 110px 64px;
+}
+.work::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n2'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n2)'/></svg>");
+  background-size: 240px 240px;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+.work-rule {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(247, 241, 222, 0.16);
+  padding-top: 16px;
+  margin-bottom: 60px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 222, 0.55);
+}
+.work-rule .roman { color: var(--coral); font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.04em; text-transform: none; }
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+}
+.work .label { color: var(--coral); }
+.work .label::before { background: var(--coral); }
+.work-copy h2 {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.0;
+  letter-spacing: -0.024em;
+  margin: 28px 0 36px;
+  color: var(--paper);
+}
+.work-copy h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.work-copy h2 .dot { color: var(--coral); }
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 2px solid var(--coral);
+  padding-bottom: 12px;
+  width: fit-content;
+}
+.work-link::after { content: '↗'; color: var(--coral); }
+.work-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 32px 30px;
+  position: relative;
+  transform: rotate(-1.2deg);
+  text-decoration: none;
+  display: block;
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+.work-card:hover {
+  transform: rotate(-1.2deg) translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.work-card.alt {
+  transform: rotate(2.4deg) translateY(20px);
+  padding: 28px 26px;
+}
+.work-card.alt:hover {
+  transform: rotate(2.4deg) translateY(16px);
+  box-shadow: var(--shadow);
+}
+.work-card .label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.work-card .small-label {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  color: var(--coral);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.work-card .index {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+.work-card h3 {
+  font-family: var(--sans);
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+.work-card p {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 22px;
+  max-width: 28ch;
+}
+.work-card .img {
+  aspect-ratio: 4 / 3;
+  background: var(--bone);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.work-card .img img { width: 100%; height: 100%; object-fit: cover; }
+.work-card .meta-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.work-card .year { color: var(--coral); font-weight: 600; }
+.work-arrows {
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.work-arrows .nav-btn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 241, 222, 0.2);
+  background: transparent;
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.work-arrows .nav-btn.active { background: var(--coral); border-color: var(--coral); }
+
+/* ---------- TESTIMONIAL / COLLABORATORS ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.testimonial-copy h2 {
+  font-family: var(--sans);
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  margin-bottom: 36px;
+}
+.testimonial-copy h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+}
+.author .avatar {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--ink);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+}
+.author p {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.author p span {
+  display: block;
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+.divider {
+  border-top: 1px solid var(--line);
+  margin: 60px 0 32px;
+}
+.partners-text {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink-mute);
+  margin-bottom: 26px;
+  max-width: 38ch;
+}
+.partners {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  align-items: end;
+}
+.partner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 220ms ease;
+}
+.partner:hover { transform: translateY(-2px); }
+.partner:hover .glyph { color: var(--coral); }
+.partner:hover span { color: var(--coral); }
+.partner .glyph {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: var(--ink);
+  transition: color 220ms ease;
+}
+.partner .glyph svg { height: 100%; width: auto; max-width: 90px; }
+.partner span {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  font-weight: 600;
+  transition: color 220ms ease;
+}
+.partner small {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.read-more {
+  margin-top: 56px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--coral);
+  padding-bottom: 6px;
+}
+.read-more::after { content: '→'; color: var(--coral); }
+.testimonial-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 560px;
+}
+.testimonial-art img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ---------- CTA ---------- */
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.cta h2 {
+  font-size: clamp(54px, 6.6vw, 100px);
+  margin: 32px 0 32px;
+}
+.cta .lead { margin-bottom: 24px; max-width: 36ch; font-size: 16px; }
+.guarantee-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 620px;
+  margin: 0 0 28px;
+}
+.guarantee-strip article {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bone) 82%, transparent);
+  padding: 16px 14px 15px;
+}
+.guarantee-strip strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.guarantee-strip span {
+  display: block;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-mute);
+}
+.cta-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.email-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px 14px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.email-pill .arrow-circle {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.cta-foot {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cta-foot .stamp { color: var(--coral); font-weight: 600; }
+.cta-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 620px;
+  margin-left: auto;
+}
+.cta-art img { width: 100%; height: 100%; object-fit: contain; }
+.cta-art .index {
+  position: absolute;
+  right: 8px;
+  top: 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-faint);
+}
+.cta-art .ribbon {
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 60px 0 30px;
+  margin-top: 60px;
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.foot-brand .brand { margin-bottom: 18px; }
+.foot-brand p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  max-width: 38ch;
+}
+.foot-brand p .inline-link,
+.inline-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.inline-link:hover {
+  color: var(--coral);
+  border-bottom-color: var(--coral);
+}
+.method-repo-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.method-repo-link:hover {
+  color: var(--coral);
+  border-bottom-color: var(--coral);
+}
+.library-link {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+}
+.library-link:hover { border-bottom-color: var(--coral); }
+.foot-col h5 {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.foot-col ul { list-style: none; }
+.foot-col li { margin-bottom: 10px; }
+.foot-col a {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.foot-col a:hover { color: var(--coral); }
+.foot-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.foot-bottom .right { display: inline-flex; gap: 24px; align-items: center; }
+.foot-bottom .pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.foot-mega {
+  margin-top: 60px;
+  padding-top: 0;
+  padding-bottom: 12px;
+  border-top: 1px solid var(--line);
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+.foot-mega .word {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(70px, 13vw, 200px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--ink);
+  white-space: nowrap;
+  margin-top: 30px;
+  padding-bottom: 0.18em;
+}
+.foot-mega .word em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--coral);
+}
+
+/* ---------- calendar modal ---------- */
+html.calendar-open,
+body.calendar-open {
+  overflow: hidden;
+}
+.calendar-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    linear-gradient(rgba(21, 20, 15, 0.56), rgba(21, 20, 15, 0.64)),
+    rgba(21, 20, 15, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+.calendar-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.calendar-dialog {
+  width: min(1120px, calc(100vw - 48px));
+  height: min(900px, calc(100vh - 48px));
+  height: min(900px, calc(100dvh - 48px));
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  border: 1px solid rgba(239, 231, 210, 0.28);
+  background: var(--paper);
+  box-shadow: 0 34px 90px -36px rgba(0, 0, 0, 0.62);
+  position: relative;
+  overflow: hidden;
+}
+.calendar-dialog::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(21, 20, 15, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 20, 15, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mix-blend-mode: multiply;
+}
+.calendar-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.calendar-head span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 5px;
+}
+.calendar-head h2 {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.calendar-close {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.calendar-frame {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: auto;
+  background: #fff;
+}
+.calendar-frame iframe {
+  display: block;
+  width: 100%;
+  height: 780px;
+  min-height: 760px;
+  border: none;
+  overflow: hidden;
+  background: #fff;
+}
+.calendar-fallback {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(21, 20, 15, 0.12);
+  background: rgba(247, 241, 222, 0.96);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.calendar-fallback a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--coral);
+  white-space: nowrap;
+}
+
+/* ---------- scroll-reveal motion ----------
+ *
+ * Driven by `app/_components/reveal-root.tsx`. Elements with
+ * `data-reveal` start hidden + offset; the observer sets
+ * `data-revealed='true'` once they enter the viewport, triggering
+ * the transition.
+ *
+ * Uses `translate` / `scale` longhand properties (not `transform`) so
+ * that elements like `.work-card` keep their static `transform: rotate()`
+ * intact while still translating in.
+ */
+[data-reveal] {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    translate 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    scale 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, translate, scale;
+}
+[data-reveal='left'] { translate: -36px 0; }
+[data-reveal='right'] { translate: 36px 0; }
+[data-reveal='scale'] { translate: 0 0; scale: 0.96; }
+[data-reveal='rise-lg'] { translate: 0 64px; scale: 0.985; }
+[data-reveal][data-revealed='true'] {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+/* stagger primitives — set --reveal-delay on grid children so siblings
+ * appear in sequence rather than all at once. */
+.cards > .card[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.cards > .card[data-reveal]:nth-child(2) { --reveal-delay: 90ms; }
+.cards > .card[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
+.cards > .card[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
+
+.labs-grid > .lab[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.labs-grid > .lab[data-reveal]:nth-child(2) { --reveal-delay: 90ms; }
+.labs-grid > .lab[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
+.labs-grid > .lab[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
+.labs-grid > .lab[data-reveal]:nth-child(5) { --reveal-delay: 360ms; }
+
+.method-grid > .method-step[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.method-grid > .method-step[data-reveal]:nth-child(2) { --reveal-delay: 110ms; }
+.method-grid > .method-step[data-reveal]:nth-child(3) { --reveal-delay: 220ms; }
+.method-grid > .method-step[data-reveal]:nth-child(4) { --reveal-delay: 330ms; }
+
+.partners > .partner[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.partners > .partner[data-reveal]:nth-child(2) { --reveal-delay: 70ms; }
+.partners > .partner[data-reveal]:nth-child(3) { --reveal-delay: 140ms; }
+.partners > .partner[data-reveal]:nth-child(4) { --reveal-delay: 210ms; }
+.partners > .partner[data-reveal]:nth-child(5) { --reveal-delay: 280ms; }
+.partners > .partner[data-reveal]:nth-child(6) { --reveal-delay: 350ms; }
+
+/* hero copy — let label, headline, lead, actions, stats arrive in sequence
+ * so the headline isn't waiting on a single block-level reveal. */
+.hero-copy > [data-reveal]:nth-of-type(1) { --reveal-delay: 0ms; }
+.hero-copy > [data-reveal]:nth-of-type(2) { --reveal-delay: 80ms; }
+.hero-copy > [data-reveal]:nth-of-type(3) { --reveal-delay: 160ms; }
+.hero-copy > [data-reveal]:nth-of-type(4) { --reveal-delay: 240ms; }
+.hero-copy > [data-reveal]:nth-of-type(5) { --reveal-delay: 320ms; }
+.hero-copy > [data-reveal]:nth-of-type(6) { --reveal-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+    scale: 1 !important;
+    transition: none !important;
+  }
+  .flow-path,
+  .flow-card {
+    animation: none !important;
+  }
+  .flow-runner {
+    display: none;
+  }
+  /* Skip the slide-in on the sticky header for users who prefer no motion;
+   * the show/hide still toggles, just instantly. */
+  .nav { transition: none !important; }
+}
+
+/* responsive */
+@media (max-width: 1280px) {
+  .container { padding: 0 44px; }
+  .work { margin: 0 44px; padding: 90px 44px; }
+  .side-rail { display: none; }
+}
+/* hide topbar mid text early — between 1200 and 1280 it crowds even with nowrap */
+@media (max-width: 1200px) {
+  .topbar-inner .mid { display: none; }
+}
+/* nav: between 1080 and 1180 the brand tail + 5 nav links + 2 CTAs + dot
+ * crowd the row. Drop the brand sub-meta first, then tighten link spacing,
+ * so the Star CTA never has to compress. */
+@media (max-width: 1180px) {
+  .nav-inner { gap: 18px; }
+  .brand-meta { display: none; }
+  .nav-links { gap: 28px; }
+}
+@media (max-width: 1080px) {
+  .container { padding: 0 32px; }
+  .hero h1 { font-size: clamp(36px, 4.6vw, 54px); }
+  .section-header h2 { font-size: clamp(32px, 4vw, 50px); }
+  .labs-grid { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; row-gap: 28px; }
+  .foot-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .foot-grid .foot-col:nth-child(4),
+  .foot-grid .foot-col:nth-child(5) { display: none; }
+}
+@media (max-width: 880px) {
+  .container { padding: 0 24px; }
+  .hero-grid, .about-grid, .capabilities-grid, .testimonial-grid, .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .hero-art {
+    height: auto;
+    max-height: none;
+    margin: 0;
+  }
+  .hero-flow { min-height: 0; }
+  .flow-stage {
+    display: grid;
+    gap: 12px;
+    min-height: 0;
+  }
+  .flow-lines { display: none; }
+  .flow-card,
+  .flow-card:nth-of-type(1),
+  .flow-card:nth-of-type(2),
+  .flow-card:nth-of-type(3),
+  .flow-card:nth-of-type(4) {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    animation: none;
+  }
+  .flow-timeline { grid-template-columns: repeat(2, 1fr); }
+  .labs-head, .method-head { grid-template-columns: 1fr; }
+  .labs-grid { grid-template-columns: repeat(2, 1fr); }
+  .method-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .method-grid::before { display: none; }
+  .work { margin: 0 12px; padding: 60px 24px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .nav-links, .brand-meta, .nav-cta { display: none; }
+  .guarantee-strip { grid-template-columns: 1fr; }
+  /* wire — stack the field label above the marquee rows */
+  .wire-inner { grid-template-columns: 1fr; gap: 14px; }
+  .wire-left {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 12px;
+    min-height: 0;
+  }
+}
+@media (max-width: 560px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 38px; }
+  .labs-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .pills { justify-content: flex-start; }
+  section { padding: 80px 0; }
+  .topbar-inner { font-size: 9px; }
+  .calendar-modal { padding: 12px; }
+  .calendar-head { padding: 14px 14px; }
+  .calendar-head h2 { font-size: 22px; }
+  .calendar-dialog {
+    width: calc(100vw - 24px);
+    height: calc(100vh - 24px);
+    height: calc(100dvh - 24px);
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .calendar-frame { min-height: 0; }
+  .calendar-frame iframe {
+    min-height: 720px;
+    height: 720px;
+  }
+  .calendar-fallback {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.code-inline {
+  font-family: var(--mono);
+  font-size: 14px;
+  background: var(--bone);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.code-inline.sm { font-size: 12px; padding: 0 4px; }
+
+.anchor-sentinel { position: relative; top: -120px; display: block; width: 1px; height: 1px; overflow: hidden; }
+
+/* =====================================================================
+ * Cinematic hero — full-screen video background, glassmorphic header,
+ * hero copy aligned to the bottom-left corner.
+ * Activated by `body.has-cinema-hero`. The original .hero / .hero-art
+ * styles above are kept for legacy references but overridden here.
+ * ===================================================================== */
+body.has-cinema-hero { background: #0a0a0a; }
+body.has-cinema-hero .topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 51;
+  background: rgba(15, 14, 15, 0.34);
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  transition: background 280ms ease, color 280ms ease, border-color 280ms ease;
+}
+body.has-cinema-hero .topbar .topbar-inner { color: rgba(255, 255, 255, 0.72); }
+body.has-cinema-hero .topbar .topbar-inner b { color: #fff; }
+body.has-cinema-hero .topbar .topbar-link { color: rgba(255, 255, 255, 0.78); }
+body.has-cinema-hero .topbar .topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
+body.has-cinema-hero .topbar.is-light {
+  background: rgba(239, 231, 210, 0.78);
+  border-bottom-color: var(--line);
+  color: var(--ink-faint);
+}
+body.has-cinema-hero .topbar.is-light .topbar-inner { color: var(--ink-faint); }
+body.has-cinema-hero .topbar.is-light .topbar-inner b { color: var(--ink); }
+body.has-cinema-hero .topbar.is-light .topbar-link { color: var(--ink-faint); }
+
+body.has-cinema-hero .nav {
+  position: fixed; top: 38px; left: 0; right: 0; z-index: 50;
+  background: rgba(15, 14, 15, 0.34);
+  backdrop-filter: saturate(140%) blur(18px);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 280ms ease, border-color 280ms ease, transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body.has-cinema-hero .nav .brand,
+body.has-cinema-hero .nav .nav-links a { color: rgba(255, 255, 255, 0.95); }
+body.has-cinema-hero .nav .nav-links a:hover { color: var(--coral); }
+body.has-cinema-hero .nav .nav-links a .num { color: rgba(255, 255, 255, 0.4); }
+body.has-cinema-hero .nav .brand-mark {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+}
+body.has-cinema-hero .nav .brand-mark .brand-logo { filter: brightness(0) invert(1); }
+body.has-cinema-hero .nav .brand-meta {
+  color: rgba(255, 255, 255, 0.55);
+  border-left-color: rgba(255, 255, 255, 0.18);
+}
+body.has-cinema-hero .nav .brand-meta b { color: #fff; }
+body.has-cinema-hero .nav .nav-cta.ghost {
+  color: rgba(255, 255, 255, 0.86);
+  border-color: rgba(255, 255, 255, 0.34);
+  background: transparent;
+}
+body.has-cinema-hero .nav .nav-cta.ghost:hover { background: rgba(255, 255, 255, 0.08); }
+body.has-cinema-hero .nav .nav-cta:not(.ghost) {
+  background: var(--coral);
+  color: var(--ink);
+  border-color: var(--coral);
+}
+body.has-cinema-hero .nav .status-dot { background: var(--coral); box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.18); }
+
+body.has-cinema-hero .nav.is-light {
+  background: rgba(239, 231, 210, 0.82);
+  border-bottom-color: var(--line);
+}
+body.has-cinema-hero .nav.is-light .brand,
+body.has-cinema-hero .nav.is-light .nav-links a { color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-links a .num { color: var(--ink-faint); }
+body.has-cinema-hero .nav.is-light .brand-mark {
+  border-color: var(--ink);
+  background: var(--bone);
+}
+body.has-cinema-hero .nav.is-light .brand-mark .brand-logo { filter: none; }
+body.has-cinema-hero .nav.is-light .brand-meta { color: var(--ink-faint); border-left-color: var(--line); }
+body.has-cinema-hero .nav.is-light .brand-meta b { color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-cta.ghost { color: var(--ink); border-color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-cta:not(.ghost) {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+body.has-cinema-hero .side-rail { display: none; }
+
+.hero-cinema {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+}
+.hero-cinema__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(0.92) contrast(1.02);
+}
+.hero-cinema__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15, 14, 15, 0.62) 0%, rgba(15, 14, 15, 0.0) 22%, rgba(15, 14, 15, 0.0) 48%, rgba(15, 14, 15, 0.85) 100%),
+    radial-gradient(ellipse at 22% 88%, rgba(15, 14, 15, 0.62), transparent 58%);
+}
+.hero-cinema__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.hero-cinema__top {
+  position: absolute;
+  top: 132px;
+  left: 0; right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-cinema__top > .container { pointer-events: auto; }
+.hero-cinema__top .sec-rule {
+  color: rgba(255, 255, 255, 0.62);
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+.hero-cinema__top .sec-rule .roman { color: #fff; }
+.hero-cinema__top .sec-rule .dot-mark { color: var(--coral); }
+
+.hero-cinema__corner-tl,
+.hero-cinema__corner-tr,
+.hero-cinema__corner-br {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.hero-cinema__corner-tr { top: 132px; right: 64px; }
+.hero-cinema__corner-br { bottom: 36px; right: 64px; text-align: right; line-height: 1.4; }
+.hero-cinema__corner-br b { display: block; color: rgba(255, 255, 255, 0.75); font-weight: 600; }
+
+.hero-cinema__content {
+  position: absolute;
+  bottom: clamp(48px, 7vh, 96px);
+  left: 0; right: 0;
+  z-index: 3;
+}
+.hero-cinema__content .inner {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.hero-cinema__content .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 8px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hero-cinema__content .label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.25);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.hero-cinema__content .label .ix { color: rgba(255, 255, 255, 0.55); letter-spacing: 0.18em; }
+.hero-cinema__content h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(46px, 6.4vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 4px 0 6px;
+  text-wrap: balance;
+}
+.hero-cinema__content h1 em { color: var(--coral); font-style: italic; }
+.hero-cinema__content h1 .dot { color: var(--coral); font-style: normal; }
+.hero-cinema__content .lead {
+  max-width: 56ch;
+  font-family: var(--body);
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 6px;
+}
+.hero-cinema__content .hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.hero-cinema__content .btn-primary { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+.hero-cinema__content .btn-primary:hover { background: #d6b88a; }
+.hero-cinema__content .btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hero-cinema__content .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.5); }
+
+.hero-cinema__stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.hero-cinema__stats .stat { display: inline-flex; align-items: center; gap: 12px; }
+.hero-cinema__stats .stat .ring {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  flex-shrink: 0;
+}
+.hero-cinema__stats .stat .ring.solid { border-style: solid; }
+.hero-cinema__stats .stat .ring.coral { border-color: var(--coral); color: var(--coral); }
+.hero-cinema__stats .stat-label {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero-cinema__stats .stat-label b {
+  display: block;
+  font-weight: 700;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.hero-cinema__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 22px;
+  padding-top: 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.hero-cinema__foot .meta { line-height: 1.4; }
+
+.hero-cinema__scroll {
+  position: absolute;
+  bottom: 28px;
+  right: 64px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.hero-cinema__scroll:hover { color: var(--coral); }
+.hero-cinema__scroll::after {
+  content: '';
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  display: inline-block;
+  animation: scroll-line 2.6s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (max-width: 1024px) {
+  .hero-cinema__corner-br { display: none; }
+  .hero-cinema__top { top: 116px; }
+  .hero-cinema__corner-tr { top: 116px; right: 28px; }
+  .hero-cinema__scroll { right: 28px; }
+}
+@media (max-width: 768px) {
+  body.has-cinema-hero .nav { top: 0; }
+  body.has-cinema-hero .topbar { display: none; }
+  .hero-cinema { min-height: 560px; }
+  .hero-cinema__top { display: none; }
+  .hero-cinema__corner-tr { display: none; }
+  .hero-cinema__content { bottom: 28px; padding: 0 24px; }
+  .hero-cinema__content h1 { font-size: clamp(36px, 9vw, 56px); }
+  .hero-cinema__stats { gap: 18px; }
+  .hero-cinema__foot { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hero-cinema__scroll { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinema__video { display: none; }
+  .hero-cinema { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); }
+  .hero-cinema__scroll::after { animation: none; }
+}
+</style>
 </head>
-<body>
-  <div id="root">
-    <div id="boot-fallback" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:#0A0908;color:#F5F1E8;font-family:'Instrument Serif',serif;">
-      <span style="font-style:italic;font-size:54px;line-height:1;letter-spacing:-2px;">aurea systems</span>
-      <span style="font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(245,241,232,0.45);">Cargando experiencia</span>
+<body class='has-cinema-hero'>
+
+<div class='side-rail right' data-od-id='rail-right'>
+  <span class='rail-text'>Aurea Systems · Solo 4 plazas disponibles</span>
+</div>
+<div class='side-rail left' data-od-id='rail-left'>
+  <span class='rail-text'>Meta Ads · WhatsApp 24/7 · Anti no-show · Creative Studio</span>
+</div>
+<div class='shell'>
+
+<div class='topbar' data-od-id='topbar'>
+  <div class='container topbar-inner'>
+    <span><b>AS / 2026</b> &nbsp;·&nbsp; Vol. 01 / Clínicas Nº 04</span>
+    <span class='mid'>
+      <span>Filed under <b class='coral'>Captación · Diálogo · Clínicas</b></span>
+      <span>Exclusividad territorial · España</span>
+    </span>
+    <span class='right'>
+      <a class='topbar-link' href='#reservar'><span class='pulse'></span>Solo 4 plazas disponibles</a>
+      <span><b>ES</b> · CA · EN</span>
+    </span>
+  </div>
+</div>
+
+<header class='nav' data-od-id='nav'>
+  <div class='container nav-inner'>
+    <a href='#top' class='brand'>
+      <span class='brand-mark'><img class='brand-logo' src='./assets/aurea-logo-mark.png' alt='' /></span>
+      <span>Aurea Systems</span>
+      <span class='brand-meta'><b>Sistema de captación</b>Medicina estética / ES</span>
+    </a>
+    <nav>
+      <ul class='nav-links'>
+          <li><a href='#problema'>Problema</a></li>
+          <li><a href='#sistema'>Sistema<span class='num'>04</span></a></li>
+          <li><a href='#resultados'>Resultados<span class='num'>15+</span></a></li>
+          <li><a href='#garantia'>Garantía</a></li>
+          <li><a href='#reservar'>Reservar</a></li>
+      </ul>
+    </nav>
+    <div class='nav-side'>
+      <a class='nav-cta ghost' href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a>
+      <a class='nav-cta' href='#reservar'>Reservar llamada</a>
+      <span class='status-dot' aria-hidden='true'></span>
     </div>
   </div>
-  <noscript>
-    <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0A0908;color:#F5F1E8;font-family:serif;text-align:center;padding:24px;">
-      Esta experiencia requiere JavaScript activado.
+</header>
+
+<section class='hero-cinema' id='top' data-od-id='hero'>
+  <video class='hero-cinema__video'
+         autoplay muted loop playsinline preload='metadata'
+         poster='./assets/hero.png'
+         aria-hidden='true'>
+    <source src='./assets/hero-bg.mp4' type='video/mp4' />
+  </video>
+  <div class='hero-cinema__overlay' aria-hidden='true'></div>
+  <div class='hero-cinema__grain' aria-hidden='true'></div>
+
+  <div class='hero-cinema__top'>
+    <div class='container'>
+      <div class='sec-rule'>
+        <span class='roman'>I.</span>
+        <span class='meta-grp'>
+          <span>Hero / Cover Plate</span>
+          <span class='dot-mark'>•</span>
+          <span>Aurea Systems / Volume 01</span>
+        </span>
+        <span>001 / 008</span>
+      </div>
     </div>
-  </noscript>
+  </div>
 
-  <script type="text/babel" data-presets="react">
-    const { useState, useEffect, useRef } = React;
-    const { motion } = window.Motion;
+  <span class='hero-cinema__corner-tr'>FIG. 01 / AS-26 · Plate Nº 04</span>
+  <span class='hero-cinema__corner-br'>
+    <b>40.4168° N · 3.7038° W</b>
+    <span>Composed for Aurea · MMXXVI</span>
+  </span>
 
-    /* ============================================================
-     *  Icons (inline SVG, currentColor, stroke=2 round)
-     * ========================================================== */
-    const Svg = ({ children, className = "w-5 h-5" }) => (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-           strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-        {children}
-      </svg>
-    );
-    const ArrowUpRight = (p) => <Svg {...p}><path d="M7 7h10v10"/><path d="M7 17 17 7"/></Svg>;
-    const Play = (p) => <Svg {...p}><polygon points="6 3 20 12 6 21 6 3"/></Svg>;
-    const Target = (p) => <Svg {...p}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></Svg>;
-    const MessageCircle = (p) => <Svg {...p}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></Svg>;
-    const Filter = (p) => <Svg {...p}><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></Svg>;
-    const BellRing = (p) => <Svg {...p}><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/><path d="M22 8c0-2.3-.8-4.3-2-6"/></Svg>;
-    const CalendarCheck = (p) => <Svg {...p}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></Svg>;
-    const ShieldCheck = (p) => <Svg {...p}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></Svg>;
-
-    /* ============================================================
-     *  FadingVideo — manual rAF crossfade, seamless loop on `ended`
-     * ========================================================== */
-    const FadingVideo = ({ src, className, style }) => {
-      const ref = useRef(null);
-      const rafRef = useRef(null);
-      const FADE_MS = 500;
-      const FADE_OUT_LEAD = 0.55;
-
-      const fadeTo = (target, duration = FADE_MS) => {
-        const video = ref.current;
-        if (!video) return;
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        const start = parseFloat(video.style.opacity || '0');
-        const startTime = performance.now();
-        const step = (now) => {
-          const t = Math.min(1, (now - startTime) / duration);
-          video.style.opacity = String(start + (target - start) * t);
-          if (t < 1) rafRef.current = requestAnimationFrame(step);
-          else rafRef.current = null;
-        };
-        rafRef.current = requestAnimationFrame(step);
-      };
-
-      useEffect(() => {
-        const video = ref.current;
-        if (!video) return;
-
-        const onLoaded = () => {
-          video.style.opacity = '0';
-          video.play().catch(() => {});
-          fadeTo(1);
-        };
-        const onTimeUpdate = () => {
-          const remaining = (video.duration || 0) - video.currentTime;
-          if (remaining <= FADE_OUT_LEAD && remaining > 0) fadeTo(0);
-        };
-        const onEnded = () => {
-          video.style.opacity = '0';
-          setTimeout(() => {
-            try { video.currentTime = 0; } catch (e) {}
-            video.play().catch(() => {});
-            fadeTo(1);
-          }, 100);
-        };
-
-        video.addEventListener('loadeddata', onLoaded);
-        video.addEventListener('timeupdate', onTimeUpdate);
-        video.addEventListener('ended', onEnded);
-
-        return () => {
-          video.removeEventListener('loadeddata', onLoaded);
-          video.removeEventListener('timeupdate', onTimeUpdate);
-          video.removeEventListener('ended', onEnded);
-          if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        };
-      }, [src]);
-
-      return (
-        <video
-          ref={ref}
-          src={src}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          className={className}
-          style={{ opacity: 0, ...style }}
-        />
-      );
-    };
-
-    /* ============================================================
-     *  BlurText — word-by-word blur-in driven by IntersectionObserver
-     * ========================================================== */
-    const BlurText = ({ text, className, baseDelay = 0 }) => {
-      const ref = useRef(null);
-      const [visible, setVisible] = useState(false);
-
-      useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setVisible(true);
-              io.disconnect();
-            }
-          });
-        }, { threshold: 0.1 });
-        io.observe(el);
-        return () => io.disconnect();
-      }, []);
-
-      const words = text.split(' ');
-
-      return (
-        <div
-          ref={ref}
-          className={className}
-          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', rowGap: '0.1em' }}
-        >
-          {words.map((w, i) => (
-            <motion.span
-              key={i}
-              initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
-              animate={
-                visible
-                  ? {
-                      filter: ['blur(10px)', 'blur(5px)', 'blur(0px)'],
-                      opacity: [0, 0.5, 1],
-                      y: [50, -5, 0],
-                    }
-                  : {}
-              }
-              transition={{
-                duration: 0.7,
-                times: [0, 0.5, 1],
-                ease: 'easeOut',
-                delay: baseDelay + i * 0.1,
-              }}
-              style={{ display: 'inline-block', marginRight: '0.28em' }}
-            >
-              {w}
-            </motion.span>
-          ))}
-        </div>
-      );
-    };
-
-    /* ============================================================
-     *  Reusable entrance preset
-     * ========================================================== */
-    const enter = (delay = 0) => ({
-      initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
-      animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
-      transition: { duration: 0.7, ease: 'easeOut', delay },
-    });
-
-    /* ============================================================
-     *  Navbar
-     * ========================================================== */
-    const NAV_LINKS = ['Sistema', 'Proceso', 'Clínicas', 'Resultados', 'Reunión'];
-
-    const Navbar = () => (
-      <nav className="fixed top-4 left-0 right-0 z-50 px-8 lg:px-16 flex items-center justify-between pointer-events-none">
-        <div className="liquid-glass w-12 h-12 rounded-full flex items-center justify-center pointer-events-auto">
-          <span className="text-[#F5F1E8] font-heading italic text-2xl leading-none lowercase">a</span>
-        </div>
-        <div className="hidden md:flex liquid-glass rounded-full px-1.5 py-1.5 items-center gap-1 pointer-events-auto">
-          {NAV_LINKS.map((label) => (
-            <a
-              key={label}
-              href={'#' + label.toLowerCase().replace('ó', 'o').replace('í', 'i')}
-              className="px-3 py-2 text-sm font-medium text-[#F5F1E8]/90 font-body hover:text-[#F5F1E8] transition-colors"
-            >
-              {label}
-            </a>
-          ))}
-          <a
-            href="#reservar"
-            className="bg-[#F5F1E8] text-[#0A0908] rounded-full px-4 py-2 text-sm font-medium inline-flex items-center gap-1.5 ml-1 hover:bg-white transition-colors"
-          >
-            Agendar diagnóstico <ArrowUpRight className="w-4 h-4" />
+  <div class='hero-cinema__content'>
+    <div class='container'>
+      <div class='inner'>
+        <span class='label' data-reveal>Solo 4 plazas disponibles <span class='ix'>· Nº 01</span></span>
+        <h1 data-reveal>Llena tu agenda con <em>pacientes cualificados</em><span class='dot'>.</span></h1>
+        <p class='lead' data-reveal>El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.</p>
+        <div class='hero-actions' data-reveal>
+          <a class='btn btn-primary' href='#reservar'>
+            Reservar llamada
+            <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+          </a>
+          <a class='btn btn-ghost' href='#sistema'>
+            Descubrir el sistema
+            <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
           </a>
         </div>
-        <div className="w-12 h-12" aria-hidden="true" />
-      </nav>
-    );
-
-    /* ============================================================
-     *  Section 1 — Hero
-     * ========================================================== */
-    const Hero = () => {
-      const stats = [
-        { Icon: MessageCircle, n: '< 1 min', l: 'Primera respuesta al lead' },
-        { Icon: CalendarCheck, n: '5 fases', l: 'Del anuncio a la consulta' },
-        { Icon: ShieldCheck,   n: '- No-Show', l: 'Seguimiento antes de la cita' },
-      ];
-      const partners = ['Captación', 'WhatsApp', 'Cualificación', 'Seguimiento', 'Pacientes'];
-
-      return (
-        <section id="hero" className="relative min-h-screen overflow-hidden" style={{ background: '#0A0908' }}>
-          <FadingVideo
-            src="/videos/aurea-hero-patient-flow.mp4"
-            className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-center z-0"
-            style={{ width: '120%', height: '120%' }}
-          />
-          <div
-            className="absolute inset-0 z-[1] pointer-events-none"
-            style={{ background: 'radial-gradient(circle at center, rgba(10,9,8,0.1), rgba(10,9,8,0.55))' }}
-            aria-hidden="true"
-          />
-
-          <Navbar />
-
-          <div className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-24 pb-8 text-center">
-            <div className="flex-1 flex flex-col items-center justify-center w-full">
-              <motion.div
-                {...enter(0.4)}
-                className="liquid-glass rounded-full inline-flex items-center gap-3 pl-1 pr-3 py-1"
-              >
-                <span className="bg-[#F5F1E8] text-[#0A0908] px-3 py-1 text-xs font-semibold rounded-full font-body tracking-wide">
-                  Nuevo enfoque
-                </span>
-                <span className="text-sm text-[#F5F1E8]/90 pr-3 font-body">
-                  Un sistema comercial para clínicas que no quieren depender solo de publicar más
-                </span>
-              </motion.div>
-
-              <BlurText
-                text="Convierte más consultas en pacientes reales"
-                baseDelay={0.6}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-[#F5F1E8] leading-[0.82] max-w-3xl tracking-[-4px] mt-7"
-              />
-
-              <motion.p
-                {...enter(0.8)}
-                className="mt-5 text-sm md:text-base text-[#E8E2D3]/90 max-w-2xl font-body font-light leading-tight"
-              >
-                Aurea Systems conecta captación, WhatsApp, cualificación y seguimiento para que tu clínica responda antes, filtre mejor y reduzca citas perdidas.
-              </motion.p>
-
-              <motion.div {...enter(1.1)} className="flex items-center gap-6 mt-7 flex-wrap justify-center">
-                <a
-                  href="#proceso"
-                  className="liquid-glass-strong rounded-full px-5 py-2.5 text-sm font-medium text-[#F5F1E8] inline-flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  Ver cómo funciona <ArrowUpRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="#reservar"
-                  className="text-sm text-[#F5F1E8]/90 inline-flex items-center gap-2 hover:text-[#F5F1E8] transition-colors font-body"
-                >
-                  <Play className="w-4 h-4" /> Solicitar diagnóstico
-                </a>
-              </motion.div>
-
-              <motion.div
-                {...enter(1.3)}
-                className="flex flex-col md:flex-row items-stretch gap-4 mt-9 w-full max-w-3xl mx-auto justify-center"
-              >
-                {stats.map(({ Icon, n, l }, i) => (
-                  <div
-                    key={i}
-                    className="liquid-glass rounded-[1.25rem] p-5 w-full md:w-[220px] flex flex-col items-start text-left"
-                  >
-                    <div className="text-[#F5F1E8] mb-3"><Icon className="w-5 h-5" /></div>
-                    <div className="font-heading italic text-[#F5F1E8] text-4xl tracking-[-1px] leading-none">{n}</div>
-                    <div className="text-xs text-[#E8E2D3]/90 font-body font-light mt-2">{l}</div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            <motion.div {...enter(1.4)} className="flex flex-col items-center gap-4 pb-2 w-full">
-              <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-[#F5F1E8] font-body">
-                Diseñado para clínicas de estética que quieren más control comercial
-              </span>
-              <div className="flex flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-2 font-heading italic text-2xl md:text-3xl tracking-tight text-[#F5F1E8]">
-                {partners.map((p, i) => (
-                  <React.Fragment key={p}>
-                    <span>{p}</span>
-                    {i < partners.length - 1 && <span className="text-[#C9A668]/50 hidden sm:inline">·</span>}
-                  </React.Fragment>
-                ))}
-              </div>
-            </motion.div>
+        <div class='hero-cinema__stats' data-reveal>
+          <div class='stat'>
+            <span class='ring coral'>15+</span>
+            <span class='stat-label'><b>visitas asistidas</b>garantizadas al mes</span>
           </div>
-        </section>
-      );
-    };
-
-    /* ============================================================
-     *  Section 2 — PatientFlow Capabilities
-     * ========================================================== */
-    const CARDS = [
-      {
-        step: 'Paso 01', title: 'Captación', Icon: Target,
-        body: 'Anuncios y piezas de entrada pensadas para atraer personas con intención real de valoración, no solo curiosos.',
-        tags: ['Meta Ads', 'Landing', 'Lead Magnet', 'Valoración'],
-      },
-      {
-        step: 'Paso 02', title: 'Comunicación', Icon: MessageCircle,
-        body: 'El lead recibe una respuesta rápida, clara y humana por WhatsApp, sin depender de que recepción pueda contestar al momento.',
-        tags: ['WhatsApp', 'Respuesta rápida', 'Tono humano', 'Derivación'],
-      },
-      {
-        step: 'Paso 03', title: 'Cualificación', Icon: Filter,
-        body: 'El sistema detecta necesidad, zona, urgencia, franja horaria y calidad del lead antes de empujar la reserva.',
-        tags: ['Lead scoring', 'Filtros', 'Intención', 'Contexto'],
-      },
-      {
-        step: 'Paso 04', title: 'Asistencia', Icon: BellRing,
-        body: 'Recordatorios, reactivaciones y mensajes previos reducen olvidos, dudas y cancelaciones de última hora.',
-        tags: ['Recordatorios', 'Seguimiento', 'Confirmación', 'No-Show'],
-      },
-      {
-        step: 'Paso 05', title: 'Cierre', Icon: CalendarCheck,
-        body: 'El objetivo no es cerrar tratamientos por chat. El objetivo es llevar a la persona correcta a una primera consulta.',
-        tags: ['Cita', 'Agenda', 'Paciente', 'Control'],
-      },
-    ];
-
-    const PatientCard = ({ c, i }) => {
-      const [hover, setHover] = useState(false);
-      const Icon = c.Icon;
-      return (
-        <motion.article
-          initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.08 }}
-          viewport={{ once: true, amount: 0.2 }}
-          animate={{ y: hover ? -6 : 0 }}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="liquid-glass rounded-[1.25rem] p-5 min-h-[340px] flex flex-col"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="liquid-glass w-11 h-11 rounded-[0.75rem] flex items-center justify-center text-[#F5F1E8]">
-              <Icon className="w-5 h-5" />
-            </div>
-            <span className="text-[11px] text-[#C9A668] font-body tracking-wide uppercase">{c.step}</span>
+          <div class='stat'>
+            <span class='ring solid'>&lt;60s</span>
+            <span class='stat-label'><b>primera respuesta</b>con atención dedicada</span>
           </div>
-
-          <div className="flex-1" />
-
-          <div>
-            <h3 className="font-heading italic text-[#F5F1E8] text-3xl md:text-4xl tracking-[-1px] leading-none">
-              {c.title}
-            </h3>
-            <p className="mt-3 text-sm text-[#E8E2D3]/90 font-body font-light leading-snug">
-              {c.body}
-            </p>
-            <motion.div
-              animate={{ opacity: hover ? 1 : 0.85 }}
-              transition={{ duration: 0.3 }}
-              className="mt-5 flex flex-wrap gap-1.5"
-            >
-              {c.tags.map((t) => (
-                <span
-                  key={t}
-                  className="liquid-glass rounded-full px-3 py-1 text-[11px] text-[#F5F1E8]/90 font-body whitespace-nowrap"
-                >
-                  {t}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-
-          <motion.div
-            aria-hidden="true"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hover ? 1 : 0 }}
-            transition={{ duration: 0.35 }}
-            className="absolute inset-0 rounded-[1.25rem] pointer-events-none"
-            style={{
-              background:
-                'radial-gradient(circle at 50% 0%, rgba(201,166,104,0.16), transparent 60%)',
-              zIndex: 0,
-            }}
-          />
-        </motion.article>
-      );
-    };
-
-    const Capabilities = () => (
-      <section
-        id="proceso"
-        className="relative min-h-screen overflow-hidden"
-        style={{ background: '#0A0908' }}
-      >
-        <FadingVideo
-          src="/videos/aurea-capabilities-system.mp4"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, transparent 55%, rgba(10,9,8,0.6) 100%)' }}
-          aria-hidden="true"
-        />
-
-        <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-10 flex flex-col min-h-screen">
-          <motion.div
-            initial={{ filter: 'blur(10px)', opacity: 0, y: 24 }}
-            whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="text-sm font-body text-[#E8E2D3]/80 mb-6 tracking-wide">
-              // PatientFlow System
-            </div>
-            <h2 className="font-heading italic text-[#F5F1E8] text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-              El proceso que convierte<br />atención en citas
-            </h2>
-            <p className="mt-5 max-w-2xl text-sm md:text-base text-[#E8E2D3]/85 font-body font-light leading-tight">
-              No se trata de conseguir más mensajes. Se trata de que cada oportunidad tenga una respuesta, un filtro y un siguiente paso claro.
-            </p>
-          </motion.div>
-
-          <div className="relative mt-16 flex-1">
-            {/* Animated golden connecting line — desktop only */}
-            <svg
-              className="absolute hidden xl:block pointer-events-none"
-              style={{ top: '40%', left: 0, right: 0, width: '100%', height: 60, zIndex: 0 }}
-              preserveAspectRatio="none"
-              viewBox="0 0 1200 60"
-              aria-hidden="true"
-            >
-              <motion.path
-                d="M 60 30 Q 240 0, 300 30 T 600 30 T 900 30 T 1140 30"
-                stroke="#C9A668"
-                strokeWidth="1.4"
-                fill="none"
-                opacity="0.18"
-                strokeDasharray="6 8"
-                initial={{ strokeDashoffset: 0 }}
-                animate={{ strokeDashoffset: -200 }}
-                transition={{ duration: 14, ease: 'linear', repeat: Infinity }}
-              />
-            </svg>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 relative" style={{ zIndex: 1 }}>
-              {CARDS.map((c, i) => <PatientCard key={c.title} c={c} i={i} />)}
-            </div>
+          <div class='stat'>
+            <span class='ring'>&lt;15%</span>
+            <span class='stat-label'><b>no-show</b>con protocolo activo</span>
           </div>
         </div>
-      </section>
+        <div class='hero-cinema__foot' data-reveal>
+          <span class='meta'>↳ Aurea Systems · Meta Ads + WhatsApp 24/7 + agenda conectada</span>
+          <span>España · Exclusividad territorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class='hero-cinema__scroll' href='#problema' aria-label='Bajar a problema'>Scroll</a>
+</section>
+
+<section class='wire' data-od-id='wire' aria-label='Global wire — cities and contributors'>
+  <div class='container wire-inner'>
+    <div class='wire-left'>
+      <span class='wire-mark' aria-hidden='true'><span class='wire-pulse'></span></span>
+      <span class='wire-title'>
+        <b>Plazas en España</b>
+        <span>4 plazas · exclusividad territorial · radio de 15 km</span>
+      </span>
+    </div>
+    <div class='wire-rows'>
+      <div class='wire-row'>
+        <div class='marquee-track' aria-hidden='true'>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>40.42°N</span><span class='wire-name'>Madrid</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.38°N</span><span class='wire-name'>Barcelona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>39.47°N</span><span class='wire-name'>Valencia</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.98°N</span><span class='wire-name'>Girona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>43.26°N</span><span class='wire-name'>Bilbao</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>37.39°N</span><span class='wire-name'>Sevilla</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>36.72°N</span><span class='wire-name'>Malaga</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.65°N</span><span class='wire-name'>Zaragoza</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>40.42°N</span><span class='wire-name'>Madrid</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.38°N</span><span class='wire-name'>Barcelona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>39.47°N</span><span class='wire-name'>Valencia</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.98°N</span><span class='wire-name'>Girona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>43.26°N</span><span class='wire-name'>Bilbao</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>37.39°N</span><span class='wire-name'>Sevilla</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>36.72°N</span><span class='wire-name'>Malaga</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.65°N</span><span class='wire-name'>Zaragoza</span></span>
+        </div>
+      </div>
+      <div class='wire-row reverse'>
+        <div class='marquee-track'>
+          <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
+          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
+          <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
+          <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
+          <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
+          <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
+          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
+          <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
+          <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
+          <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='about' id='problema' data-od-id='about'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>II.</span>
+    <span class='meta-grp'>
+      <span>Problema real / Paciente potencial</span>
+      <span class='dot-mark'>•</span>
+      <span>Del formulario a la camilla</span>
+    </span>
+    <span>002 / 008</span>
+  </div>
+    <div class='about-grid'>
+      <div class='about-copy' data-reveal>
+        <span class='label'>El problema real <span class='ix'>· Nº 02</span></span>
+        <h2 class='display'>Entre el formulario y la <em>camilla</em> hay un agujero negro<span class='dot'>.</span></h2>
+        <p class='lead'>El interés puede llegar de cualquier canal. Lo que suele fallar es todo lo que ocurre entre el primer contacto y la cita: respuesta lenta, dudas sin resolver, agenda desconectada y pacientes que se enfrían antes de llegar a consulta.</p>
+        <a class='btn btn-ghost' href='#sistema'>
+          Ver el sistema
+          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+        </a>
+        <div class='footer-row'>
+          <span class='mark'>A</span>
+          <span>Atraccion · Calificación · Asistencia · Cierre</span>
+          <span class='stamp'>
+            <span>Operación clínica</span>
+            <span style='color: var(--ink);'>Aurea Systems</span>
+          </span>
+        </div>
+      </div>
+      <div class='about-art' data-reveal='right'>
+        <img src='./assets/visual-about.svg' alt='Placa editorial sobre la pérdida de leads entre formulario, latencia y primera visita.' />
+        <div class='about-side-note'>
+          <b></b>
+          El lead no se pierde por falta de interés.<br/>Se pierde por fricción,<br/>latencia y seguimiento<br/>sin protocolo.
+        </div>
+        <div class='about-caption'>
+          <b>Primera respuesta, asistencia y cierre en un mismo flujo.</b>
+          (Aurea Systems, MMXXVI)
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='capabilities' id='sistema' data-od-id='capabilities'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>III.</span>
+    <span class='meta-grp'>
+      <span>Aurea Systems / Sistema conectado</span>
+      <span class='dot-mark'>•</span>
+      <span>4 fases / 1 agenda</span>
+    </span>
+    <span>003 / 008</span>
+  </div>
+    <div class='capabilities-grid'>
+      <div class='capabilities-art' data-reveal='left'>
+        <span class='corner tl'></span>
+        <span class='corner br'></span>
+        <img src='./assets/visual-capabilities.svg' alt='Sistema Aurea Systems dividido en cuatro fases conectadas: atracción, calificación, asistencia y cierre.' />
+        <div class='ribbon'><b>AUREA SYSTEMS</b> &nbsp;·&nbsp; SISTEMA &nbsp;·&nbsp; 04 FASES</div>
+      </div>
+      <div class='capabilities-copy' data-reveal>
+        <span class='label'>Aurea Systems <span class='ix'>· Nº 03</span></span>
+        <h2 class='display'>Cuatro fases conectadas para no dejar escapar <em>oportunidades</em><span class='dot'>.</span></h2>
+        <p class='lead'>Cada fase empuja a la siguiente para convertir interés en primeras valoraciones reales: contenido, calificación, asistencia y cierre asistido en consulta.</p>
+        <div class='cards'>
+            <div class='card' data-reveal>
+    <div class='num'>01<span class='tag'>Contenido</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <path d='M4 8h16M4 16h16'/><circle cx='8' cy='12' r='3'/>
+    </svg>
+    <h3>Atraccion<br/>inteligente</h3>
+    <p>8-12 videos mensuales grabados en tu clínica, con tu equipo médico, guion validado y piezas optimizadas para Meta Ads.</p>
+    <a class='arrow-mark' href='#sistema' aria-label='Learn more about Contenido'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+            <div class='card' data-reveal>
+    <div class='num'>02<span class='tag'>Dialogo</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <circle cx='12' cy='12' r='7'/><path d='M8 12h8M12 8v8'/>
+    </svg>
+    <h3>Calificación<br/>24/7</h3>
+    <p>WhatsApp 24/7 que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.</p>
+    <a class='arrow-mark' href='#dialogo' aria-label='Learn more about WhatsApp'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+            <div class='card' data-reveal>
+    <div class='num'>03<span class='tag'>Agenda</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <rect x='5' y='5' width='14' height='14'/><path d='M8 3v4M16 3v4M8 12h8'/>
+    </svg>
+    <h3>Protocolo<br/>anti no-show</h3>
+    <p>Confirmación inmediata, recordatorio 48h, preparación 2h antes y llamada de confirmación para proteger cada hueco.</p>
+    <a class='arrow-mark' href='#garantia' aria-label='Learn more about Agenda'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+            <div class='card' data-reveal>
+    <div class='num'>04<span class='tag'>Cierre</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <path d='M5 17l4-4 3 3 7-8'/><path d='M5 21h14'/>
+    </svg>
+    <h3>Cierre asistido<br/>en consulta</h3>
+    <p>Tras cada primera visita, el sistema resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.</p>
+    <a class='arrow-mark' href='#resultados' aria-label='Learn more about Cierre'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='labs' id='modulos' data-od-id='labs'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>IV.</span>
+    <span class='meta-grp'>
+      <span>Módulos operativos / Captación</span>
+      <span class='dot-mark'>•</span>
+      <span>5 frentes activos</span>
+    </span>
+    <span>004 / 008</span>
+  </div>
+    <div class='labs-head'>
+      <div data-reveal>
+        <span class='label'>Sistema operativo <span class='ix'>· Nº 04</span></span>
+        <h2 class='display' style='margin-top:30px;'>Cinco módulos para convertir demanda dispersa en <em>agenda real</em><span class='dot'>.</span></h2>
+      </div>
+      <div class='pills' data-reveal='right'>
+          <button class='pill active'>Todo<span class='count'>05</span></button>
+          <button class='pill'>Ads<span class='count'>01</span></button>
+          <button class='pill'>WhatsApp<span class='count'>02</span></button>
+          <button class='pill'>Agenda<span class='count'>03</span></button>
+          <button class='pill'>Cierre<span class='count'>04</span></button>
+      </div>
+    </div>
+    <div class='labs-meta'>
+      <span class='ring'>05</span>
+      <div class='meta-text'>
+        <b>Frentes activos</b>
+        captación<br/>calificación<br/>seguimiento
+      </div>
+    </div>
+    <div class='labs-grid'>
+        <div class='lab' data-reveal>
+    <div class='lab-img'><span class='badge'>Ads</span><img src='./assets/visual-lab-1.svg' alt='Placa editorial de anuncios Meta Ads con piezas UGC reales.' /></div>
+    <div class='num-row'><span>Nº 01</span><span>2026</span></div>
+    <h4>Meta Ads con UGC real</h4>
+    <p>No se trabaja con stock ni plantillas genéricas. El material nace en la clínica y se optimiza para Reels y Stories.</p>
+    <a class='arrow-mark' href='#creative' aria-label='Open Meta Ads con UGC real'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+  </div>
+        <div class='lab' data-reveal>
+    <div class='lab-img'><span class='badge'>Dialogo</span><img src='./assets/visual-lab-2.svg' alt='Placa editorial de conversación WhatsApp para calificar pacientes.' /></div>
+    <div class='num-row'><span>Nº 02</span><span>24/7</span></div>
+    <h4>WhatsApp que no descansa</h4>
+    <p>Responde como parte del equipo, califica interés, puede atender varios idiomas y transfiere a humano cuando toca.</p>
+    <a class='arrow-mark' href='#dialogo' aria-label='Open WhatsApp que no descansa'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+  </div>
+        <div class='lab' data-reveal>
+    <div class='lab-img'><span class='badge'>Agenda</span><img src='./assets/visual-lab-3.svg' alt='Placa editorial de calendario conectado y primera valoración confirmada.' /></div>
+    <div class='num-row'><span>Nº 03</span><span>&lt;60s</span></div>
+    <h4>Cita sin fricción</h4>
+    <p>El sistema empuja a reserva, confirma disponibilidad y reduce la distancia entre intención y primera valoración.</p>
+    <a class='arrow-mark' href='#sistema' aria-label='Open Cita sin fricción'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+  </div>
+        <div class='lab' data-reveal>
+    <div class='lab-img'><span class='badge'>No-show</span><img src='./assets/visual-lab-4.svg' alt='Placa editorial de recordatorios y protocolo anti no-show.' /></div>
+    <div class='num-row'><span>Nº 04</span><span>&lt;15%</span></div>
+    <h4>Asistencia protegida</h4>
+    <p>Cuatro puntos de contacto antes de la cita y reasignación de huecos cancelados para no perder capacidad.</p>
+    <a class='arrow-mark' href='#garantia' aria-label='Open Asistencia protegida'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+  </div>
+        <div class='lab' data-reveal>
+    <div class='lab-img'><span class='badge'>Datos</span><img src='./assets/visual-lab-5.svg' alt='Placa editorial de informe mensual, objeciones y aprendizaje operativo.' /></div>
+    <div class='num-row'><span>Nº 05</span><span>Mensual</span></div>
+    <h4>Aprendizaje operativo</h4>
+    <p>Informes de conversación, objeciones y cierre para que recepción, marketing y consulta trabajen con la misma verdad.</p>
+    <a class='arrow-mark' href='#resultados' aria-label='Open Aprendizaje operativo'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+  </div>
+    </div>
+    <div class='labs-foot'>
+      <div class='progress'>
+        <span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span></span><span></span><span></span>
+      </div>
+      <span class='meta'>05 / 05 MÓDULOS &nbsp;·&nbsp; <a class='library-link' href='#reservar' style='color:var(--coral);'>REVISAR ENCAJE →</a></span>
+    </div>
+  </div>
+</section>
+
+<section class='method' id='metodo' data-od-id='method'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>V.</span>
+    <span class='meta-grp'>
+      <span>Metodo / Implantacion</span>
+      <span class='dot-mark'>•</span>
+      <span>Mensual, medible, asistido</span>
+    </span>
+    <span>005 / 008</span>
+  </div>
+    <div class='method-head'>
+      <div data-reveal>
+        <span class='label'>Metodo <span class='ix'>· Nº 05</span></span>
+        <h2 class='display' style='margin-top:30px;'>De la campaña a la <em>primera valoración</em> sin zonas grises<span class='dot'>.</span></h2>
+      </div>
+      <div class='right' data-reveal='right'>
+        <span class='plus'>+</span>
+        <p>La implantación se mide por pacientes cualificados y primeras visitas asistidas, no por clics ni formularios acumulados.</p>
+      </div>
+    </div>
+    <div class='method-grid'>
+        <div class='method-step' data-reveal>
+    <div class='num'>01</div>
+    <h4>Grabar <span class='arrow-r'>→</span></h4>
+    <p>Cada mes se producen 8-12 videos con el equipo médico de la clínica, guionados para generar confianza y demanda real.</p>
+    <div class='img'><img src='./assets/visual-method-1.svg' alt='Placa editorial del día de grabación en clínica y guion médico.' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>02</div>
+    <h4>Activar <span class='arrow-r'>→</span></h4>
+    <p>Las piezas se lanzan en Meta Ads y cada contacto entra en el flujo de WhatsApp con respuesta en menos de un minuto.</p>
+    <div class='img'><img src='./assets/visual-method-2.svg' alt='Placa editorial de activación de campañas Meta Ads conectadas a WhatsApp.' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>03</div>
+    <h4>Asistir <span class='arrow-r'>→</span></h4>
+    <p>La mesa de respuesta resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración.</p>
+    <div class='img'><img src='./assets/visual-method-3.svg' alt='Placa editorial de asistencia, agenda y recordatorios.' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>04</div>
+    <h4>Mejorar</h4>
+    <p>Los datos de cada conversación y consulta alimentan mejores anuncios, mejores respuestas y mejor cierre.</p>
+    <div class='img'><img src='./assets/visual-method-4.svg' alt='Placa editorial de mejora continua con datos de campaña y CRM.' /></div>
+  </div>
+    </div>
+    <div class='method-foot'>
+      <div class='left'>
+        <span class='ring'></span>
+        <span>El sistema importa mas que el canal.</span>
+      </div>
+      <div class='right'><a class='method-repo-link' href='https://aureasystems.es' target='_blank' rel='noreferrer noopener'><b>aureasystems.es</b></a> &nbsp;·&nbsp; Aurea Systems</div>
+    </div>
+  </div>
+</section>
+
+<span id='dialogo' class='anchor-sentinel'></span>
+<span id='creative' class='anchor-sentinel'></span>
+<section class='tight' id='resultados' data-od-id='work'>
+  <div class='work'>
+    <div class='work-rule'>
+      <span class='roman'>VI.</span>
+      <span style='display:inline-flex;gap:24px;'>
+        <span>Experiencias clave / Conversion</span>
+        <span style='color:var(--coral);'>•</span>
+        <span>Dialogo + contenido real</span>
+      </span>
+      <span>006 / 008</span>
+    </div>
+    <div class='work-grid'>
+      <div class='work-copy' data-reveal>
+        <span class='label'>Experiencias clave</span>
+        <h2>Dos momentos donde la conversion deja de depender de la <em>suerte</em><span class='dot'>.</span></h2>
+        <a class='work-link' href='#reservar'>Reservar diagnóstico</a>
+      </div>
+      <a class='work-card' data-reveal href='#reservar'>
+    <div class='label-row'>
+      <span class='small-label'>Dialogo Continuo</span>
+      <span class='index'>01 / 02</span>
+    </div>
+    <h3>Ana responde antes de que el interés se enfríe</h3>
+    <p>Un WhatsApp 24/7 que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.</p>
+    <div class='img'><img src='./assets/visual-work-1.svg' alt='Placa editorial de Ana, la atencion dedicada por WhatsApp.' /></div>
+    <div class='meta-row'>
+      <span class='year'>&lt;60s · 24/7</span>
+      <span>WHATSAPP</span>
+    </div>
+  </a>
+      <a class='work-card alt' data-reveal href='#reservar'>
+    <div class='label-row'>
+      <span class='small-label'>Creative Studio</span>
+      <span class='index'>02 / 02</span>
+    </div>
+    <h3>Creativos grabados en tu propia clínica</h3>
+    <p>UGC mensual con equipo médico real, subtitulado en español y catalán, listo para rotacion de campañas.</p>
+    <div class='img'><img src='./assets/visual-work-2.svg' alt='Placa editorial de Creative Studio con contact sheet de piezas UGC.' /></div>
+    <div class='meta-row'>
+      <span class='year'>8-12 PIEZAS / MES</span>
+      <span>UGC</span>
+    </div>
+  </a>
+    </div>
+    <div class='work-arrows'>
+      <button class='nav-btn' type='button' aria-label='Experiencia anterior'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.6'><path d='M14 6l-6 6 6 6'/></svg></button>
+      <button class='nav-btn active' type='button' aria-label='Experiencia siguiente'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.6'><path d='M10 6l6 6-6 6'/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class='testimonial' id='testimonios' data-od-id='testimonial'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>VII.</span>
+    <span class='meta-grp'>
+      <span>Clínicas / Prueba social</span>
+      <span class='dot-mark'>•</span>
+      <span>Resultados que hablan solos</span>
+    </span>
+    <span>007 / 008</span>
+  </div>
+    <div class='testimonial-grid'>
+      <div class='testimonial-copy' data-reveal>
+        <span class='label'>Lo que dicen las clínicas <span class='ix'>· Nº 06</span></span>
+        <h2 style='margin-top:30px;'>&ldquo;La atencion por WhatsApp es indistinguible de tener a alguien dedicado en plantilla. Mis pacientes me preguntan quien es la chica que les habla con tanta <em>atencion</em>.&rdquo;</h2>
+        <div class='author'>
+          <span class='avatar'>A</span>
+          <p>Dr. Alejandro Soler<br/><span>Director médico · Clínica Soler Facial, Valencia</span></p>
+        </div>
+        <div class='divider'></div>
+        <p class='partners-text'>Prueba social organizada por ciudad, especialidad y problema operativo resuelto.</p>
+        <div class='partners'>
+        <a class='partner' data-reveal href='#testimonios'>
+    <div class='glyph'>
+      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
+        <path d='M5 24L20 6L35 24M12 18h16'/>
+      </svg>
+    </div>
+    <span>Valencia</span>
+    <small>WhatsApp 24/7</small>
+  </a>
+        <a class='partner' data-reveal href='#testimonios'>
+    <div class='glyph'>
+      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
+        <circle cx='20' cy='15' r='10'/><path d='M10 15h20'/>
+      </svg>
+    </div>
+    <span>Barcelona</span>
+    <small>Reactivacion</small>
+  </a>
+        <a class='partner' data-reveal href='#testimonios'>
+    <div class='glyph'>
+      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
+        <rect x='8' y='5' width='24' height='20'/><path d='M14 11h12M14 17h8'/>
+      </svg>
+    </div>
+    <span>Madrid</span>
+    <small>Recepcion</small>
+  </a>
+        <a class='partner' data-reveal href='#testimonios'>
+    <div class='glyph'>
+      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
+        <path d='M8 24l12-18 12 18M14 18h12'/>
+      </svg>
+    </div>
+    <span>Girona</span>
+    <small>No-show</small>
+  </a>
+        <a class='partner' data-reveal href='#garantia'>
+    <div class='glyph'>
+      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
+        <path d='M5 8h30M5 15h22M5 22h14'/>
+      </svg>
+    </div>
+    <span>España</span>
+    <small>Exclusividad</small>
+  </a>
+        </div>
+        <a class='read-more' href='#garantia'>Ver garantia</a>
+      </div>
+      <div class='testimonial-art' data-reveal='right'>
+        <img src='./assets/visual-testimonial.svg' alt='Placa editorial de prueba social organizada por ciudades y problemas clínicos resueltos.' />
+      </div>
+    </div>
+  </div>
+</section>
+
+<span id='garantia' class='anchor-sentinel'></span>
+<section class='cta' id='reservar' data-od-id='cta'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>VIII.</span>
+    <span class='meta-grp'>
+      <span>Garantía / Siguiente paso</span>
+      <span class='dot-mark'>•</span>
+      <span>Diagnóstico de 30 minutos</span>
+    </span>
+    <span>008 / 008</span>
+  </div>
+    <div class='cta-grid'>
+      <div data-reveal>
+        <span class='label'>Tu próximo paso <span class='ix'>· Nº 07</span></span>
+        <h2 class='display'>Si hay encaje, llenamos la agenda. Si no funciona, <em>no pagas</em><span class='dot'>.</span></h2>
+        <p class='lead'>30 minutos. Sin compromiso. Revisamos tu zona, tu volumen actual, tu ticket medio y si Aurea Systems puede sostener exclusividad territorial dentro de un radio de 15 km.</p>
+        <div class='guarantee-strip' aria-label='Garantía Aurea Systems'>
+          <article>
+            <strong>Mes 1</strong>
+            <span>Si no llevamos 15 visitas asistidas en 30 días, el segundo mes es gratis. Solo pagas ads.</span>
+          </article>
+          <article>
+            <strong>Meses 2-3</strong>
+            <span>Si la media no supera 15 visitas mensuales, seguimos con fee a 0€ hasta cumplir.</span>
+          </article>
+          <article>
+            <strong>Salida limpia</strong>
+            <span>Al terminar la permanencia, cancelas sin penalización y tus datos se quedan contigo.</span>
+          </article>
+        </div>
+        <div class='cta-actions'>
+          <a class='btn btn-primary' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
+            Reservar llamada de descubrimiento
+            <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+          </a>
+          <a class='email-pill' href='mailto:hola@aureasystems.es' target='_blank' rel='noreferrer noopener'>
+            hola@aureasystems.es
+            <span class='arrow-circle'>→</span>
+          </a>
+        </div>
+        <div class='cta-foot'>
+          <span class='stamp'>● Live</span>
+          <span>2026 / Exclusividad territorial</span>
+          <span style='margin-left:auto;'>40.4168° N · 3.7038° W</span>
+        </div>
+      </div>
+      <div class='cta-art' data-reveal='right'>
+        <img src='./assets/visual-cta.svg' alt='Placa editorial de calendario de diagnóstico y garantía de quince visitas asistidas.' />
+        <div class='index'>Nº 08</div>
+        <div class='ribbon'>AUREA SYSTEMS &nbsp;·&nbsp; 15 VISITAS ASISTIDAS O FEE A 0€</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-od-id='footer'>
+  <div class='container'>
+    <div class='foot-grid'>
+      <div class='foot-brand'>
+        <a href='#top' class='brand'>
+          <span class='brand-mark'><img class='brand-logo' src='./assets/aurea-logo-mark.png' alt='' /></span>
+          <span>Aurea Systems</span>
+        </a>
+        <p style='margin-top:18px;'>Sistemas editoriales de captación para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp 24/7, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.</p>
+        <a class='foot-cta' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>Reservar llamada<span class='meta'>30 min · sin compromiso</span></a>
+      </div>
+      <div class='foot-col'>
+    <h5>Producto</h5>
+    <ul>
+        <li><a href='#sistema'>Cómo funciona</a></li>
+        <li><a href='#dialogo'>Dialogo Continuo</a></li>
+        <li><a href='#resultados'>Resultados</a></li>
+        <li><a href='#reservar'>Reservar llamada</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Empresa</h5>
+    <ul>
+        <li><a href='#problema'>Sobre Aurea</a></li>
+        <li><a href='#sistema'>Aurea Systems</a></li>
+        <li><a href='#testimonios'>Casos de éxito</a></li>
+        <li><a href='#reservar'>Contacto</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Contenido</h5>
+    <ul>
+        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a></li>
+        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>No-shows</a></li>
+        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>KPIs clínica</a></li>
+        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Dialogo continuo</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Legal</h5>
+    <ul>
+        <li><a href='mailto:hola@aureasystems.es?subject=Política%20de%20privacidad' target='_blank' rel='noreferrer noopener'>Privacidad</a></li>
+        <li><a href='mailto:hola@aureasystems.es?subject=Términos%20de%20servicio' target='_blank' rel='noreferrer noopener'>Términos</a></li>
+        <li><a href='mailto:hola@aureasystems.es?subject=Política%20de%20cookies' target='_blank' rel='noreferrer noopener'>Cookies</a></li>
+        <li><a href='mailto:hola@aureasystems.es?subject=Cumplimiento%20RGPD' target='_blank' rel='noreferrer noopener'>RGPD</a></li>
+    </ul>
+  </div>
+    </div>
+    <div class='foot-bottom'>
+      <span><span class='pulse'></span>● <b style='color:var(--ink);'>Aurea Systems</b> · Exclusividad territorial · 2026 / Vol. 01 / Clínicas Nº 04</span>
+      <span class='right'>
+        <span>España / medicina estética facial</span>
+        <span>40.4168° N · 3.7038° W</span>
+        <span style='color:var(--coral);'>♥ MMXXVI</span>
+      </span>
+    </div>
+    <div class='foot-mega'>
+      <div class='word' data-reveal='rise-lg'>Aurea <em>Systems</em>.</div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div class='calendar-modal' id='calendar-modal' aria-hidden='true' role='dialog' aria-modal='true' aria-labelledby='calendar-title'>
+  <div class='calendar-dialog' role='document'>
+    <div class='calendar-head'>
+      <div>
+        <span>Aurea Systems / agenda</span>
+        <h2 id='calendar-title'>Reserva tu llamada de descubrimiento</h2>
+      </div>
+      <button class='calendar-close' type='button' aria-label='Cerrar calendario' data-calendar-close>&times;</button>
+    </div>
+    <div class='calendar-frame'>
+      <iframe src='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' style='width:100%;height:780px;border:none;overflow:hidden;display:block;' scrolling='no' id='reunion-descubrimiento-aurea-systems_1778336844565' data-layout-iframe='true' title='Calendario de reservas Aurea Systems'></iframe>
+      <div class='calendar-fallback'>
+        <span>Si el calendario tarda en cargar, abre la agenda en una pestaña nueva.</span>
+        <a href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener'>Abrir calendario</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script src='https://link.cleesaas.com/js/form_embed.js' type='text/javascript'></script>
+
+<script>
+  /*
+   * Calendar modal — all booking CTAs open the Cleesaas embed in-place.
+   */
+  (function () {
+    var modal = document.getElementById('calendar-modal');
+    if (!modal) return;
+    var close = modal.querySelector('[data-calendar-close]');
+    var frame = modal.querySelector('iframe');
+    var previousFocus = null;
+
+    function sizeCalendarFrame() {
+      if (!frame) return;
+      var available = Math.max(720, Math.min(860, window.innerHeight - 132));
+      frame.style.height = available + 'px';
+      frame.style.minHeight = available + 'px';
+    }
+
+    function openCalendar(event) {
+      if (event) event.preventDefault();
+      previousFocus = document.activeElement;
+      sizeCalendarFrame();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('calendar-open');
+      document.body.classList.add('calendar-open');
+      if (close) close.focus();
+    }
+
+    function closeCalendar() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('calendar-open');
+      document.body.classList.remove('calendar-open');
+      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+    }
+
+    var bookingLinks = document.querySelectorAll(
+      'a[href="#reservar"], a[href^="https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems"], [data-calendar-open]'
     );
+    for (var i = 0; i < bookingLinks.length; i++) {
+      bookingLinks[i].setAttribute('aria-haspopup', 'dialog');
+      bookingLinks[i].addEventListener('click', openCalendar);
+    }
 
-    /* ============================================================
-     *  App
-     * ========================================================== */
-    const App = () => (
-      <React.Fragment>
-        <Hero />
-        <Capabilities />
-      </React.Fragment>
-    );
+    if (close) close.addEventListener('click', closeCalendar);
+    if (frame) frame.addEventListener('load', sizeCalendarFrame);
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) closeCalendar();
+    });
+    window.addEventListener('resize', function () {
+      if (modal.classList.contains('is-open')) sizeCalendarFrame();
+    });
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeCalendar();
+    });
+  })();
 
-    window.AureaApp = App;
+  /*
+   * Scroll-reveal observer — mirrors apps/landing-page/app/_components/reveal-root.tsx.
+   * Watches every [data-reveal] element and flips data-revealed='true'
+   * when it first enters the viewport, triggering the CSS transition.
+   */
+  (function () {
+    var elements = document.querySelectorAll('[data-reveal]:not([data-revealed])');
+    if (!elements.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (var i = 0; i < elements.length; i++) elements[i].dataset.revealed = 'true';
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (!entries[i].isIntersecting) continue;
+        entries[i].target.dataset.revealed = 'true';
+        observer.unobserve(entries[i].target);
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    for (var j = 0; j < elements.length; j++) observer.observe(elements[j]);
+  })();
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+  /*
+   * Headroom-style sticky header — mirrors apps/landing-page/app/_components/header.tsx.
+   * Hides the nav on downward scroll, re-pins it on upward scroll, and
+   * always keeps it visible near the top of the page.
+   */
+  (function () {
+    var nav = document.querySelector('header.nav');
+    if (!nav) return;
+    var SHOW_TOP = 100;
+    var DELTA = 6;
+    var lastY = window.scrollY || 0;
+    function onScroll() {
+      var y = window.scrollY || 0;
+      var d = y - lastY;
+      if (y <= SHOW_TOP) {
+        nav.classList.remove('is-hidden');
+      } else if (d > DELTA) {
+        nav.classList.add('is-hidden');
+      } else if (d < -DELTA) {
+        nav.classList.remove('is-hidden');
+      }
+      lastY = y;
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  /*
+   * Glassmorphic header theming — toggles `.is-light` on the nav/topbar
+   * once the cinematic hero has scrolled past, so the header switches
+   * from dark glass (over the video) to paper glass (over the editorial
+   * body) without a visual jump.
+   */
+  (function () {
+    if (!document.body.classList.contains('has-cinema-hero')) return;
+    var hero = document.querySelector('.hero-cinema');
+    var nav = document.querySelector('header.nav');
+    var topbar = document.querySelector('.topbar');
+    if (!hero || !nav) return;
+    function update() {
+      var rect = hero.getBoundingClientRect();
+      var threshold = 90;
+      var overHero = rect.bottom > threshold;
+      nav.classList.toggle('is-light', !overHero);
+      if (topbar) topbar.classList.toggle('is-light', !overHero);
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  })();
+
+  /*
+   * Hero video — pause when offscreen to save CPU/battery.
+   */
+  (function () {
+    var video = document.querySelector('.hero-cinema__video');
+    if (!video || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { video.play().catch(function () {}); }
+        else { video.pause(); }
+      });
+    }, { threshold: 0.1 });
+    io.observe(video);
+  })();
+</script>
+
 </body>
 </html>
