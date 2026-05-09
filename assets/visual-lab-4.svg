@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="1024" viewBox="0 0 768 1024" role="img" aria-labelledby="title desc">
+<title id="title">Asistencia protegida</title><desc id="desc">Aurea Systems editorial collage plate for Lab 04 / no-show.</desc>
+<defs>
+  <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0 0.10 0 0 0 .09 0"/></filter>
+  <pattern id="dot" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#15140f" opacity=".17"/></pattern>
+  <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse"><path d="M54 0H0V54" fill="none" stroke="#15140f" stroke-opacity=".08" stroke-width="1"/></pattern>
+  <linearGradient id="goldWash" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E8D5B5"/><stop offset=".56" stop-color="#efe7d2"/><stop offset="1" stop-color="#C8A97E" stop-opacity=".55"/></linearGradient>
+  <clipPath id="clipCircle"><circle cx="0" cy="0" r="1"/></clipPath>
+</defs>
+<rect width="768" height="1024" fill="#efe7d2"/>
+<rect width="768" height="1024" fill="url(#grid)"/>
+<rect width="768" height="1024" filter="url(#paperNoise)" opacity=".72"/>
+<rect x="28" y="28" width="712" height="968" fill="none" stroke="#15140f" stroke-opacity=".22" stroke-width="1"/>
+<text x="42" y="58" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3" fill="#5a5448">LAB 04 / NO-SHOW</text>
+<circle cx="716" cy="52" r="6" fill="#C8A97E"/><circle cx="384" cy="402" r="180" fill="#fffaf0" stroke="#15140f" stroke-opacity=".18"/><circle cx="384" cy="402" r="126" fill="none" stroke="#15140f" stroke-dasharray="8 12" stroke-opacity=".34"/><path d="M384 402 V292 M384 402 L478 456" stroke="#15140f" stroke-width="9" stroke-linecap="round"/><rect x="126" y="214" width="120" height="58" rx="6" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.2"/><text x="144" y="250" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="1.2" fill="#15140f">48H</text><rect x="510" y="224" width="120" height="58" rx="6" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.2"/><text x="528" y="260" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="1.2" fill="#15140f">2H</text><rect x="132" y="636" width="120" height="58" rx="6" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.2"/><text x="150" y="672" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="1.2" fill="#15140f">CALL</text><rect x="520" y="644" width="120" height="58" rx="6" fill="#E8D5B5" stroke="#15140f" stroke-opacity="0.2"/><text x="538" y="680" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="1.2" fill="#15140f">OK</text><path d="M214 244 C368 154,524 238,556 424 S466 690,238 650" stroke="#9f5f43" stroke-opacity="0.45" stroke-width="4" fill="none"/><text x="132" y="824" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2" fill="#5a5448">CUATRO CONTACTOS ANTES DE LA CITA</text><text x="42" y="982" font-family="Playfair Display, Georgia, serif" font-size="30" font-style="italic" fill="#8b8676">Nº 07</text>
+<text x="726" y="982" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="#8b8676">AUREA SYSTEMS / SISTEMA</text>
+</svg>

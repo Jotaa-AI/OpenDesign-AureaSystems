@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+<title id="title">Formulario a camilla</title><desc id="desc">Aurea Systems editorial collage plate for Fig. 02 / agujero negro.</desc>
+<defs>
+  <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0 0.10 0 0 0 .09 0"/></filter>
+  <pattern id="dot" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#15140f" opacity=".17"/></pattern>
+  <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse"><path d="M54 0H0V54" fill="none" stroke="#15140f" stroke-opacity=".08" stroke-width="1"/></pattern>
+  <linearGradient id="goldWash" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E8D5B5"/><stop offset=".56" stop-color="#efe7d2"/><stop offset="1" stop-color="#C8A97E" stop-opacity=".55"/></linearGradient>
+  <clipPath id="clipCircle"><circle cx="0" cy="0" r="1"/></clipPath>
+</defs>
+<rect width="1024" height="1024" fill="#efe7d2"/>
+<rect width="1024" height="1024" fill="url(#grid)"/>
+<rect width="1024" height="1024" filter="url(#paperNoise)" opacity=".72"/>
+<rect x="28" y="28" width="968" height="968" fill="none" stroke="#15140f" stroke-opacity=".22" stroke-width="1"/>
+<text x="42" y="58" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3" fill="#5a5448">FIG. 02 / AGUJERO NEGRO</text>
+<circle cx="972" cy="52" r="6" fill="#C8A97E"/><rect x="110" y="164" width="310" height="220" rx="4" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.18"/><text x="136" y="220" font-family="Inter Tight, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-.3" fill="#15140f">Lead entrante</text><text x="138" y="260" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2" fill="#5a5448">Nombre / tratamiento / ciudad</text><path d="M420 274L510 430" stroke="#15140f" stroke-opacity="0.22" stroke-width="2" fill="none"/><circle cx="512" cy="512" r="145" fill="#15140f" opacity=".92"/><circle cx="512" cy="512" r="108" fill="#efe7d2" opacity=".08"/><circle cx="512" cy="512" r="62" fill="#C8A97E" opacity=".15"/><text x="455" y="515" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="1.2" fill="#efe7d2">LATENCIA</text><path d="M605 596L746 724" stroke="#15140f" stroke-opacity="0.22" stroke-width="2" fill="none"/><rect x="704" y="646" width="220" height="220" rx="4" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.18"/><path d="M748 794 C786 728,852 728,884 794" stroke="#15140f" stroke-width="7" fill="none" opacity=".7"/><rect x="760" y="802" width="120" height="18" fill="#E8D5B5"/><text x="734" y="708" font-family="Inter Tight, Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="-.3" fill="#15140f">Primera visita</text><text x="128" y="812" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="1.2" fill="#5a5448">El sistema cierra el hueco entre interés y cita</text><text x="42" y="982" font-family="Playfair Display, Georgia, serif" font-size="30" font-style="italic" fill="#8b8676">Nº 02</text>
+<text x="982" y="982" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="#8b8676">AUREA SYSTEMS / SISTEMA</text>
+</svg>

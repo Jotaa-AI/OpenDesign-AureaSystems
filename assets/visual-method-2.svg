@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="816" height="816" viewBox="0 0 816 816" role="img" aria-labelledby="title desc">
+<title id="title">Activar campaña</title><desc id="desc">Aurea Systems editorial collage plate for Method 02 / activar.</desc>
+<defs>
+  <filter id="paperNoise"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0 0.10 0 0 0 .09 0"/></filter>
+  <pattern id="dot" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#15140f" opacity=".17"/></pattern>
+  <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse"><path d="M54 0H0V54" fill="none" stroke="#15140f" stroke-opacity=".08" stroke-width="1"/></pattern>
+  <linearGradient id="goldWash" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E8D5B5"/><stop offset=".56" stop-color="#efe7d2"/><stop offset="1" stop-color="#C8A97E" stop-opacity=".55"/></linearGradient>
+  <clipPath id="clipCircle"><circle cx="0" cy="0" r="1"/></clipPath>
+</defs>
+<rect width="816" height="816" fill="#efe7d2"/>
+<rect width="816" height="816" fill="url(#grid)"/>
+<rect width="816" height="816" filter="url(#paperNoise)" opacity=".72"/>
+<rect x="28" y="28" width="760" height="760" fill="none" stroke="#15140f" stroke-opacity=".22" stroke-width="1"/>
+<text x="42" y="58" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3" fill="#5a5448">METHOD 02 / ACTIVAR</text>
+<circle cx="764" cy="52" r="6" fill="#C8A97E"/><rect x="116" y="176" width="240" height="306" rx="10" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.2"/><rect x="130" y="190" width="212" height="159.12" fill="url(#goldWash)"/><circle cx="324" cy="209" r="8" fill="#15140f" opacity=".75"/><text x="132" y="377.96000000000004" font-family="Inter Tight, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="-.3" fill="#15140f">Anuncio A</text><text x="132" y="464" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1.2" fill="#5a5448">REELS / STORIES</text><rect x="430" y="218" width="240" height="306" rx="10" fill="#fffaf0" stroke="#15140f" stroke-opacity="0.2"/><rect x="444" y="232" width="212" height="159.12" fill="url(#goldWash)"/><circle cx="638" cy="251" r="8" fill="#15140f" opacity=".75"/><text x="446" y="419.96000000000004" font-family="Inter Tight, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="-.3" fill="#15140f">Anuncio B</text><text x="446" y="506" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1.2" fill="#5a5448">REELS / STORIES</text><rect x="274" y="570" width="268" height="80" rx="40" fill="#15140f"/><circle cx="490" cy="610" r="52" fill="#C8A97E"/><text x="308" y="618" font-family="Inter Tight, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-.3" fill="#efe7d2">ON</text><path d="M356 322 C442 330,382 536,490 570" stroke="#9f5f43" stroke-opacity="0.6" stroke-width="4" fill="none"/><text x="122" y="720" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2" fill="#5a5448">META ADS → WHATSAPP IA</text><text x="42" y="774" font-family="Playfair Display, Georgia, serif" font-size="30" font-style="italic" fill="#8b8676">Nº 10</text>
+<text x="774" y="774" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="#8b8676">AUREA SYSTEMS / SISTEMA</text>
+</svg>
