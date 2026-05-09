@@ -31,9 +31,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --paper: #e8e2d3;
-  --paper-warm: #e3dcca;
-  --paper-dark: #d4cab1;
+  --paper: #f5f1e8;
+  --paper-warm: #efeadc;
+  --paper-dark: #e0d8c0;
   --ink: #15140f;
   --ink-soft: #2a2620;
   --ink-mute: #5a5448;
@@ -757,7 +757,7 @@ body::before {
   letter-spacing: 0.16em;
   color: var(--ink-faint);
   text-transform: uppercase;
-  background: rgba(232, 226, 211, 0.7);
+  background: rgba(245, 241, 232, 0.7);
   padding: 10px 12px;
   border: 1px solid var(--line-soft);
   border-radius: 6px;
@@ -1246,7 +1246,7 @@ section.tight { padding: 90px 0; }
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(232, 226, 211, 0.9);
+  background: rgba(245, 241, 232, 0.9);
   color: var(--ink);
   padding: 4px 9px;
   border-radius: 4px;
@@ -1983,7 +1983,7 @@ body.calendar-open {
   max-height: calc(100dvh - 48px);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  border: 1px solid rgba(232, 226, 211, 0.28);
+  border: 1px solid rgba(245, 241, 232, 0.28);
   background: var(--paper);
   box-shadow: 0 34px 90px -36px rgba(0, 0, 0, 0.62);
   position: relative;
@@ -2282,7 +2282,8 @@ body.calendar-open {
  * Activated by `body.has-cinema-hero`. The original .hero / .hero-art
  * styles above are kept for legacy references but overridden here.
  * ===================================================================== */
-body.has-cinema-hero { background: #0a0a0a; }
+body.has-cinema-hero { background: var(--paper); }
+body.has-cinema-hero .hero-cinema { background: #0a0a0a; }
 body.has-cinema-hero .topbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 51;
   background: rgba(15, 14, 15, 0.34);
@@ -2297,7 +2298,7 @@ body.has-cinema-hero .topbar .topbar-inner b { color: #fff; }
 body.has-cinema-hero .topbar .topbar-link { color: rgba(255, 255, 255, 0.78); }
 body.has-cinema-hero .topbar .topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
 body.has-cinema-hero .topbar.is-light {
-  background: rgba(232, 226, 211, 0.78);
+  background: rgba(245, 241, 232, 0.78);
   border-bottom-color: var(--line);
   color: var(--ink-faint);
 }
@@ -2306,7 +2307,7 @@ body.has-cinema-hero .topbar.is-light .topbar-inner b { color: var(--ink); }
 body.has-cinema-hero .topbar.is-light .topbar-link { color: var(--ink-faint); }
 
 body.has-cinema-hero .nav {
-  position: fixed; top: 38px; left: 0; right: 0; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   background: rgba(15, 14, 15, 0.34);
   backdrop-filter: saturate(140%) blur(18px);
   -webkit-backdrop-filter: saturate(140%) blur(18px);
@@ -2341,7 +2342,7 @@ body.has-cinema-hero .nav .nav-cta:not(.ghost) {
 body.has-cinema-hero .nav .status-dot { background: var(--coral); box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.18); }
 
 body.has-cinema-hero .nav.is-light {
-  background: rgba(232, 226, 211, 0.82);
+  background: rgba(245, 241, 232, 0.82);
   border-bottom-color: var(--line);
 }
 body.has-cinema-hero .nav.is-light .brand,
@@ -2624,27 +2625,7 @@ body.has-cinema-hero .side-rail { display: none; }
 </head>
 <body class='has-cinema-hero'>
 
-<div class='side-rail right' data-od-id='rail-right'>
-  <span class='rail-text'>Aurea Systems · Solo 4 plazas disponibles</span>
-</div>
-<div class='side-rail left' data-od-id='rail-left'>
-  <span class='rail-text'>Meta Ads · WhatsApp 24/7 · Anti no-show · Creative Studio</span>
-</div>
 <div class='shell'>
-
-<div class='topbar' data-od-id='topbar'>
-  <div class='container topbar-inner'>
-    <span><b>AS / 2026</b> &nbsp;·&nbsp; Vol. 01 / Clínicas Nº 04</span>
-    <span class='mid'>
-      <span>Filed under <b class='coral'>Captación · Diálogo · Clínicas</b></span>
-      <span>Exclusividad territorial · España</span>
-    </span>
-    <span class='right'>
-      <a class='topbar-link' href='#reservar'><span class='pulse'></span>Solo 4 plazas disponibles</a>
-      <span><b>ES</b> · CA · EN</span>
-    </span>
-  </div>
-</div>
 
 <header class='nav' data-od-id='nav'>
   <div class='container nav-inner'>
@@ -2679,26 +2660,6 @@ body.has-cinema-hero .side-rail { display: none; }
   </video>
   <div class='hero-cinema__overlay' aria-hidden='true'></div>
   <div class='hero-cinema__grain' aria-hidden='true'></div>
-
-  <div class='hero-cinema__top'>
-    <div class='container'>
-      <div class='sec-rule'>
-        <span class='roman'>I.</span>
-        <span class='meta-grp'>
-          <span>Hero / Cover Plate</span>
-          <span class='dot-mark'>•</span>
-          <span>Aurea Systems / Volume 01</span>
-        </span>
-        <span>001 / 008</span>
-      </div>
-    </div>
-  </div>
-
-  <span class='hero-cinema__corner-tr'>FIG. 01 / AS-26 · Plate Nº 04</span>
-  <span class='hero-cinema__corner-br'>
-    <b>40.4168° N · 3.7038° W</b>
-    <span>Composed for Aurea · MMXXVI</span>
-  </span>
 
   <div class='hero-cinema__content'>
     <div class='container'>
@@ -2798,7 +2759,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>Del formulario a la camilla</span>
     </span>
-    <span>002 / 008</span>
   </div>
     <div class='about-grid'>
       <div class='about-copy' data-reveal>
@@ -2842,7 +2802,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>4 fases / 1 agenda</span>
     </span>
-    <span>003 / 008</span>
   </div>
     <div class='capabilities-grid'>
       <div class='capabilities-art' data-reveal='left'>
@@ -2915,7 +2874,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>5 frentes activos</span>
     </span>
-    <span>004 / 008</span>
   </div>
     <div class='labs-head'>
       <div data-reveal>
@@ -2992,7 +2950,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>Mensual, medible, asistido</span>
     </span>
-    <span>005 / 008</span>
   </div>
     <div class='method-head'>
       <div data-reveal>
@@ -3051,7 +3008,6 @@ body.has-cinema-hero .side-rail { display: none; }
         <span style='color:var(--coral);'>•</span>
         <span>Dialogo + contenido real</span>
       </span>
-      <span>006 / 008</span>
     </div>
     <div class='work-grid'>
       <div class='work-copy' data-reveal>
@@ -3102,7 +3058,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>Resultados que hablan solos</span>
     </span>
-    <span>007 / 008</span>
   </div>
     <div class='testimonial-grid'>
       <div class='testimonial-copy' data-reveal>
@@ -3180,7 +3135,6 @@ body.has-cinema-hero .side-rail { display: none; }
       <span class='dot-mark'>•</span>
       <span>Diagnóstico de 30 minutos</span>
     </span>
-    <span>008 / 008</span>
   </div>
     <div class='cta-grid'>
       <div data-reveal>
