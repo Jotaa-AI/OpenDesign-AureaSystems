@@ -3,8 +3,8 @@
 <head>
 <meta charset='utf-8' />
 <meta name='viewport' content='width=device-width, initial-scale=1' />
-<title>Aurea Systems — Captación con IA para clínicas</title>
-<meta name='description' content='Aurea Systems convierte inversión publicitaria en primeras valoraciones reales: contenido clínico, Meta Ads, WhatsApp con IA, agenda conectada y protocolo anti no-show.' />
+<title>Aurea Systems — Captación editorial para clínicas</title>
+<meta name='description' content='Aurea Systems convierte inversión publicitaria en primeras valoraciones reales: contenido clínico, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.' />
 <link rel='icon' type='image/png' href='./assets/aurea-logo-mark.png' />
 <link rel='preconnect' href='https://fonts.googleapis.com' />
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
@@ -2275,15 +2275,360 @@ body.calendar-open {
 .code-inline.sm { font-size: 12px; padding: 0 4px; }
 
 .anchor-sentinel { position: relative; top: -120px; display: block; width: 1px; height: 1px; overflow: hidden; }
+
+/* =====================================================================
+ * Cinematic hero — full-screen video background, glassmorphic header,
+ * hero copy aligned to the bottom-left corner.
+ * Activated by `body.has-cinema-hero`. The original .hero / .hero-art
+ * styles above are kept for legacy references but overridden here.
+ * ===================================================================== */
+body.has-cinema-hero { background: #0a0a0a; }
+body.has-cinema-hero .topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 51;
+  background: rgba(15, 14, 15, 0.34);
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  transition: background 280ms ease, color 280ms ease, border-color 280ms ease;
+}
+body.has-cinema-hero .topbar .topbar-inner { color: rgba(255, 255, 255, 0.72); }
+body.has-cinema-hero .topbar .topbar-inner b { color: #fff; }
+body.has-cinema-hero .topbar .topbar-link { color: rgba(255, 255, 255, 0.78); }
+body.has-cinema-hero .topbar .topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
+body.has-cinema-hero .topbar.is-light {
+  background: rgba(239, 231, 210, 0.78);
+  border-bottom-color: var(--line);
+  color: var(--ink-faint);
+}
+body.has-cinema-hero .topbar.is-light .topbar-inner { color: var(--ink-faint); }
+body.has-cinema-hero .topbar.is-light .topbar-inner b { color: var(--ink); }
+body.has-cinema-hero .topbar.is-light .topbar-link { color: var(--ink-faint); }
+
+body.has-cinema-hero .nav {
+  position: fixed; top: 38px; left: 0; right: 0; z-index: 50;
+  background: rgba(15, 14, 15, 0.34);
+  backdrop-filter: saturate(140%) blur(18px);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 280ms ease, border-color 280ms ease, transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body.has-cinema-hero .nav .brand,
+body.has-cinema-hero .nav .nav-links a { color: rgba(255, 255, 255, 0.95); }
+body.has-cinema-hero .nav .nav-links a:hover { color: var(--coral); }
+body.has-cinema-hero .nav .nav-links a .num { color: rgba(255, 255, 255, 0.4); }
+body.has-cinema-hero .nav .brand-mark {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+}
+body.has-cinema-hero .nav .brand-mark .brand-logo { filter: brightness(0) invert(1); }
+body.has-cinema-hero .nav .brand-meta {
+  color: rgba(255, 255, 255, 0.55);
+  border-left-color: rgba(255, 255, 255, 0.18);
+}
+body.has-cinema-hero .nav .brand-meta b { color: #fff; }
+body.has-cinema-hero .nav .nav-cta.ghost {
+  color: rgba(255, 255, 255, 0.86);
+  border-color: rgba(255, 255, 255, 0.34);
+  background: transparent;
+}
+body.has-cinema-hero .nav .nav-cta.ghost:hover { background: rgba(255, 255, 255, 0.08); }
+body.has-cinema-hero .nav .nav-cta:not(.ghost) {
+  background: var(--coral);
+  color: var(--ink);
+  border-color: var(--coral);
+}
+body.has-cinema-hero .nav .status-dot { background: var(--coral); box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.18); }
+
+body.has-cinema-hero .nav.is-light {
+  background: rgba(239, 231, 210, 0.82);
+  border-bottom-color: var(--line);
+}
+body.has-cinema-hero .nav.is-light .brand,
+body.has-cinema-hero .nav.is-light .nav-links a { color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-links a .num { color: var(--ink-faint); }
+body.has-cinema-hero .nav.is-light .brand-mark {
+  border-color: var(--ink);
+  background: var(--bone);
+}
+body.has-cinema-hero .nav.is-light .brand-mark .brand-logo { filter: none; }
+body.has-cinema-hero .nav.is-light .brand-meta { color: var(--ink-faint); border-left-color: var(--line); }
+body.has-cinema-hero .nav.is-light .brand-meta b { color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-cta.ghost { color: var(--ink); border-color: var(--ink); }
+body.has-cinema-hero .nav.is-light .nav-cta:not(.ghost) {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+body.has-cinema-hero .side-rail { display: none; }
+
+.hero-cinema {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+}
+.hero-cinema__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(0.92) contrast(1.02);
+}
+.hero-cinema__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15, 14, 15, 0.62) 0%, rgba(15, 14, 15, 0.0) 22%, rgba(15, 14, 15, 0.0) 48%, rgba(15, 14, 15, 0.85) 100%),
+    radial-gradient(ellipse at 22% 88%, rgba(15, 14, 15, 0.62), transparent 58%);
+}
+.hero-cinema__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.hero-cinema__top {
+  position: absolute;
+  top: 132px;
+  left: 0; right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-cinema__top > .container { pointer-events: auto; }
+.hero-cinema__top .sec-rule {
+  color: rgba(255, 255, 255, 0.62);
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+.hero-cinema__top .sec-rule .roman { color: #fff; }
+.hero-cinema__top .sec-rule .dot-mark { color: var(--coral); }
+
+.hero-cinema__corner-tl,
+.hero-cinema__corner-tr,
+.hero-cinema__corner-br {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.hero-cinema__corner-tr { top: 132px; right: 64px; }
+.hero-cinema__corner-br { bottom: 36px; right: 64px; text-align: right; line-height: 1.4; }
+.hero-cinema__corner-br b { display: block; color: rgba(255, 255, 255, 0.75); font-weight: 600; }
+
+.hero-cinema__content {
+  position: absolute;
+  bottom: clamp(48px, 7vh, 96px);
+  left: 0; right: 0;
+  z-index: 3;
+}
+.hero-cinema__content .inner {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.hero-cinema__content .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 8px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hero-cinema__content .label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.25);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.hero-cinema__content .label .ix { color: rgba(255, 255, 255, 0.55); letter-spacing: 0.18em; }
+.hero-cinema__content h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(46px, 6.4vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 4px 0 6px;
+  text-wrap: balance;
+}
+.hero-cinema__content h1 em { color: var(--coral); font-style: italic; }
+.hero-cinema__content h1 .dot { color: var(--coral); font-style: normal; }
+.hero-cinema__content .lead {
+  max-width: 56ch;
+  font-family: var(--body);
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 6px;
+}
+.hero-cinema__content .hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.hero-cinema__content .btn-primary { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+.hero-cinema__content .btn-primary:hover { background: #d6b88a; }
+.hero-cinema__content .btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hero-cinema__content .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.5); }
+
+.hero-cinema__stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.hero-cinema__stats .stat { display: inline-flex; align-items: center; gap: 12px; }
+.hero-cinema__stats .stat .ring {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  flex-shrink: 0;
+}
+.hero-cinema__stats .stat .ring.solid { border-style: solid; }
+.hero-cinema__stats .stat .ring.coral { border-color: var(--coral); color: var(--coral); }
+.hero-cinema__stats .stat-label {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero-cinema__stats .stat-label b {
+  display: block;
+  font-weight: 700;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.hero-cinema__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 22px;
+  padding-top: 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.hero-cinema__foot .meta { line-height: 1.4; }
+
+.hero-cinema__scroll {
+  position: absolute;
+  bottom: 28px;
+  right: 64px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.hero-cinema__scroll:hover { color: var(--coral); }
+.hero-cinema__scroll::after {
+  content: '';
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  display: inline-block;
+  animation: scroll-line 2.6s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (max-width: 1024px) {
+  .hero-cinema__corner-br { display: none; }
+  .hero-cinema__top { top: 116px; }
+  .hero-cinema__corner-tr { top: 116px; right: 28px; }
+  .hero-cinema__scroll { right: 28px; }
+}
+@media (max-width: 768px) {
+  body.has-cinema-hero .nav { top: 0; }
+  body.has-cinema-hero .topbar { display: none; }
+  .hero-cinema { min-height: 560px; }
+  .hero-cinema__top { display: none; }
+  .hero-cinema__corner-tr { display: none; }
+  .hero-cinema__content { bottom: 28px; padding: 0 24px; }
+  .hero-cinema__content h1 { font-size: clamp(36px, 9vw, 56px); }
+  .hero-cinema__stats { gap: 18px; }
+  .hero-cinema__foot { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hero-cinema__scroll { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinema__video { display: none; }
+  .hero-cinema { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); }
+  .hero-cinema__scroll::after { animation: none; }
+}
 </style>
 </head>
-<body>
+<body class='has-cinema-hero'>
 
 <div class='side-rail right' data-od-id='rail-right'>
   <span class='rail-text'>Aurea Systems · Solo 4 plazas disponibles</span>
 </div>
 <div class='side-rail left' data-od-id='rail-left'>
-  <span class='rail-text'>Meta Ads · WhatsApp IA · Anti no-show · Creative Studio</span>
+  <span class='rail-text'>Meta Ads · WhatsApp 24/7 · Anti no-show · Creative Studio</span>
 </div>
 <div class='shell'>
 
@@ -2291,7 +2636,7 @@ body.calendar-open {
   <div class='container topbar-inner'>
     <span><b>AS / 2026</b> &nbsp;·&nbsp; Vol. 01 / Clínicas Nº 04</span>
     <span class='mid'>
-      <span>Filed under <b class='coral'>Captación · IA · Clínicas</b></span>
+      <span>Filed under <b class='coral'>Captación · Diálogo · Clínicas</b></span>
       <span>Exclusividad territorial · España</span>
     </span>
     <span class='right'>
@@ -2325,127 +2670,75 @@ body.calendar-open {
   </div>
 </header>
 
-<section class='hero' id='top' data-od-id='hero'>
-  <div class='container'>
-    <div class='sec-rule'>
-      <span class='roman'>I.</span>
-      <span class='meta-grp'>
-        <span>Hero / Cover Plate</span>
-        <span class='dot-mark'>•</span>
-        <span>Aurea Systems / Volume 01</span>
-      </span>
-      <span>001 / 008</span>
-    </div>
-  </div>
-  <div class='container hero-grid'>
-    <div class='hero-copy'>
-      <span class='label' data-reveal>Solo 4 plazas disponibles <span class='ix'>· Nº 01</span></span>
-      <h1 class='display' data-reveal>Llena tu agenda con <em>pacientes cualificados</em><span class='dot'>.</span></h1>
-      <p class='lead' data-reveal>El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp con IA, agenda conectada y protocolo anti no-show.</p>
-      <div class='hero-actions' data-reveal>
-        <a class='btn btn-primary' href='#reservar'>
-          Reservar llamada
-          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-        </a>
-        <a class='btn btn-ghost' href='#sistema'>
-          Descubrir el sistema
-          <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
-        </a>
-      </div>
-      <div class='hero-stats' data-reveal>
-          <div class='stat'>
-    <span class='ring coral'>15+</span>
-    <span class='stat-label'><b>visitas asistidas</b>garantizadas al mes</span>
-  </div>
-          <div class='stat'>
-    <span class='ring solid'>&lt;60s</span>
-    <span class='stat-label'><b>primera respuesta</b>con IA conversacional</span>
-  </div>
-          <div class='stat'>
-    <span class='ring'>&lt;15%</span>
-    <span class='stat-label'><b>no-show</b>con protocolo activo</span>
-  </div>
-      </div>
-      <div class='hero-foot' data-reveal>
-        <span class='meta'>↳ Aurea Systems · Meta Ads + WhatsApp IA + agenda conectada</span>
-        <span class='coord'>40.4168° N · 3.7038° W</span>
-      </div>
-    </div>
-    <div class='hero-art' data-reveal='scale'>
-      <span class='corner tl'></span>
-      <span class='corner tr'></span>
-      <span class='corner bl'></span>
-      <span class='corner br'></span>
-      <span class='annot annot-tl coord'>FIG. 01 / AS-26</span>
-      <span class='annot annot-tr'>Plate Nº 04</span>
-      <span class='annot annot-bl coord'>4 plazas · España</span>
-      <span class='annot annot-br'>Composed for <span style='color:var(--coral);'>Aurea</span></span>
-      <div class='hero-flow' aria-label='Flujo animado de Aurea Systems desde formulario hasta asistencia en clínica'>
-        <div class='flow-kicker'>
-          <span>AUREA SYSTEMS / LIVE FLOW</span>
-          <span>FORMULARIO → CLÍNICA</span>
-        </div>
-        <div class='flow-stage'>
-          <svg class='flow-lines' viewBox='0 0 1000 620' aria-hidden='true' preserveAspectRatio='none'>
-            <path id='hero-flow-path' class='flow-path' d='M118 112 C258 120 285 250 394 276 C510 304 560 176 682 152 C824 126 918 250 812 356 C734 436 690 482 742 540' />
-            <circle class='flow-runner' r='10'>
-              <animateMotion dur='8s' repeatCount='indefinite' rotate='auto'>
-                <mpath href='#hero-flow-path' />
-              </animateMotion>
-            </circle>
-          </svg>
-          <article class='flow-card form'>
-            <span class='step'><span>01 / Formulario</span><span>lead nuevo</span></span>
-            <h3>El paciente deja sus datos.</h3>
-            <p>Nombre, tratamiento de interés, zona, franja horaria y contexto mínimo para iniciar la conversación sin fricción.</p>
-            <div class='micro'>
-              <span>Entrada desde anuncio o landing</span>
-              <span>Datos listos para cualificar</span>
-            </div>
-          </article>
-          <article class='flow-card whatsapp'>
-            <span class='step'><span>02 / WhatsApp IA</span><span>&lt;60s</span></span>
-            <h3>La conversación cualifica intención.</h3>
-            <p>La IA responde, filtra dudas, detecta urgencia, presupuesto y momento de decisión antes de enviar a agenda.</p>
-            <div class='micro'>
-              <span>Preguntas clínicas no invasivas</span>
-              <span>Objeciones resueltas 24/7</span>
-            </div>
-          </article>
-          <article class='flow-card agenda'>
-            <span class='step'><span>03 / Agenda</span><span>cita bloqueada</span></span>
-            <h3>La cita queda confirmada.</h3>
-            <p>El sistema propone disponibilidad, confirma asistencia y activa recordatorios para reducir no-show.</p>
-            <div class='micro'>
-              <span>Calendario conectado</span>
-              <span>Recordatorio previo a consulta</span>
-            </div>
-          </article>
-          <article class='flow-card clinic'>
-            <span class='step'><span>04 / Clínica</span><span>asiste</span></span>
-            <h3>Llega informado a valoración.</h3>
-            <p>El equipo recibe un paciente con contexto, intención clara y una primera visita preparada para cerrar tratamiento.</p>
-            <div class='micro'>
-              <span>Primera valoración real</span>
-              <span>Seguimiento posterior conectado</span>
-            </div>
-          </article>
-        </div>
-        <div class='flow-timeline' aria-hidden='true'>
-          <span>Entrada formulario</span>
-          <span>Cualificación WhatsApp</span>
-          <span>Cita confirmada</span>
-          <span>Asistencia clínica</span>
-        </div>
-      </div>
-      <div class='index'>
-      <span><span class='n'>01</span>Atraccion</span>
-      <span class='on'><span class='n'>02</span>Calificación</span>
-      <span><span class='n'>03</span>Asistencia</span>
-      <span><span class='n'>04</span>Cierre</span>
+<section class='hero-cinema' id='top' data-od-id='hero'>
+  <video class='hero-cinema__video'
+         autoplay muted loop playsinline preload='metadata'
+         poster='./assets/hero.png'
+         aria-hidden='true'>
+    <source src='./assets/hero-bg.mp4' type='video/mp4' />
+  </video>
+  <div class='hero-cinema__overlay' aria-hidden='true'></div>
+  <div class='hero-cinema__grain' aria-hidden='true'></div>
+
+  <div class='hero-cinema__top'>
+    <div class='container'>
+      <div class='sec-rule'>
+        <span class='roman'>I.</span>
+        <span class='meta-grp'>
+          <span>Hero / Cover Plate</span>
+          <span class='dot-mark'>•</span>
+          <span>Aurea Systems / Volume 01</span>
+        </span>
+        <span>001 / 008</span>
       </div>
     </div>
   </div>
+
+  <span class='hero-cinema__corner-tr'>FIG. 01 / AS-26 · Plate Nº 04</span>
+  <span class='hero-cinema__corner-br'>
+    <b>40.4168° N · 3.7038° W</b>
+    <span>Composed for Aurea · MMXXVI</span>
+  </span>
+
+  <div class='hero-cinema__content'>
+    <div class='container'>
+      <div class='inner'>
+        <span class='label' data-reveal>Solo 4 plazas disponibles <span class='ix'>· Nº 01</span></span>
+        <h1 data-reveal>Llena tu agenda con <em>pacientes cualificados</em><span class='dot'>.</span></h1>
+        <p class='lead' data-reveal>El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.</p>
+        <div class='hero-actions' data-reveal>
+          <a class='btn btn-primary' href='#reservar'>
+            Reservar llamada
+            <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+          </a>
+          <a class='btn btn-ghost' href='#sistema'>
+            Descubrir el sistema
+            <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
+          </a>
+        </div>
+        <div class='hero-cinema__stats' data-reveal>
+          <div class='stat'>
+            <span class='ring coral'>15+</span>
+            <span class='stat-label'><b>visitas asistidas</b>garantizadas al mes</span>
+          </div>
+          <div class='stat'>
+            <span class='ring solid'>&lt;60s</span>
+            <span class='stat-label'><b>primera respuesta</b>con atención dedicada</span>
+          </div>
+          <div class='stat'>
+            <span class='ring'>&lt;15%</span>
+            <span class='stat-label'><b>no-show</b>con protocolo activo</span>
+          </div>
+        </div>
+        <div class='hero-cinema__foot' data-reveal>
+          <span class='meta'>↳ Aurea Systems · Meta Ads + WhatsApp 24/7 + agenda conectada</span>
+          <span>España · Exclusividad territorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class='hero-cinema__scroll' href='#problema' aria-label='Bajar a problema'>Scroll</a>
 </section>
 
 <section class='wire' data-od-id='wire' aria-label='Global wire — cities and contributors'>
@@ -2481,12 +2774,12 @@ body.calendar-open {
       <div class='wire-row reverse'>
         <div class='marquee-track'>
           <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
-          <a class='wire-item is-link' href='#ia' aria-label='Open WhatsApp IA'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp IA</span><span class='wire-role'>calificación</span></a>
+          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
           <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
           <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
           <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
           <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
-          <a class='wire-item is-link' href='#ia' aria-label='Open WhatsApp IA'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp IA</span><span class='wire-role'>calificación</span></a>
+          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
           <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
           <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
           <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
@@ -2575,13 +2868,13 @@ body.calendar-open {
     </a>
   </div>
             <div class='card' data-reveal>
-    <div class='num'>02<span class='tag'>IA</span></div>
+    <div class='num'>02<span class='tag'>Dialogo</span></div>
     <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
       <circle cx='12' cy='12' r='7'/><path d='M8 12h8M12 8v8'/>
     </svg>
     <h3>Calificación<br/>24/7</h3>
-    <p>WhatsApp con IA que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.</p>
-    <a class='arrow-mark' href='#ia' aria-label='Learn more about IA'>
+    <p>WhatsApp 24/7 que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.</p>
+    <a class='arrow-mark' href='#dialogo' aria-label='Learn more about WhatsApp'>
       <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
     </a>
   </div>
@@ -2602,7 +2895,7 @@ body.calendar-open {
       <path d='M5 17l4-4 3 3 7-8'/><path d='M5 21h14'/>
     </svg>
     <h3>Cierre asistido<br/>en consulta</h3>
-    <p>Tras cada primera visita, la IA resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.</p>
+    <p>Tras cada primera visita, el sistema resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.</p>
     <a class='arrow-mark' href='#resultados' aria-label='Learn more about Cierre'>
       <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
     </a>
@@ -2653,11 +2946,11 @@ body.calendar-open {
     <a class='arrow-mark' href='#creative' aria-label='Open Meta Ads con UGC real'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
   </div>
         <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>IA</span><img src='./assets/visual-lab-2.svg' alt='Placa editorial de conversación WhatsApp con IA para calificar pacientes.' /></div>
+    <div class='lab-img'><span class='badge'>Dialogo</span><img src='./assets/visual-lab-2.svg' alt='Placa editorial de conversación WhatsApp para calificar pacientes.' /></div>
     <div class='num-row'><span>Nº 02</span><span>24/7</span></div>
     <h4>WhatsApp que no descansa</h4>
     <p>Responde como parte del equipo, califica interés, puede atender varios idiomas y transfiere a humano cuando toca.</p>
-    <a class='arrow-mark' href='#ia' aria-label='Open WhatsApp que no descansa'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
+    <a class='arrow-mark' href='#dialogo' aria-label='Open WhatsApp que no descansa'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
   </div>
         <div class='lab' data-reveal>
     <div class='lab-img'><span class='badge'>Agenda</span><img src='./assets/visual-lab-3.svg' alt='Placa editorial de calendario conectado y primera valoración confirmada.' /></div>
@@ -2727,8 +3020,8 @@ body.calendar-open {
         <div class='method-step' data-reveal>
     <div class='num'>03</div>
     <h4>Asistir <span class='arrow-r'>→</span></h4>
-    <p>La IA resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración.</p>
-    <div class='img'><img src='./assets/visual-method-3.svg' alt='Placa editorial de asistencia con IA, agenda y recordatorios.' /></div>
+    <p>La mesa de respuesta resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración.</p>
+    <div class='img'><img src='./assets/visual-method-3.svg' alt='Placa editorial de asistencia, agenda y recordatorios.' /></div>
   </div>
         <div class='method-step' data-reveal>
     <div class='num'>04</div>
@@ -2747,7 +3040,7 @@ body.calendar-open {
   </div>
 </section>
 
-<span id='ia' class='anchor-sentinel'></span>
+<span id='dialogo' class='anchor-sentinel'></span>
 <span id='creative' class='anchor-sentinel'></span>
 <section class='tight' id='resultados' data-od-id='work'>
   <div class='work'>
@@ -2756,7 +3049,7 @@ body.calendar-open {
       <span style='display:inline-flex;gap:24px;'>
         <span>Experiencias clave / Conversion</span>
         <span style='color:var(--coral);'>•</span>
-        <span>IA + contenido real</span>
+        <span>Dialogo + contenido real</span>
       </span>
       <span>006 / 008</span>
     </div>
@@ -2768,12 +3061,12 @@ body.calendar-open {
       </div>
       <a class='work-card' data-reveal href='#reservar'>
     <div class='label-row'>
-      <span class='small-label'>IA Conversacional</span>
+      <span class='small-label'>Dialogo Continuo</span>
       <span class='index'>01 / 02</span>
     </div>
     <h3>Ana responde antes de que el interés se enfríe</h3>
-    <p>Un WhatsApp con IA que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.</p>
-    <div class='img'><img src='./assets/visual-work-1.svg' alt='Placa editorial de Ana, la IA conversacional de WhatsApp.' /></div>
+    <p>Un WhatsApp 24/7 que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.</p>
+    <div class='img'><img src='./assets/visual-work-1.svg' alt='Placa editorial de Ana, la atencion dedicada por WhatsApp.' /></div>
     <div class='meta-row'>
       <span class='year'>&lt;60s · 24/7</span>
       <span>WHATSAPP</span>
@@ -2814,7 +3107,7 @@ body.calendar-open {
     <div class='testimonial-grid'>
       <div class='testimonial-copy' data-reveal>
         <span class='label'>Lo que dicen las clínicas <span class='ix'>· Nº 06</span></span>
-        <h2 style='margin-top:30px;'>&ldquo;La IA de WhatsApp es indistinguible de una persona. Mis pacientes me preguntan quién es la chica que les habla con tanta <em>atención</em>.&rdquo;</h2>
+        <h2 style='margin-top:30px;'>&ldquo;La atencion por WhatsApp es indistinguible de tener a alguien dedicado en plantilla. Mis pacientes me preguntan quien es la chica que les habla con tanta <em>atencion</em>.&rdquo;</h2>
         <div class='author'>
           <span class='avatar'>A</span>
           <p>Dr. Alejandro Soler<br/><span>Director médico · Clínica Soler Facial, Valencia</span></p>
@@ -2829,7 +3122,7 @@ body.calendar-open {
       </svg>
     </div>
     <span>Valencia</span>
-    <small>IA WhatsApp</small>
+    <small>WhatsApp 24/7</small>
   </a>
         <a class='partner' data-reveal href='#testimonios'>
     <div class='glyph'>
@@ -2941,14 +3234,14 @@ body.calendar-open {
           <span class='brand-mark'><img class='brand-logo' src='./assets/aurea-logo-mark.png' alt='' /></span>
           <span>Aurea Systems</span>
         </a>
-        <p style='margin-top:18px;'>Sistemas de captación con IA para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp IA, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.</p>
+        <p style='margin-top:18px;'>Sistemas editoriales de captación para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp 24/7, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.</p>
         <a class='foot-cta' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>Reservar llamada<span class='meta'>30 min · sin compromiso</span></a>
       </div>
       <div class='foot-col'>
     <h5>Producto</h5>
     <ul>
         <li><a href='#sistema'>Cómo funciona</a></li>
-        <li><a href='#ia'>IA Conversacional</a></li>
+        <li><a href='#dialogo'>Dialogo Continuo</a></li>
         <li><a href='#resultados'>Resultados</a></li>
         <li><a href='#reservar'>Reservar llamada</a></li>
     </ul>
@@ -2968,7 +3261,7 @@ body.calendar-open {
         <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a></li>
         <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>No-shows</a></li>
         <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>KPIs clínica</a></li>
-        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>IA para leads</a></li>
+        <li><a href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Dialogo continuo</a></li>
     </ul>
   </div>
       <div class='foot-col'>
@@ -3120,6 +3413,45 @@ body.calendar-open {
       lastY = y;
     }
     window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  /*
+   * Glassmorphic header theming — toggles `.is-light` on the nav/topbar
+   * once the cinematic hero has scrolled past, so the header switches
+   * from dark glass (over the video) to paper glass (over the editorial
+   * body) without a visual jump.
+   */
+  (function () {
+    if (!document.body.classList.contains('has-cinema-hero')) return;
+    var hero = document.querySelector('.hero-cinema');
+    var nav = document.querySelector('header.nav');
+    var topbar = document.querySelector('.topbar');
+    if (!hero || !nav) return;
+    function update() {
+      var rect = hero.getBoundingClientRect();
+      var threshold = 90;
+      var overHero = rect.bottom > threshold;
+      nav.classList.toggle('is-light', !overHero);
+      if (topbar) topbar.classList.toggle('is-light', !overHero);
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  })();
+
+  /*
+   * Hero video — pause when offscreen to save CPU/battery.
+   */
+  (function () {
+    var video = document.querySelector('.hero-cinema__video');
+    if (!video || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { video.play().catch(function () {}); }
+        else { video.pause(); }
+      });
+    }, { threshold: 0.1 });
+    io.observe(video);
   })();
 </script>
 

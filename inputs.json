@@ -7,9 +7,9 @@
       "title": "Aurea Systems",
       "subtitle": "Medicina estética / ES"
     },
-    "filed_under": "Captación · IA · Clínicas",
-    "tagline": "Sistema de captación con IA para primeras valoraciones reales.",
-    "description": "Aurea Systems convierte inversión publicitaria en primeras valoraciones reales: IA conversacional 24/7, protocolo anti no-show y creative studio.",
+    "filed_under": "Captación · Diálogo · Clínicas",
+    "tagline": "Sistema editorial de captación para primeras valoraciones reales.",
+    "description": "Aurea Systems convierte inversión publicitaria en primeras valoraciones reales: WhatsApp 24/7, protocolo anti no-show y creative studio.",
     "locale": "es",
     "edition": "Vol. 01 / Clínicas Nº 04",
     "version": "2026",
@@ -26,7 +26,7 @@
     "founded": "Est. MMXXVI",
     "rails": {
       "right": "Aurea Systems — Aurea Systems · Solo 4 plazas disponibles",
-      "left": "Meta Ads · WhatsApp IA · Anti no-show · Creative Studio"
+      "left": "Meta Ads · WhatsApp 24/7 · Anti no-show · Creative Studio"
     },
     "languages": ["ES", "CA", "EN"],
     "status": "Solo 4 plazas disponibles"
@@ -61,7 +61,7 @@
     },
     "work": {
       "roman": "VI.",
-      "meta": ["Experiencias clave / Conversion", "•", "IA + contenido real"],
+      "meta": ["Experiencias clave / Conversion", "•", "Diálogo + contenido real"],
       "pagination": "006 / 008"
     },
     "testimonial": {
@@ -83,15 +83,15 @@
       { "text": "pacientes cualificados", "em": true },
       { "text": "." , "dot": true }
     ],
-    "lead": "El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp con IA, agenda conectada y protocolo anti no-show.",
+    "lead": "El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.",
     "primary": { "label": "Reservar llamada", "href": "#reservar" },
     "secondary": { "label": "Descubrir el sistema", "href": "#sistema" },
     "stats": [
       { "value": "15+", "label": "visitas asistidas", "sub": "garantizadas al mes", "variant": "coral" },
-      { "value": "&lt;60s", "label": "primera respuesta", "sub": "con IA conversacional", "variant": "solid" },
+      { "value": "&lt;60s", "label": "primera respuesta", "sub": "con atención dedicada", "variant": "solid" },
       { "value": "&lt;15%", "label": "no-show", "sub": "con protocolo activo", "variant": "dashed" }
     ],
-    "meta": "↳ Aurea Systems · Meta Ads + WhatsApp IA + agenda conectada",
+    "meta": "↳ Aurea Systems · Meta Ads + WhatsApp 24/7 + agenda conectada",
     "index": [
       { "num": "01", "label": "Atraccion" },
       { "num": "02", "label": "Calificación", "active": true },
@@ -147,11 +147,11 @@
       },
       {
         "num": "02",
-        "tag": "IA",
+        "tag": "Diálogo",
         "icon_svg": "<circle cx='12' cy='12' r='7'/><path d='M8 12h8M12 8v8'/>",
         "title": "Calificación\n24/7",
-        "body": "WhatsApp con IA que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.",
-        "href": "#ia"
+        "body": "WhatsApp 24/7 que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.",
+        "href": "#dialogo"
       },
       {
         "num": "03",
@@ -166,7 +166,7 @@
         "tag": "Cierre",
         "icon_svg": "<path d='M5 17l4-4 3 3 7-8'/><path d='M5 21h14'/>",
         "title": "Cierre asistido\nen consulta",
-        "body": "Tras cada primera visita, la IA resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.",
+        "body": "Tras cada primera visita, el sistema resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.",
         "href": "#resultados"
       }
     ]
@@ -201,12 +201,12 @@
         "href": "#creative"
       },
       {
-        "badge": "IA",
+        "badge": "Diálogo",
         "num": "Nº 02",
         "year": "24/7",
         "title": "WhatsApp que no descansa",
         "body": "Responde como parte del equipo, califica interés, puede atender varios idiomas y transfiere a humano cuando toca.",
-        "href": "#ia"
+        "href": "#dialogo"
       },
       {
         "badge": "Agenda",
@@ -249,7 +249,7 @@
     "steps": [
       { "num": "01", "title": "Grabar", "body": "Cada mes se producen 8-12 videos con el equipo médico de la clínica, guionados para generar confianza y demanda real." },
       { "num": "02", "title": "Activar", "body": "Las piezas se lanzan en Meta Ads y cada contacto entra en el flujo de WhatsApp con respuesta en menos de un minuto." },
-      { "num": "03", "title": "Asistir", "body": "La IA resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración." },
+      { "num": "03", "title": "Asistir", "body": "La mesa de respuesta resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración." },
       { "num": "04", "title": "Mejorar", "body": "Los datos de cada conversación y consulta alimentan mejores anuncios, mejores respuestas y mejor cierre." }
     ],
     "foot_left": "El sistema importa mas que el canal.",
@@ -267,10 +267,10 @@
     "link_href": "#reservar",
     "cards": [
       {
-        "small_label": "IA Conversacional",
+        "small_label": "Diálogo Continuo",
         "index": "01 / 02",
         "title": "Ana responde antes de que el interés se enfríe",
-        "body": "Un WhatsApp con IA que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.",
+        "body": "Un WhatsApp 24/7 que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.",
         "year": "&lt;60s · 24/7",
         "tag": "WHATSAPP"
       },
@@ -288,7 +288,7 @@
     "label": "Lo que dicen las clínicas",
     "ix": "· Nº 06",
     "quote": [
-      { "text": "La IA de WhatsApp es indistinguible de una persona. Mis pacientes me preguntan quién es la chica que les habla con tanta " },
+      { "text": "La atención por WhatsApp es indistinguible de tener a alguien dedicado en plantilla. Mis pacientes me preguntan quién es la chica que les habla con tanta " },
       { "text": "atención", "em": true },
       { "text": "." }
     ],
@@ -299,7 +299,7 @@
     },
     "partners_text": "Prueba social organizada por ciudad, especialidad y problema operativo resuelto.",
     "partners": [
-      { "glyph_svg": "<path d='M5 24L20 6L35 24M12 18h16'/>", "name": "Valencia", "role": "IA WhatsApp", "href": "#testimonios" },
+      { "glyph_svg": "<path d='M5 24L20 6L35 24M12 18h16'/>", "name": "Valencia", "role": "WhatsApp 24/7", "href": "#testimonios" },
       { "glyph_svg": "<circle cx='20' cy='15' r='10'/><path d='M10 15h20'/>", "name": "Barcelona", "role": "Reactivacion", "href": "#testimonios" },
       { "glyph_svg": "<rect x='8' y='5' width='24' height='20'/><path d='M14 11h12M14 17h8'/>", "name": "Madrid", "role": "Recepcion", "href": "#testimonios" },
       { "glyph_svg": "<path d='M8 24l12-18 12 18M14 18h12'/>", "name": "Girona", "role": "No-show", "href": "#testimonios" },
@@ -335,14 +335,14 @@
     ],
     "contributors": [
       { "handle": "Meta Ads", "role": "captación", "href": "#sistema" },
-      { "handle": "WhatsApp IA", "role": "calificación", "href": "#ia" },
+      { "handle": "WhatsApp 24/7", "role": "calificación", "href": "#dialogo" },
       { "handle": "Agenda", "role": "asistencia", "href": "#garantia" },
       { "handle": "Creative Studio", "role": "contenido", "href": "#creative" },
       { "handle": "Aurea Systems", "role": "sistema", "href": "#reservar" }
     ]
   },
   "footer": {
-    "brand_description": "Sistemas de captación con IA para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp IA, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.",
+    "brand_description": "Sistemas editoriales de captación para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp 24/7, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.",
     "brand_cta": {
       "label": "Reservar llamada",
       "href": "https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems",
@@ -353,7 +353,7 @@
         "title": "Producto",
         "links": [
           { "label": "Cómo funciona", "href": "#sistema" },
-          { "label": "IA Conversacional", "href": "#ia" },
+          { "label": "Diálogo Continuo", "href": "#dialogo" },
           { "label": "Resultados", "href": "#resultados" },
           { "label": "Reservar llamada", "href": "#reservar" }
         ]
@@ -373,7 +373,7 @@
           { "label": "Blog", "href": "https://aureasystems.es/blog/" },
           { "label": "No-shows", "href": "https://aureasystems.es/blog/" },
           { "label": "KPIs clínica", "href": "https://aureasystems.es/blog/" },
-          { "label": "IA para leads", "href": "https://aureasystems.es/blog/" }
+          { "label": "Diálogo continuo", "href": "https://aureasystems.es/blog/" }
         ]
       },
       {
