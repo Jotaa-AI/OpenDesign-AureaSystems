@@ -1816,6 +1816,57 @@ section.tight { padding: 90px 0; }
   margin-left: auto;
 }
 .cta-art img { width: 100%; height: 100%; object-fit: contain; }
+.cta-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.cta-img {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  border-radius: clamp(20px, 2.6vw, 36px);
+  isolation: isolate;
+  box-shadow: 0 28px 56px -28px rgba(1, 1, 1, 0.32);
+}
+.cta-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(1, 1, 1, 0.08);
+  pointer-events: none;
+}
+.cta-img-main {
+  inset: 0 38% 16% 0;
+  z-index: 1;
+}
+.cta-img-alt {
+  inset: 22% 0 0 48%;
+  z-index: 2;
+  border: 6px solid var(--paper);
+}
+.cta-img-tag {
+  position: absolute;
+  left: 6%;
+  bottom: 6%;
+  z-index: 3;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px -8px rgba(1, 1, 1, 0.55);
+}
+@media (max-width: 768px) {
+  .cta-art { aspect-ratio: 4 / 5; max-width: 100%; }
+  .cta-img-main { inset: 0 30% 22% 0; }
+  .cta-img-alt { inset: 18% 0 0 44%; }
+}
 .cta-art .index {
   position: absolute;
   right: 8px;
@@ -3002,7 +3053,119 @@ body.has-cinema-hero .side-rail { display: none; }
 .projects-v2-heading {
   text-align: center;
   font-size: clamp(72px, 14vw, 192px);
-  margin-bottom: clamp(40px, 6vw, 96px);
+  margin-bottom: clamp(20px, 3vw, 36px);
+}
+.projects-v2-lead {
+  text-align: center;
+  max-width: 64ch;
+  margin: 0 auto clamp(40px, 6vw, 96px);
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(1, 1, 1, 0.62);
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+.project-card:nth-child(4) { top: calc(clamp(80px, 10vh, 120px) + 78px); }
+
+.project-name em { color: var(--coral); font-style: italic; }
+
+/* New body layout: story (left) + images (right) */
+.project-body {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: stretch;
+}
+.project-story {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(20px, 2.6vw, 32px);
+  padding: clamp(8px, 1.4vw, 24px) clamp(8px, 1.6vw, 28px);
+}
+.project-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--coral);
+  text-wrap: balance;
+}
+.project-result {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(1, 1, 1, 0.7);
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 56ch;
+}
+.project-metrics {
+  display: flex;
+  gap: clamp(28px, 3.4vw, 56px);
+  align-items: flex-end;
+  margin-top: 8px;
+  padding-top: clamp(20px, 2vw, 28px);
+  border-top: 1px solid rgba(1, 1, 1, 0.12);
+}
+.metric { display: flex; flex-direction: column; gap: 6px; }
+.metric-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.metric-num em { color: var(--coral); font-style: italic; }
+.metric-lbl {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.project-images {
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  gap: clamp(12px, 1.4vw, 22px);
+  min-height: clamp(380px, 44vw, 580px);
+}
+.project-img {
+  border-radius: clamp(24px, 3vw, 40px);
+  overflow: hidden;
+  position: relative;
+  background: var(--paper-warm);
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+.project-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(1, 1, 1, 0.06);
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 900px) {
+  .project-body { grid-template-columns: 1fr; }
+  .project-images { min-height: 0; }
+  .project-img.main { aspect-ratio: 4 / 3; }
+  .project-img.alt { aspect-ratio: 16 / 9; }
+  .project-metrics { flex-wrap: wrap; gap: 24px; }
 }
 .projects-stack {
   position: relative;
@@ -3420,7 +3583,7 @@ body.has-cinema-hero .side-rail { display: none; }
 
   <div class='svc-scene' data-svc-idx='4'>
     <div class='svc-sticky'>
-      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
       <div class='svc-overlay-veil'></div>
     </div>
     <div class='svc-overlay-copy'>
@@ -3431,68 +3594,133 @@ body.has-cinema-hero .side-rail { display: none; }
   </div>
 </section>
 
-<!-- Projects — sticky-stacking + scale-down -->
+<!-- Projects — 4 casos: clínicas que pasaron de depender de referidos a un canal predecible -->
 <section class='projects-v2' id='resultados' data-od-id='projects'>
   <div class='container'>
     <h2 class='v2-heading projects-v2-heading' data-fade>casos</h2>
+    <p class='projects-v2-lead' data-fade>Cuatro clínicas que dependían de referidos y boca a boca. Hoy tienen un canal de captación medible, predecible y con margen para escalar.</p>
     <div class='projects-stack' id='projects-stack'>
 
       <article class='project-card' data-card-idx='0'>
         <div class='project-header'>
-          <span class='project-num'>0<em style='color:var(--coral);'>1</em></span>
+          <span class='project-num'>0<em>1</em></span>
           <div class='project-meta'>
-            <span class='project-cat'>Clínica facial · Madrid</span>
-            <span class='project-name'>Caso <em>Nº 01</em> · primera respuesta &lt;60s</span>
+            <span class='project-cat'>Marbella · Medicina estética facial</span>
+            <span class='project-name'>De boca a boca a un canal <em>predecible</em></span>
           </div>
           <a class='live-btn' href='#reservar'>Ver caso →</a>
         </div>
-        <div class='project-grid'>
-          <div class='project-col'>
-            <div class='project-tile small placeholder-1' aria-label='Composición editorial Nº 01.A'></div>
-            <div class='project-tile big placeholder-2' aria-label='Composición editorial Nº 01.B'></div>
+        <div class='project-body'>
+          <div class='project-story'>
+            <p class='project-quote'>&ldquo;Vivíamos del boca a boca. Cuando llegaba el verano, la agenda se vaciaba y teníamos que esperar a que algún paciente nos recomendara.&rdquo;</p>
+            <p class='project-result'>En 60 días con Aurea Systems pasaron de depender al 100% de referidos a tener un canal medible: piezas grabadas en clínica, WhatsApp 24/7 y un protocolo anti no-show que protege la primera valoración.</p>
+            <div class='project-metrics'>
+              <div class='metric'>
+                <span class='metric-num'>+22<em>%</em></span>
+                <span class='metric-lbl'>facturación · 60 días</span>
+              </div>
+              <div class='metric'>
+                <span class='metric-num'>18</span>
+                <span class='metric-lbl'>visitas asistidas / mes</span>
+              </div>
+            </div>
           </div>
-          <div class='project-col'>
-            <div class='project-tile tall placeholder-3' aria-label='Composición editorial Nº 01.C'></div>
+          <div class='project-images'>
+            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1612538498456-e861df91d4d0?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de tratamiento estético facial'></div>
+            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Interior de clínica de medicina estética'></div>
           </div>
         </div>
       </article>
 
       <article class='project-card' data-card-idx='1'>
         <div class='project-header'>
-          <span class='project-num'>0<em style='color:var(--coral);'>2</em></span>
+          <span class='project-num'>0<em>2</em></span>
           <div class='project-meta'>
-            <span class='project-cat'>Clínica multisede · Cataluña</span>
-            <span class='project-name'>Caso <em>Nº 02</em> · 14 visitas en 30 días</span>
+            <span class='project-cat'>Barcelona · Multisede</span>
+            <span class='project-name'>De agenda local a <em>agenda escalable</em></span>
           </div>
           <a class='live-btn' href='#reservar'>Ver caso →</a>
         </div>
-        <div class='project-grid'>
-          <div class='project-col'>
-            <div class='project-tile small placeholder-4' aria-label='Composición editorial Nº 02.A'></div>
-            <div class='project-tile big placeholder-5' aria-label='Composición editorial Nº 02.B'></div>
+        <div class='project-body'>
+          <div class='project-story'>
+            <p class='project-quote'>&ldquo;Una sede llena, otra vacía. Sin un canal nuevo, abrir más sedes era impensable: solo nos llegaban los pacientes que recomendaban los pacientes.&rdquo;</p>
+            <p class='project-result'>Activamos Meta Ads con UGC real grabado en cada sede y conectamos las dos agendas a un único flujo de WhatsApp. La segunda sede dejó de depender del flujo de la primera y arrancó con sus propios pacientes desde la semana 3.</p>
+            <div class='project-metrics'>
+              <div class='metric'>
+                <span class='metric-num'>14</span>
+                <span class='metric-lbl'>visitas asistidas · mes 1</span>
+              </div>
+              <div class='metric'>
+                <span class='metric-num'>2<em>×</em></span>
+                <span class='metric-lbl'>sedes activas en pipeline</span>
+              </div>
+            </div>
           </div>
-          <div class='project-col'>
-            <div class='project-tile tall placeholder-6' aria-label='Composición editorial Nº 02.C'></div>
+          <div class='project-images'>
+            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Espacio interior de clínica con luz natural'></div>
+            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Composición editorial de espacio profesional'></div>
           </div>
         </div>
       </article>
 
       <article class='project-card' data-card-idx='2'>
         <div class='project-header'>
-          <span class='project-num'>0<em style='color:var(--coral);'>3</em></span>
+          <span class='project-num'>0<em>3</em></span>
           <div class='project-meta'>
-            <span class='project-cat'>Clínica boutique · Sevilla</span>
-            <span class='project-name'>Caso <em>Nº 03</em> · no-show por debajo del 12%</span>
+            <span class='project-cat'>Sevilla · Boutique facial</span>
+            <span class='project-name'>De Instagram orgánico a <em>leads cualificados</em></span>
           </div>
           <a class='live-btn' href='#reservar'>Ver caso →</a>
         </div>
-        <div class='project-grid'>
-          <div class='project-col'>
-            <div class='project-tile small placeholder-7' aria-label='Composición editorial Nº 03.A'></div>
-            <div class='project-tile big placeholder-8' aria-label='Composición editorial Nº 03.B'></div>
+        <div class='project-body'>
+          <div class='project-story'>
+            <p class='project-quote'>&ldquo;Toda la captación dependía de que recepción contestara mensajes a tiempo. Si entraba alguien al salir de jornada, lo perdíamos. Y de Instagram orgánico no sale una agenda llena.&rdquo;</p>
+            <p class='project-result'>Mismo presupuesto en ads, mejor pieza creativa y un sistema de respuesta 24/7 que filtra antes de empujar al calendario. Lo que entraba pasó a estar mejor cualificado y la recepción se centró en cerrar visitas, no en perseguirlas.</p>
+            <div class='project-metrics'>
+              <div class='metric'>
+                <span class='metric-num'>4<em>×</em></span>
+                <span class='metric-lbl'>leads cualificados / mes</span>
+              </div>
+              <div class='metric'>
+                <span class='metric-num'>&lt;12<em>%</em></span>
+                <span class='metric-lbl'>no-show medio</span>
+              </div>
+            </div>
           </div>
-          <div class='project-col'>
-            <div class='project-tile tall placeholder-9' aria-label='Composición editorial Nº 03.C'></div>
+          <div class='project-images'>
+            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle facial editorial con luz suave'></div>
+            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de cuidado facial premium'></div>
+          </div>
+        </div>
+      </article>
+
+      <article class='project-card' data-card-idx='3'>
+        <div class='project-header'>
+          <span class='project-num'>0<em>4</em></span>
+          <div class='project-meta'>
+            <span class='project-cat'>Valencia · Centro multidisciplinar</span>
+            <span class='project-name'>Del verano vacío a la agenda <em>protegida</em></span>
+          </div>
+          <a class='live-btn' href='#reservar'>Ver caso →</a>
+        </div>
+        <div class='project-body'>
+          <div class='project-story'>
+            <p class='project-quote'>&ldquo;Julio y agosto la facturación caía un 35%. Vivíamos de pacientes recurrentes y boca a boca, así que en cuanto el ruido bajaba, bajaban las visitas.&rdquo;</p>
+            <p class='project-result'>Activamos un calendario editorial constante y el protocolo anti no-show con cuatro puntos de contacto antes de cada cita. La agenda se sostuvo durante el verano y la captación dejó de depender de los meses fuertes para tirar del año entero.</p>
+            <div class='project-metrics'>
+              <div class='metric'>
+                <span class='metric-num'>18<em>+</em></span>
+                <span class='metric-lbl'>visitas / mes en verano</span>
+              </div>
+              <div class='metric'>
+                <span class='metric-num'>0</span>
+                <span class='metric-lbl'>caída en julio-agosto</span>
+              </div>
+            </div>
+          </div>
+          <div class='project-images'>
+            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Tratamiento estético en clínica'></div>
+            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de aparato médico-estético'></div>
           </div>
         </div>
       </article>
@@ -3547,8 +3775,11 @@ body.has-cinema-hero .side-rail { display: none; }
         </div>
       </div>
       <div class='cta-art' data-reveal='right'>
-        <img src='./assets/visual-cta.svg' alt='Placa editorial de calendario de diagnóstico y garantía de quince visitas asistidas.' />
-        <div class='index'>Nº 08</div>
+        <div class='cta-images'>
+          <div class='cta-img cta-img-main' role='img' aria-label='Apretón de manos sobre madera, símbolo del compromiso de la garantía Aurea' style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');"></div>
+          <div class='cta-img cta-img-alt' role='img' aria-label='Profesional clínico revisando documentación en consulta' style="background-image:url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');"></div>
+          <span class='cta-img-tag'>15 visitas o fee 0€</span>
+        </div>
         <div class='ribbon'>AUREA SYSTEMS &nbsp;·&nbsp; 15 VISITAS ASISTIDAS O FEE A 0€</div>
       </div>
     </div>
