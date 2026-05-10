@@ -38,8 +38,8 @@
   --ink-soft: #1a1a1a;
   --ink-mute: #4a4a4a;
   --ink-faint: #888888;
-  --coral: #a0c7c0;
-  --coral-soft: #c5e0d8;
+  --coral: #2596be;
+  --coral-soft: #6cb6d4;
   --mustard: #e9b94a;
   --olive: #6e7448;
   --bone: #f7f1de;
@@ -2624,7 +2624,7 @@ body.has-cinema-hero .side-rail { display: none; }
 
 /* =====================================================================
  *  V2 — Strip · About · Services · Projects
- *  Cream #fef1e9 · Ink #010101 · Accent teal #a0c7c0
+ *  Cream #fef1e9 · Ink #010101 · Accent teal #2596be
  *  Patrón de animaciones inspirado en el portfolio "3D Creator"
  * ===================================================================== */
 
@@ -2636,7 +2636,7 @@ body.has-cinema-hero .side-rail { display: none; }
   text-transform: lowercase;
   letter-spacing: -0.02em;
   line-height: 0.92;
-  background: linear-gradient(180deg, #010101 0%, #4a5754 55%, #a0c7c0 100%);
+  background: linear-gradient(180deg, #010101 0%, #4a5754 55%, #2596be 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2781,6 +2781,138 @@ body.has-cinema-hero .side-rail { display: none; }
   width: 14px; height: 14px; display: inline-flex;
 }
 .contact-v2-btn .arrow svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ----------- Hero fade-out on scroll (driven by JS) ----------- */
+.hero-cinema__content,
+.hero-cinema__scroll {
+  will-change: opacity, transform;
+}
+.hero-cinema__video {
+  will-change: opacity, transform;
+}
+
+/* ----------- Services parallax — sticky image scenes ----------- */
+.services-parallax {
+  background: #ffffff;
+  border-top-left-radius: clamp(40px, 5vw, 60px);
+  border-top-right-radius: clamp(40px, 5vw, 60px);
+  position: relative;
+  z-index: 1;
+  padding: clamp(80px, 10vw, 140px) 12px 0;
+}
+.services-parallax-intro {
+  text-align: center;
+  margin: 0 auto clamp(60px, 8vw, 110px);
+}
+.services-parallax-intro .services-v2-heading { margin-bottom: 18px; }
+.services-parallax-lead {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(1, 1, 1, 0.6);
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: 0.02em;
+  max-width: 56ch;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.svc-scene {
+  position: relative;
+  height: 150vh;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.svc-scene:last-of-type { margin-bottom: 0; padding-bottom: clamp(80px, 10vw, 140px); }
+
+.svc-sticky {
+  position: sticky;
+  top: 12px;
+  height: calc(100vh - 24px);
+  border-radius: clamp(20px, 2vw, 28px);
+  overflow: hidden;
+  z-index: 0;
+  transform-origin: center;
+  will-change: transform;
+}
+.svc-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.svc-overlay-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(1,1,1,0.35) 0%, rgba(1,1,1,0.55) 50%, rgba(1,1,1,0.7) 100%);
+  will-change: opacity;
+}
+
+.svc-overlay-copy {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  pointer-events: none;
+  color: #ffffff;
+  z-index: 1;
+  will-change: opacity, transform;
+}
+.svc-step {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.05);
+}
+.svc-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 auto 22px;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+.svc-name em { color: var(--coral); font-style: italic; }
+.svc-desc {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.55;
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .svc-scene { height: 130vh; }
+  .svc-name { font-size: clamp(32px, 9vw, 56px); }
+  .svc-step { font-size: 9.5px; padding: 8px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-sticky { transform: none !important; }
+  .svc-overlay-veil { opacity: 0.4 !important; }
+  .svc-overlay-copy { opacity: 1 !important; transform: none !important; }
+}
 
 /* ----------- Services-v2 — fondo blanco, lista de 5 ----------- */
 .services-v2 {
@@ -2983,7 +3115,7 @@ body.has-cinema-hero .side-rail { display: none; }
 /* placeholder editorial compositions in cream/teal */
 .placeholder-1 {
   background:
-    radial-gradient(circle at 22% 28%, rgba(160, 199, 192, 0.55), transparent 48%),
+    radial-gradient(circle at 22% 28%, rgba(37, 150, 190, 0.55), transparent 48%),
     radial-gradient(circle at 78% 80%, rgba(1, 1, 1, 0.06), transparent 50%),
     linear-gradient(135deg, var(--paper-warm), var(--paper-dark));
 }
@@ -2993,12 +3125,12 @@ body.has-cinema-hero .side-rail { display: none; }
   inset: 18% 60% 28% 18%;
   border: 1.5px solid rgba(1, 1, 1, 0.5);
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(160, 199, 192, 0.85), rgba(160, 199, 192, 0.2));
+  background: linear-gradient(180deg, rgba(37, 150, 190, 0.85), rgba(37, 150, 190, 0.2));
 }
 .placeholder-2 {
   background:
     repeating-linear-gradient(135deg, rgba(1, 1, 1, 0.05) 0 1px, transparent 1px 14px),
-    linear-gradient(140deg, #a0c7c0 0%, var(--paper-warm) 65%);
+    linear-gradient(140deg, #2596be 0%, var(--paper-warm) 65%);
 }
 .placeholder-2::before {
   content: '';
@@ -3010,7 +3142,7 @@ body.has-cinema-hero .side-rail { display: none; }
 }
 .placeholder-3 {
   background:
-    radial-gradient(ellipse at 28% 22%, rgba(160, 199, 192, 0.65), transparent 50%),
+    radial-gradient(ellipse at 28% 22%, rgba(37, 150, 190, 0.65), transparent 50%),
     radial-gradient(ellipse at 82% 78%, var(--paper-warm), transparent 60%),
     linear-gradient(160deg, #1a1a1a 0%, #0c0c0c 60%);
 }
@@ -3019,14 +3151,14 @@ body.has-cinema-hero .side-rail { display: none; }
   position: absolute;
   left: 50%; top: 48%; width: 58%; height: 58%;
   transform: translate(-50%, -50%);
-  border: 1.5px solid rgba(160, 199, 192, 0.85);
+  border: 1.5px solid rgba(37, 150, 190, 0.85);
   border-radius: 50%;
-  box-shadow: 0 0 80px rgba(160, 199, 192, 0.18);
+  box-shadow: 0 0 80px rgba(37, 150, 190, 0.18);
 }
 .placeholder-4 {
   background:
     radial-gradient(circle at 70% 30%, var(--paper-warm), transparent 55%),
-    linear-gradient(120deg, #a0c7c0 0%, #d4e6e2 100%);
+    linear-gradient(120deg, #2596be 0%, #d4e6e2 100%);
 }
 .placeholder-4::before {
   content: '';
@@ -3045,12 +3177,12 @@ body.has-cinema-hero .side-rail { display: none; }
   position: absolute;
   left: 28%; top: 32%; width: 40%; height: 36%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #a0c7c0, #4a5754 75%);
+  background: radial-gradient(circle at 35% 35%, #2596be, #4a5754 75%);
   box-shadow: 0 12px 32px rgba(1, 1, 1, 0.22);
 }
 .placeholder-6 {
   background:
-    repeating-linear-gradient(45deg, rgba(160, 199, 192, 0.18) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(45deg, rgba(37, 150, 190, 0.18) 0 2px, transparent 2px 22px),
     linear-gradient(180deg, var(--paper-warm) 0%, var(--paper-dark) 100%);
 }
 .placeholder-6::before {
@@ -3060,11 +3192,11 @@ body.has-cinema-hero .side-rail { display: none; }
   transform: translate(-50%, -50%) rotate(-12deg);
   border: 1.5px solid var(--ink);
   border-radius: 6% 94% 6% 94% / 94% 6% 94% 6%;
-  background: linear-gradient(160deg, rgba(160,199,192,0.7), rgba(254,241,233,0.4));
+  background: linear-gradient(160deg, rgba(37, 150, 190,0.7), rgba(254,241,233,0.4));
 }
 .placeholder-7 {
   background:
-    radial-gradient(circle at 30% 30%, rgba(160, 199, 192, 0.45), transparent 55%),
+    radial-gradient(circle at 30% 30%, rgba(37, 150, 190, 0.45), transparent 55%),
     linear-gradient(180deg, var(--paper-warm), var(--paper-dark));
 }
 .placeholder-7::before {
@@ -3072,24 +3204,24 @@ body.has-cinema-hero .side-rail { display: none; }
   position: absolute;
   inset: 22% 28% 22% 28%;
   border: 1.5px solid var(--ink);
-  background: rgba(160, 199, 192, 0.4);
+  background: rgba(37, 150, 190, 0.4);
   border-radius: 4px;
   box-shadow: -14px 14px 0 -6px rgba(1, 1, 1, 0.1);
 }
 .placeholder-8 {
   background:
-    radial-gradient(ellipse at 50% 60%, rgba(160, 199, 192, 0.7), transparent 60%),
+    radial-gradient(ellipse at 50% 60%, rgba(37, 150, 190, 0.7), transparent 60%),
     linear-gradient(180deg, #1a1a1a 0%, #0c0c0c 100%);
 }
 .placeholder-8::before {
   content: '';
   position: absolute;
   inset: 20% 30% 20% 30%;
-  border: 1.5px dashed rgba(160, 199, 192, 0.7);
+  border: 1.5px dashed rgba(37, 150, 190, 0.7);
   border-radius: 999px;
 }
 .placeholder-9 {
-  background: linear-gradient(160deg, var(--paper-warm) 0%, #a0c7c0 100%);
+  background: linear-gradient(160deg, var(--paper-warm) 0%, #2596be 100%);
 }
 .placeholder-9::before {
   content: '';
@@ -3232,46 +3364,70 @@ body.has-cinema-hero .side-rail { display: none; }
 </section>
 
 <!-- Services — fondo blanco, lista de 5 (PatientFlow) -->
-<section class='services-v2' id='sistema' data-od-id='services'>
-  <div class='container'>
-    <h2 class='services-v2-heading' data-fade>servicios</h2>
-    <ol class='services-v2-list'>
-      <li class='service-item' data-fade>
-        <span class='service-num'>0<em>1</em></span>
-        <div class='service-content'>
-          <h3 class='service-name'>Captación</h3>
-          <p class='service-desc'>Anuncios y piezas grabadas en clínica con tu equipo médico real, optimizadas para atraer pacientes con intención real de valoración.</p>
-        </div>
-      </li>
-      <li class='service-item' data-fade style='transition-delay:80ms'>
-        <span class='service-num'>0<em>2</em></span>
-        <div class='service-content'>
-          <h3 class='service-name'>Comunicación</h3>
-          <p class='service-desc'>Cada lead recibe una respuesta rápida, clara y humana por WhatsApp, sin depender de que la recepción esté libre.</p>
-        </div>
-      </li>
-      <li class='service-item' data-fade style='transition-delay:160ms'>
-        <span class='service-num'>0<em>3</em></span>
-        <div class='service-content'>
-          <h3 class='service-name'>Cualificación</h3>
-          <p class='service-desc'>Detectamos necesidad, zona, urgencia y franja horaria antes de empujar la reserva en el calendario conectado.</p>
-        </div>
-      </li>
-      <li class='service-item' data-fade style='transition-delay:240ms'>
-        <span class='service-num'>0<em>4</em></span>
-        <div class='service-content'>
-          <h3 class='service-name'>Asistencia</h3>
-          <p class='service-desc'>Recordatorios, reactivaciones y mensajes previos reducen olvidos, dudas y cancelaciones de última hora.</p>
-        </div>
-      </li>
-      <li class='service-item' data-fade style='transition-delay:320ms'>
-        <span class='service-num'>0<em>5</em></span>
-        <div class='service-content'>
-          <h3 class='service-name'>Cierre</h3>
-          <p class='service-desc'>Llevamos a la persona correcta a una primera consulta preparada. No cerramos tratamientos por chat: protegemos la primera valoración.</p>
-        </div>
-      </li>
-    </ol>
+<section class='services-parallax' id='sistema' data-od-id='services'>
+  <div class='container services-parallax-intro'>
+    <h2 class='services-v2-heading' data-fade>fases</h2>
+    <p class='services-parallax-lead' data-fade>Cinco fases conectadas. Una por una, mientras desplazas. Así operamos.</p>
+  </div>
+
+  <div class='svc-scene' data-svc-idx='0'>
+    <div class='svc-sticky'>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1556745757-8d76bdb6984b?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-overlay-veil'></div>
+    </div>
+    <div class='svc-overlay-copy'>
+      <span class='svc-step'>Fase 01 · Captación</span>
+      <h3 class='svc-name'>Atraemos demanda con <em>intención real</em>.</h3>
+      <p class='svc-desc'>Piezas grabadas en clínica con tu equipo médico real, optimizadas para Reels y Stories. Atraemos a quien tiene intención de valoración, no a curiosos.</p>
+    </div>
+  </div>
+
+  <div class='svc-scene' data-svc-idx='1'>
+    <div class='svc-sticky'>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-overlay-veil'></div>
+    </div>
+    <div class='svc-overlay-copy'>
+      <span class='svc-step'>Fase 02 · Comunicación</span>
+      <h3 class='svc-name'>Respondemos antes de que el <em>interés se enfríe</em>.</h3>
+      <p class='svc-desc'>Cada lead recibe una respuesta rápida, clara y humana por WhatsApp en menos de un minuto. Sin depender de que la recepción esté libre.</p>
+    </div>
+  </div>
+
+  <div class='svc-scene' data-svc-idx='2'>
+    <div class='svc-sticky'>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-overlay-veil'></div>
+    </div>
+    <div class='svc-overlay-copy'>
+      <span class='svc-step'>Fase 03 · Cualificación</span>
+      <h3 class='svc-name'>Filtramos por <em>contexto real</em>, no por formulario.</h3>
+      <p class='svc-desc'>Detectamos necesidad, zona, urgencia y franja horaria antes de empujar la reserva. Solo llegan a tu agenda los que pueden cerrar.</p>
+    </div>
+  </div>
+
+  <div class='svc-scene' data-svc-idx='3'>
+    <div class='svc-sticky'>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-overlay-veil'></div>
+    </div>
+    <div class='svc-overlay-copy'>
+      <span class='svc-step'>Fase 04 · Asistencia</span>
+      <h3 class='svc-name'>Protegemos cada hueco hasta la <em>primera visita</em>.</h3>
+      <p class='svc-desc'>Recordatorios, reactivaciones y mensajes previos a la cita reducen olvidos, dudas y cancelaciones de última hora.</p>
+    </div>
+  </div>
+
+  <div class='svc-scene' data-svc-idx='4'>
+    <div class='svc-sticky'>
+      <div class='svc-img' style="background-image:url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&amp;w=2400&amp;auto=format&amp;fit=crop');"></div>
+      <div class='svc-overlay-veil'></div>
+    </div>
+    <div class='svc-overlay-copy'>
+      <span class='svc-step'>Fase 05 · Cierre</span>
+      <h3 class='svc-name'>Llevamos al paciente correcto a la <em>consulta correcta</em>.</h3>
+      <p class='svc-desc'>No cerramos tratamientos por chat. Llevamos a la persona indicada a una primera valoración preparada para que tu equipo la convierta.</p>
+    </div>
   </div>
 </section>
 
@@ -3697,6 +3853,113 @@ body.has-cinema-hero .side-rail { display: none; }
           else target._chars[i].classList.remove('is-on');
         }
       });
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+
+  /* ==========================================================
+   *  V2 — Hero fade-out on scroll
+   *  Hero content + scroll indicator fade out as the user scrolls
+   *  past the hero. Video fades slightly slower for visual weight.
+   * ========================================================== */
+  (function () {
+    var hero = document.querySelector('.hero-cinema');
+    if (!hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var content = document.querySelector('.hero-cinema__content');
+    var scroll = document.querySelector('.hero-cinema__scroll');
+    var video = document.querySelector('.hero-cinema__video');
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var scrollY = window.scrollY || 0;
+      var heroH = hero.offsetHeight || window.innerHeight;
+      var p = Math.max(0, Math.min(1, scrollY / (heroH * 0.6)));
+      if (content) {
+        content.style.opacity = String(1 - p);
+        content.style.transform = 'translate3d(0,' + (p * -50) + 'px,0)';
+      }
+      if (scroll) scroll.style.opacity = String(Math.max(0, 1 - p * 1.6));
+      if (video) {
+        var vp = Math.max(0, Math.min(1, scrollY / (heroH * 0.95)));
+        video.style.opacity = String(1 - vp * 0.85);
+        video.style.transform = 'translate3d(0,' + (vp * 30) + 'px,0)';
+      }
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+
+  /* ==========================================================
+   *  V2 — Services parallax scenes
+   *  Per scene (150vh):
+   *   · Sticky image scales 1 -> 0.85 across "end end" -> "end start"
+   *   · Veil opacity goes 0 -> 1 across same range (image darkens out)
+   *   · Overlay copy translates Y from 250px to -250px across
+   *     "start end" -> "end start"
+   *   · Overlay copy opacity peaks at 50% scene progress (0,0.25,0.5,0.75,1 -> 0,0,1,0,0)
+   * ========================================================== */
+  (function () {
+    var scenes = document.querySelectorAll('.svc-scene');
+    if (!scenes.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ticking = false;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+
+    function updateScene(scene) {
+      var rect = scene.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var sceneH = rect.height;
+
+      // imageProgress: 0 when scene bottom touches viewport bottom,
+      // 1 when scene bottom touches viewport top.
+      var imageProgress = clamp01((vh - rect.bottom) / vh);
+      var scale = lerp(1, 0.85, imageProgress);
+      var veilOpacityDelta = imageProgress; // 0 -> 1 (image darkens)
+
+      // copyProgress: 0 when scene top at viewport bottom,
+      // 1 when scene bottom at viewport top.
+      // Range: rect.top from vh down to -sceneH (total span vh + sceneH)
+      var copyProgress = clamp01((vh - rect.top) / (vh + sceneH));
+      var copyY = lerp(250, -250, copyProgress);
+      // Triangular opacity: 0 at 0.25, 1 at 0.5, 0 at 0.75
+      var copyOpacity;
+      if (copyProgress < 0.25) copyOpacity = 0;
+      else if (copyProgress < 0.5) copyOpacity = (copyProgress - 0.25) / 0.25;
+      else if (copyProgress < 0.75) copyOpacity = 1 - (copyProgress - 0.5) / 0.25;
+      else copyOpacity = 0;
+
+      var sticky = scene.querySelector('.svc-sticky');
+      var veil = scene.querySelector('.svc-overlay-veil');
+      var copy = scene.querySelector('.svc-overlay-copy');
+      if (sticky) sticky.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      if (veil) veil.style.opacity = String((0.4 + veilOpacityDelta * 0.5).toFixed(3));
+      if (copy) {
+        copy.style.transform = 'translate3d(0,' + copyY.toFixed(2) + 'px,0)';
+        copy.style.opacity = copyOpacity.toFixed(3);
+      }
+    }
+
+    function update() {
+      ticking = false;
+      scenes.forEach(updateScene);
     }
     function onScroll() {
       if (!ticking) {
