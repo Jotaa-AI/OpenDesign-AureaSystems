@@ -31,15 +31,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --paper: #f5f1e8;
-  --paper-warm: #efeadc;
-  --paper-dark: #e0d8c0;
-  --ink: #15140f;
-  --ink-soft: #2a2620;
-  --ink-mute: #5a5448;
-  --ink-faint: #8b8676;
-  --coral: #C8A97E;
-  --coral-soft: #E8D5B5;
+  --paper: #fef1e9;
+  --paper-warm: #fae9dc;
+  --paper-dark: #f3dac4;
+  --ink: #010101;
+  --ink-soft: #1a1a1a;
+  --ink-mute: #4a4a4a;
+  --ink-faint: #888888;
+  --coral: #a0c7c0;
+  --coral-soft: #c5e0d8;
   --mustard: #e9b94a;
   --olive: #6e7448;
   --bone: #f7f1de;
@@ -546,7 +546,7 @@ body::before {
   background:
     radial-gradient(circle at 12% 16%, rgba(200, 169, 126, 0.22), transparent 24%),
     radial-gradient(circle at 88% 82%, rgba(110, 116, 72, 0.14), transparent 28%),
-    linear-gradient(135deg, rgba(247, 241, 222, 0.96), rgba(236, 228, 207, 0.78));
+    linear-gradient(135deg, rgba(255, 248, 240, 0.96), rgba(236, 228, 207, 0.78));
   overflow: hidden;
   padding: clamp(22px, 3.2vw, 42px);
 }
@@ -606,7 +606,7 @@ body::before {
   z-index: 2;
   width: min(320px, 36%);
   border: 1px solid var(--line);
-  background: rgba(247, 241, 222, 0.9);
+  background: rgba(255, 248, 240, 0.9);
   backdrop-filter: blur(3px);
   padding: 16px;
   color: var(--ink);
@@ -671,11 +671,11 @@ body::before {
 .flow-card.clinic {
   background: var(--ink);
   color: var(--paper);
-  border-color: rgba(247, 241, 222, 0.22);
+  border-color: rgba(255, 248, 240, 0.22);
 }
 .flow-card.clinic p,
 .flow-card.clinic .micro {
-  color: rgba(247, 241, 222, 0.74);
+  color: rgba(255, 248, 240, 0.74);
 }
 .flow-card.clinic .micro span::before { background: var(--coral); }
 .flow-timeline {
@@ -757,7 +757,7 @@ body::before {
   letter-spacing: 0.16em;
   color: var(--ink-faint);
   text-transform: uppercase;
-  background: rgba(245, 241, 232, 0.7);
+  background: rgba(254, 241, 233, 0.7);
   padding: 10px 12px;
   border: 1px solid var(--line-soft);
   border-radius: 6px;
@@ -1246,7 +1246,7 @@ section.tight { padding: 90px 0; }
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(245, 241, 232, 0.9);
+  background: rgba(254, 241, 233, 0.9);
   color: var(--ink);
   padding: 4px 9px;
   border-radius: 4px;
@@ -1458,14 +1458,14 @@ section.tight { padding: 90px 0; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(247, 241, 222, 0.16);
+  border-top: 1px solid rgba(255, 248, 240, 0.16);
   padding-top: 16px;
   margin-bottom: 60px;
   font-family: var(--sans);
   font-size: 10.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(247, 241, 222, 0.55);
+  color: rgba(255, 248, 240, 0.55);
 }
 .work-rule .roman { color: var(--coral); font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.04em; text-transform: none; }
 .work-grid {
@@ -1595,7 +1595,7 @@ section.tight { padding: 90px 0; }
 .work-arrows .nav-btn {
   width: 46px; height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(247, 241, 222, 0.2);
+  border: 1px solid rgba(255, 248, 240, 0.2);
   background: transparent;
   color: var(--paper);
   display: inline-flex;
@@ -1983,7 +1983,7 @@ body.calendar-open {
   max-height: calc(100dvh - 48px);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  border: 1px solid rgba(245, 241, 232, 0.28);
+  border: 1px solid rgba(254, 241, 233, 0.28);
   background: var(--paper);
   box-shadow: 0 34px 90px -36px rgba(0, 0, 0, 0.62);
   position: relative;
@@ -2063,7 +2063,7 @@ body.calendar-open {
   gap: 14px;
   padding: 12px 16px;
   border-top: 1px solid rgba(21, 20, 15, 0.12);
-  background: rgba(247, 241, 222, 0.96);
+  background: rgba(255, 248, 240, 0.96);
   font-family: var(--sans);
   font-size: 12px;
   color: var(--ink-mute);
@@ -2298,7 +2298,7 @@ body.has-cinema-hero .topbar .topbar-inner b { color: #fff; }
 body.has-cinema-hero .topbar .topbar-link { color: rgba(255, 255, 255, 0.78); }
 body.has-cinema-hero .topbar .topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
 body.has-cinema-hero .topbar.is-light {
-  background: rgba(245, 241, 232, 0.78);
+  background: rgba(254, 241, 233, 0.78);
   border-bottom-color: var(--line);
   color: var(--ink-faint);
 }
@@ -2342,7 +2342,7 @@ body.has-cinema-hero .nav .nav-cta:not(.ghost) {
 body.has-cinema-hero .nav .status-dot { background: var(--coral); box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.18); }
 
 body.has-cinema-hero .nav.is-light {
-  background: rgba(245, 241, 232, 0.82);
+  background: rgba(254, 241, 233, 0.82);
   border-bottom-color: var(--line);
 }
 body.has-cinema-hero .nav.is-light .brand,
@@ -2621,6 +2621,493 @@ body.has-cinema-hero .side-rail { display: none; }
   .hero-cinema { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); }
   .hero-cinema__scroll::after { animation: none; }
 }
+
+/* =====================================================================
+ *  V2 — Strip · About · Services · Projects
+ *  Cream #fef1e9 · Ink #010101 · Accent teal #a0c7c0
+ *  Patrón de animaciones inspirado en el portfolio "3D Creator"
+ * ===================================================================== */
+
+/* gradient heading shared by V2 sections */
+.v2-heading {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  background: linear-gradient(180deg, #010101 0%, #4a5754 55%, #a0c7c0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+}
+
+/* fade-in driven by IntersectionObserver (vanilla) */
+[data-fade] {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+[data-fade='left']  { transform: translate3d(-80px, 0, 0); }
+[data-fade='right'] { transform: translate3d(80px, 0, 0); }
+[data-fade='up']    { transform: translate3d(0, 40px, 0); }
+[data-fade].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-fade] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ----------- Strip métricas (reemplaza el marquee) ----------- */
+.strip-v2 {
+  background: var(--paper);
+  padding: 88px 0 72px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.08);
+}
+.strip-v2-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.strip-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(48px, 5.6vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.strip-num em {
+  color: var(--coral);
+  font-style: italic;
+}
+.strip-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.strip-divider {
+  width: 1px;
+  height: 64px;
+  background: rgba(1, 1, 1, 0.14);
+  flex: 0 0 1px;
+}
+@media (max-width: 768px) {
+  .strip-divider { display: none; }
+  .strip-v2-inner { gap: 36px; }
+  .strip-item { flex: 1 1 45%; }
+}
+
+/* ----------- About-v2 — limpio, sin esquinas decorativas ----------- */
+.about-v2 {
+  background: var(--paper);
+  padding: 120px 0 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about-v2-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 6vw, 64px);
+}
+.about-v2-heading {
+  font-size: clamp(72px, 14vw, 192px);
+}
+.about-v2-text {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--ink);
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.55;
+  max-width: 640px;
+  margin: 0 auto;
+  letter-spacing: -0.005em;
+  position: relative;
+}
+.about-v2-text .char {
+  display: inline-block;
+  opacity: 0.18;
+  transition: opacity 240ms ease;
+  will-change: opacity;
+}
+.about-v2-text .char.is-on { opacity: 1; }
+.about-v2-text .char.space { display: inline; }
+
+.contact-v2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 32px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+.contact-v2-btn:hover {
+  background: transparent;
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+.contact-v2-btn .arrow {
+  width: 14px; height: 14px; display: inline-flex;
+}
+.contact-v2-btn .arrow svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ----------- Services-v2 — fondo blanco, lista de 5 ----------- */
+.services-v2 {
+  background: #ffffff;
+  border-top-left-radius: clamp(40px, 5vw, 60px);
+  border-top-right-radius: clamp(40px, 5vw, 60px);
+  padding: clamp(80px, 10vw, 140px) 0 clamp(80px, 10vw, 140px);
+  position: relative;
+  z-index: 1;
+}
+.services-v2-heading {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  color: var(--ink);
+  text-align: center;
+  font-size: clamp(72px, 14vw, 192px);
+  margin: 0 auto clamp(56px, 8vw, 112px);
+}
+.services-v2-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1080px;
+}
+.service-item {
+  display: grid;
+  grid-template-columns: clamp(96px, 12vw, 200px) 1fr;
+  gap: clamp(20px, 3vw, 56px);
+  align-items: center;
+  padding: clamp(28px, 3.6vw, 48px) clamp(0px, 1vw, 12px);
+  border-top: 1px solid rgba(1, 1, 1, 0.14);
+  position: relative;
+  transition: background 280ms ease, padding 280ms ease;
+}
+.service-item:last-child { border-bottom: 1px solid rgba(1, 1, 1, 0.14); }
+.service-item:hover { background: var(--paper); }
+.service-item:hover .service-num em { color: var(--coral); }
+
+.service-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(56px, 9vw, 140px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.service-num em { color: var(--ink); transition: color 280ms ease; font-style: italic; }
+.service-content { display: flex; flex-direction: column; gap: 10px; }
+.service-name {
+  font-family: var(--sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(20px, 2.4vw, 34px);
+  color: var(--ink);
+  margin: 0;
+}
+.service-desc {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(1, 1, 1, 0.6);
+  line-height: 1.55;
+  font-size: clamp(14px, 1.4vw, 18px);
+  max-width: 64ch;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .service-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .service-num { font-size: 64px; }
+}
+
+/* ----------- Projects-v2 — sticky-stacking + scale-down ----------- */
+.projects-v2 {
+  background: var(--paper);
+  border-top-left-radius: clamp(40px, 5vw, 60px);
+  border-top-right-radius: clamp(40px, 5vw, 60px);
+  margin-top: clamp(-56px, -5vw, -40px);
+  position: relative;
+  z-index: 2;
+  padding: clamp(80px, 10vw, 140px) 0 clamp(40px, 6vw, 80px);
+}
+.projects-v2-heading {
+  text-align: center;
+  font-size: clamp(72px, 14vw, 192px);
+  margin-bottom: clamp(40px, 6vw, 96px);
+}
+.projects-stack {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.project-card {
+  position: sticky;
+  top: clamp(80px, 10vh, 120px);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: clamp(28px, 4vw, 56px);
+  padding: clamp(20px, 2.4vw, 40px);
+  margin-bottom: 32px;
+  box-shadow: 0 30px 60px -28px rgba(1, 1, 1, 0.18);
+  transform-origin: center top;
+  will-change: transform;
+}
+.project-card:nth-child(1) { top: clamp(80px, 10vh, 120px); }
+.project-card:nth-child(2) { top: calc(clamp(80px, 10vh, 120px) + 26px); }
+.project-card:nth-child(3) { top: calc(clamp(80px, 10vh, 120px) + 52px); }
+
+.project-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: clamp(16px, 2vw, 32px);
+  margin-bottom: clamp(20px, 2.4vw, 36px);
+  padding-bottom: clamp(20px, 2.4vw, 36px);
+  border-bottom: 1px solid rgba(1, 1, 1, 0.16);
+}
+.project-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 120px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.project-cat {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.project-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 36px);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.project-name em { color: var(--coral); font-style: italic; }
+.live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 220ms ease, color 220ms ease;
+  white-space: nowrap;
+}
+.live-btn:hover { background: var(--ink); color: var(--paper); }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  gap: clamp(12px, 1.4vw, 22px);
+}
+.project-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.4vw, 22px);
+}
+.project-tile {
+  border-radius: clamp(28px, 3.6vw, 48px);
+  overflow: hidden;
+  position: relative;
+  background: var(--paper-warm);
+}
+.project-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(1, 1, 1, 0.06);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.project-tile.small  { height: clamp(140px, 18vw, 240px); }
+.project-tile.big    { height: clamp(180px, 24vw, 360px); }
+.project-tile.tall   { height: 100%; min-height: clamp(340px, 44vw, 624px); }
+
+/* placeholder editorial compositions in cream/teal */
+.placeholder-1 {
+  background:
+    radial-gradient(circle at 22% 28%, rgba(160, 199, 192, 0.55), transparent 48%),
+    radial-gradient(circle at 78% 80%, rgba(1, 1, 1, 0.06), transparent 50%),
+    linear-gradient(135deg, var(--paper-warm), var(--paper-dark));
+}
+.placeholder-1::before {
+  content: '';
+  position: absolute;
+  inset: 18% 60% 28% 18%;
+  border: 1.5px solid rgba(1, 1, 1, 0.5);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(160, 199, 192, 0.85), rgba(160, 199, 192, 0.2));
+}
+.placeholder-2 {
+  background:
+    repeating-linear-gradient(135deg, rgba(1, 1, 1, 0.05) 0 1px, transparent 1px 14px),
+    linear-gradient(140deg, #a0c7c0 0%, var(--paper-warm) 65%);
+}
+.placeholder-2::before {
+  content: '';
+  position: absolute;
+  left: 14%; top: 28%; width: 36%; height: 44%;
+  border: 1.5px solid var(--ink);
+  border-radius: 12% 88% 12% 88% / 88% 12% 88% 12%;
+  background: rgba(254, 241, 233, 0.75);
+}
+.placeholder-3 {
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(160, 199, 192, 0.65), transparent 50%),
+    radial-gradient(ellipse at 82% 78%, var(--paper-warm), transparent 60%),
+    linear-gradient(160deg, #1a1a1a 0%, #0c0c0c 60%);
+}
+.placeholder-3::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 48%; width: 58%; height: 58%;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(160, 199, 192, 0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(160, 199, 192, 0.18);
+}
+.placeholder-4 {
+  background:
+    radial-gradient(circle at 70% 30%, var(--paper-warm), transparent 55%),
+    linear-gradient(120deg, #a0c7c0 0%, #d4e6e2 100%);
+}
+.placeholder-4::before {
+  content: '';
+  position: absolute;
+  inset: 20% 22% 22% 20%;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: rgba(254, 241, 233, 0.6);
+}
+.placeholder-5 {
+  background:
+    linear-gradient(135deg, #fef1e9 0%, #fef1e9 40%, #1a1a1a 40%, #1a1a1a 100%);
+}
+.placeholder-5::before {
+  content: '';
+  position: absolute;
+  left: 28%; top: 32%; width: 40%; height: 36%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #a0c7c0, #4a5754 75%);
+  box-shadow: 0 12px 32px rgba(1, 1, 1, 0.22);
+}
+.placeholder-6 {
+  background:
+    repeating-linear-gradient(45deg, rgba(160, 199, 192, 0.18) 0 2px, transparent 2px 22px),
+    linear-gradient(180deg, var(--paper-warm) 0%, var(--paper-dark) 100%);
+}
+.placeholder-6::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 52%; width: 44%; height: 64%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  border: 1.5px solid var(--ink);
+  border-radius: 6% 94% 6% 94% / 94% 6% 94% 6%;
+  background: linear-gradient(160deg, rgba(160,199,192,0.7), rgba(254,241,233,0.4));
+}
+.placeholder-7 {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(160, 199, 192, 0.45), transparent 55%),
+    linear-gradient(180deg, var(--paper-warm), var(--paper-dark));
+}
+.placeholder-7::before {
+  content: '';
+  position: absolute;
+  inset: 22% 28% 22% 28%;
+  border: 1.5px solid var(--ink);
+  background: rgba(160, 199, 192, 0.4);
+  border-radius: 4px;
+  box-shadow: -14px 14px 0 -6px rgba(1, 1, 1, 0.1);
+}
+.placeholder-8 {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(160, 199, 192, 0.7), transparent 60%),
+    linear-gradient(180deg, #1a1a1a 0%, #0c0c0c 100%);
+}
+.placeholder-8::before {
+  content: '';
+  position: absolute;
+  inset: 20% 30% 20% 30%;
+  border: 1.5px dashed rgba(160, 199, 192, 0.7);
+  border-radius: 999px;
+}
+.placeholder-9 {
+  background: linear-gradient(160deg, var(--paper-warm) 0%, #a0c7c0 100%);
+}
+.placeholder-9::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%; width: 60%; height: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(254, 241, 233, 0.95), rgba(254, 241, 233, 0.1) 70%, transparent 80%);
+  border: 1.5px solid var(--ink);
+}
+
+@media (max-width: 768px) {
+  .project-header { grid-template-columns: 1fr; gap: 14px; }
+  .project-header .live-btn { justify-self: start; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-tile.tall { min-height: 280px; }
+  .project-card { margin-bottom: 18px; }
+}
 </style>
 </head>
 <body class='has-cinema-hero'>
@@ -2702,425 +3189,158 @@ body.has-cinema-hero .side-rail { display: none; }
   <a class='hero-cinema__scroll' href='#problema' aria-label='Bajar a problema'>Scroll</a>
 </section>
 
-<section class='wire' data-od-id='wire' aria-label='Global wire — cities and contributors'>
-  <div class='container wire-inner'>
-    <div class='wire-left'>
-      <span class='wire-mark' aria-hidden='true'><span class='wire-pulse'></span></span>
-      <span class='wire-title'>
-        <b>Plazas en España</b>
-        <span>4 plazas · exclusividad territorial · radio de 15 km</span>
-      </span>
+<!-- =====================================================================
+     V2 sections — Strip métricas · About · Services · Projects
+     Reemplaza wire / about / capabilities / labs / method / work / testimonial
+     ===================================================================== -->
+
+<!-- Strip métricas (sustituye al marquee) -->
+<section class='strip-v2' data-od-id='strip'>
+  <div class='container strip-v2-inner'>
+    <div class='strip-item' data-fade>
+      <span class='strip-num'>15<em>+</em></span>
+      <span class='strip-label'>visitas asistidas / mes</span>
     </div>
-    <div class='wire-rows'>
-      <div class='wire-row'>
-        <div class='marquee-track' aria-hidden='true'>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>40.42°N</span><span class='wire-name'>Madrid</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.38°N</span><span class='wire-name'>Barcelona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>39.47°N</span><span class='wire-name'>Valencia</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.98°N</span><span class='wire-name'>Girona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>43.26°N</span><span class='wire-name'>Bilbao</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>37.39°N</span><span class='wire-name'>Sevilla</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>36.72°N</span><span class='wire-name'>Malaga</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.65°N</span><span class='wire-name'>Zaragoza</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>40.42°N</span><span class='wire-name'>Madrid</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.38°N</span><span class='wire-name'>Barcelona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>39.47°N</span><span class='wire-name'>Valencia</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.98°N</span><span class='wire-name'>Girona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>43.26°N</span><span class='wire-name'>Bilbao</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>37.39°N</span><span class='wire-name'>Sevilla</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>36.72°N</span><span class='wire-name'>Malaga</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-coord'>41.65°N</span><span class='wire-name'>Zaragoza</span></span>
-        </div>
-      </div>
-      <div class='wire-row reverse'>
-        <div class='marquee-track'>
-          <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
-          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
-          <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
-          <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
-          <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
-          <a class='wire-item is-link' href='#sistema' aria-label='Open Meta Ads'><span class='wire-dot'>·</span><span class='wire-handle'>@Meta Ads</span><span class='wire-role'>captación</span></a>
-          <a class='wire-item is-link' href='#dialogo' aria-label='Open WhatsApp 24/7'><span class='wire-dot'>·</span><span class='wire-handle'>@WhatsApp 24/7</span><span class='wire-role'>calificación</span></a>
-          <a class='wire-item is-link' href='#garantia' aria-label='Open Agenda'><span class='wire-dot'>·</span><span class='wire-handle'>@Agenda</span><span class='wire-role'>asistencia</span></a>
-          <a class='wire-item is-link' href='#creative' aria-label='Open Creative Studio'><span class='wire-dot'>·</span><span class='wire-handle'>@Creative Studio</span><span class='wire-role'>contenido</span></a>
-          <a class='wire-item is-link' href='#reservar' aria-label='Open Aurea Systems'><span class='wire-dot'>·</span><span class='wire-handle'>@AureaSystems</span><span class='wire-role'>sistema</span></a>
-        </div>
-      </div>
+    <div class='strip-divider' aria-hidden='true'></div>
+    <div class='strip-item' data-fade style='transition-delay:80ms'>
+      <span class='strip-num'>&lt;60s</span>
+      <span class='strip-label'>primera respuesta</span>
+    </div>
+    <div class='strip-divider' aria-hidden='true'></div>
+    <div class='strip-item' data-fade style='transition-delay:160ms'>
+      <span class='strip-num'>&lt;15<em>%</em></span>
+      <span class='strip-label'>no-show medio</span>
+    </div>
+    <div class='strip-divider' aria-hidden='true'></div>
+    <div class='strip-item' data-fade style='transition-delay:240ms'>
+      <span class='strip-num'>4</span>
+      <span class='strip-label'>plazas en España</span>
     </div>
   </div>
 </section>
 
-<section class='about' id='problema' data-od-id='about'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>II.</span>
-    <span class='meta-grp'>
-      <span>Problema real / Paciente potencial</span>
-      <span class='dot-mark'>•</span>
-      <span>Del formulario a la camilla</span>
-    </span>
-  </div>
-    <div class='about-grid'>
-      <div class='about-copy' data-reveal>
-        <span class='label'>El problema real <span class='ix'>· Nº 02</span></span>
-        <h2 class='display'>Entre el formulario y la <em>camilla</em> hay un agujero negro<span class='dot'>.</span></h2>
-        <p class='lead'>El interés puede llegar de cualquier canal. Lo que suele fallar es todo lo que ocurre entre el primer contacto y la cita: respuesta lenta, dudas sin resolver, agenda desconectada y pacientes que se enfrían antes de llegar a consulta.</p>
-        <a class='btn btn-ghost' href='#sistema'>
-          Ver el sistema
-          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-        </a>
-        <div class='footer-row'>
-          <span class='mark'>A</span>
-          <span>Atraccion · Calificación · Asistencia · Cierre</span>
-          <span class='stamp'>
-            <span>Operación clínica</span>
-            <span style='color: var(--ink);'>Aurea Systems</span>
-          </span>
-        </div>
-      </div>
-      <div class='about-art' data-reveal='right'>
-        <img src='./assets/visual-about.svg' alt='Placa editorial sobre la pérdida de leads entre formulario, latencia y primera visita.' />
-        <div class='about-side-note'>
-          <b></b>
-          El lead no se pierde por falta de interés.<br/>Se pierde por fricción,<br/>latencia y seguimiento<br/>sin protocolo.
-        </div>
-        <div class='about-caption'>
-          <b>Primera respuesta, asistencia y cierre en un mismo flujo.</b>
-          (Aurea Systems, MMXXVI)
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='capabilities' id='sistema' data-od-id='capabilities'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>III.</span>
-    <span class='meta-grp'>
-      <span>Aurea Systems / Sistema conectado</span>
-      <span class='dot-mark'>•</span>
-      <span>4 fases / 1 agenda</span>
-    </span>
-  </div>
-    <div class='capabilities-grid'>
-      <div class='capabilities-art' data-reveal='left'>
-        <span class='corner tl'></span>
-        <span class='corner br'></span>
-        <img src='./assets/visual-capabilities.svg' alt='Sistema Aurea Systems dividido en cuatro fases conectadas: atracción, calificación, asistencia y cierre.' />
-        <div class='ribbon'><b>AUREA SYSTEMS</b> &nbsp;·&nbsp; SISTEMA &nbsp;·&nbsp; 04 FASES</div>
-      </div>
-      <div class='capabilities-copy' data-reveal>
-        <span class='label'>Aurea Systems <span class='ix'>· Nº 03</span></span>
-        <h2 class='display'>Cuatro fases conectadas para no dejar escapar <em>oportunidades</em><span class='dot'>.</span></h2>
-        <p class='lead'>Cada fase empuja a la siguiente para convertir interés en primeras valoraciones reales: contenido, calificación, asistencia y cierre asistido en consulta.</p>
-        <div class='cards'>
-            <div class='card' data-reveal>
-    <div class='num'>01<span class='tag'>Contenido</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <path d='M4 8h16M4 16h16'/><circle cx='8' cy='12' r='3'/>
-    </svg>
-    <h3>Atraccion<br/>inteligente</h3>
-    <p>8-12 videos mensuales grabados en tu clínica, con tu equipo médico, guion validado y piezas optimizadas para Meta Ads.</p>
-    <a class='arrow-mark' href='#sistema' aria-label='Learn more about Contenido'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+<!-- About — limpio, sin esquinas decorativas -->
+<section class='about-v2' id='problema' data-od-id='about'>
+  <div class='container about-v2-inner'>
+    <h2 class='v2-heading about-v2-heading' data-fade>sobre aurea</h2>
+    <p class='about-v2-text' data-char-reveal>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
+    <a class='contact-v2-btn' href='#reservar' data-fade>
+      Reservar diagnóstico
+      <span class='arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke-linecap='round' stroke-linejoin='round'/></svg></span>
     </a>
   </div>
-            <div class='card' data-reveal>
-    <div class='num'>02<span class='tag'>Dialogo</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <circle cx='12' cy='12' r='7'/><path d='M8 12h8M12 8v8'/>
-    </svg>
-    <h3>Calificación<br/>24/7</h3>
-    <p>WhatsApp 24/7 que responde en menos de un minuto, detecta intención, resuelve dudas y organiza citas en calendario.</p>
-    <a class='arrow-mark' href='#dialogo' aria-label='Learn more about WhatsApp'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-            <div class='card' data-reveal>
-    <div class='num'>03<span class='tag'>Agenda</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <rect x='5' y='5' width='14' height='14'/><path d='M8 3v4M16 3v4M8 12h8'/>
-    </svg>
-    <h3>Protocolo<br/>anti no-show</h3>
-    <p>Confirmación inmediata, recordatorio 48h, preparación 2h antes y llamada de confirmación para proteger cada hueco.</p>
-    <a class='arrow-mark' href='#garantia' aria-label='Learn more about Agenda'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-            <div class='card' data-reveal>
-    <div class='num'>04<span class='tag'>Cierre</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <path d='M5 17l4-4 3 3 7-8'/><path d='M5 21h14'/>
-    </svg>
-    <h3>Cierre asistido<br/>en consulta</h3>
-    <p>Tras cada primera visita, el sistema resume objeciones, puntos fuertes y próximos pasos para que cada visita mejore la siguiente.</p>
-    <a class='arrow-mark' href='#resultados' aria-label='Learn more about Cierre'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<section class='labs' id='modulos' data-od-id='labs'>
+<!-- Services — fondo blanco, lista de 5 (PatientFlow) -->
+<section class='services-v2' id='sistema' data-od-id='services'>
   <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>IV.</span>
-    <span class='meta-grp'>
-      <span>Módulos operativos / Captación</span>
-      <span class='dot-mark'>•</span>
-      <span>5 frentes activos</span>
-    </span>
-  </div>
-    <div class='labs-head'>
-      <div data-reveal>
-        <span class='label'>Sistema operativo <span class='ix'>· Nº 04</span></span>
-        <h2 class='display' style='margin-top:30px;'>Cinco módulos para convertir demanda dispersa en <em>agenda real</em><span class='dot'>.</span></h2>
-      </div>
-      <div class='pills' data-reveal='right'>
-          <button class='pill active'>Todo<span class='count'>05</span></button>
-          <button class='pill'>Ads<span class='count'>01</span></button>
-          <button class='pill'>WhatsApp<span class='count'>02</span></button>
-          <button class='pill'>Agenda<span class='count'>03</span></button>
-          <button class='pill'>Cierre<span class='count'>04</span></button>
-      </div>
-    </div>
-    <div class='labs-meta'>
-      <span class='ring'>05</span>
-      <div class='meta-text'>
-        <b>Frentes activos</b>
-        captación<br/>calificación<br/>seguimiento
-      </div>
-    </div>
-    <div class='labs-grid'>
-        <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>Ads</span><img src='./assets/visual-lab-1.svg' alt='Placa editorial de anuncios Meta Ads con piezas UGC reales.' /></div>
-    <div class='num-row'><span>Nº 01</span><span>2026</span></div>
-    <h4>Meta Ads con UGC real</h4>
-    <p>No se trabaja con stock ni plantillas genéricas. El material nace en la clínica y se optimiza para Reels y Stories.</p>
-    <a class='arrow-mark' href='#creative' aria-label='Open Meta Ads con UGC real'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
-  </div>
-        <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>Dialogo</span><img src='./assets/visual-lab-2.svg' alt='Placa editorial de conversación WhatsApp para calificar pacientes.' /></div>
-    <div class='num-row'><span>Nº 02</span><span>24/7</span></div>
-    <h4>WhatsApp que no descansa</h4>
-    <p>Responde como parte del equipo, califica interés, puede atender varios idiomas y transfiere a humano cuando toca.</p>
-    <a class='arrow-mark' href='#dialogo' aria-label='Open WhatsApp que no descansa'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
-  </div>
-        <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>Agenda</span><img src='./assets/visual-lab-3.svg' alt='Placa editorial de calendario conectado y primera valoración confirmada.' /></div>
-    <div class='num-row'><span>Nº 03</span><span>&lt;60s</span></div>
-    <h4>Cita sin fricción</h4>
-    <p>El sistema empuja a reserva, confirma disponibilidad y reduce la distancia entre intención y primera valoración.</p>
-    <a class='arrow-mark' href='#sistema' aria-label='Open Cita sin fricción'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
-  </div>
-        <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>No-show</span><img src='./assets/visual-lab-4.svg' alt='Placa editorial de recordatorios y protocolo anti no-show.' /></div>
-    <div class='num-row'><span>Nº 04</span><span>&lt;15%</span></div>
-    <h4>Asistencia protegida</h4>
-    <p>Cuatro puntos de contacto antes de la cita y reasignación de huecos cancelados para no perder capacidad.</p>
-    <a class='arrow-mark' href='#garantia' aria-label='Open Asistencia protegida'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
-  </div>
-        <div class='lab' data-reveal>
-    <div class='lab-img'><span class='badge'>Datos</span><img src='./assets/visual-lab-5.svg' alt='Placa editorial de informe mensual, objeciones y aprendizaje operativo.' /></div>
-    <div class='num-row'><span>Nº 05</span><span>Mensual</span></div>
-    <h4>Aprendizaje operativo</h4>
-    <p>Informes de conversación, objeciones y cierre para que recepción, marketing y consulta trabajen con la misma verdad.</p>
-    <a class='arrow-mark' href='#resultados' aria-label='Open Aprendizaje operativo'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></a>
-  </div>
-    </div>
-    <div class='labs-foot'>
-      <div class='progress'>
-        <span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span></span><span></span><span></span>
-      </div>
-      <span class='meta'>05 / 05 MÓDULOS &nbsp;·&nbsp; <a class='library-link' href='#reservar' style='color:var(--coral);'>REVISAR ENCAJE →</a></span>
-    </div>
-  </div>
-</section>
-
-<section class='method' id='metodo' data-od-id='method'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>V.</span>
-    <span class='meta-grp'>
-      <span>Metodo / Implantacion</span>
-      <span class='dot-mark'>•</span>
-      <span>Mensual, medible, asistido</span>
-    </span>
-  </div>
-    <div class='method-head'>
-      <div data-reveal>
-        <span class='label'>Metodo <span class='ix'>· Nº 05</span></span>
-        <h2 class='display' style='margin-top:30px;'>De la campaña a la <em>primera valoración</em> sin zonas grises<span class='dot'>.</span></h2>
-      </div>
-      <div class='right' data-reveal='right'>
-        <span class='plus'>+</span>
-        <p>La implantación se mide por pacientes cualificados y primeras visitas asistidas, no por clics ni formularios acumulados.</p>
-      </div>
-    </div>
-    <div class='method-grid'>
-        <div class='method-step' data-reveal>
-    <div class='num'>01</div>
-    <h4>Grabar <span class='arrow-r'>→</span></h4>
-    <p>Cada mes se producen 8-12 videos con el equipo médico de la clínica, guionados para generar confianza y demanda real.</p>
-    <div class='img'><img src='./assets/visual-method-1.svg' alt='Placa editorial del día de grabación en clínica y guion médico.' /></div>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>02</div>
-    <h4>Activar <span class='arrow-r'>→</span></h4>
-    <p>Las piezas se lanzan en Meta Ads y cada contacto entra en el flujo de WhatsApp con respuesta en menos de un minuto.</p>
-    <div class='img'><img src='./assets/visual-method-2.svg' alt='Placa editorial de activación de campañas Meta Ads conectadas a WhatsApp.' /></div>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>03</div>
-    <h4>Asistir <span class='arrow-r'>→</span></h4>
-    <p>La mesa de respuesta resuelve dudas, cualifica, agenda y ejecuta el protocolo anti no-show antes de la valoración.</p>
-    <div class='img'><img src='./assets/visual-method-3.svg' alt='Placa editorial de asistencia, agenda y recordatorios.' /></div>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>04</div>
-    <h4>Mejorar</h4>
-    <p>Los datos de cada conversación y consulta alimentan mejores anuncios, mejores respuestas y mejor cierre.</p>
-    <div class='img'><img src='./assets/visual-method-4.svg' alt='Placa editorial de mejora continua con datos de campaña y CRM.' /></div>
-  </div>
-    </div>
-    <div class='method-foot'>
-      <div class='left'>
-        <span class='ring'></span>
-        <span>El sistema importa mas que el canal.</span>
-      </div>
-      <div class='right'><a class='method-repo-link' href='https://aureasystems.es' target='_blank' rel='noreferrer noopener'><b>aureasystems.es</b></a> &nbsp;·&nbsp; Aurea Systems</div>
-    </div>
-  </div>
-</section>
-
-<span id='dialogo' class='anchor-sentinel'></span>
-<span id='creative' class='anchor-sentinel'></span>
-<section class='tight' id='resultados' data-od-id='work'>
-  <div class='work'>
-    <div class='work-rule'>
-      <span class='roman'>VI.</span>
-      <span style='display:inline-flex;gap:24px;'>
-        <span>Experiencias clave / Conversion</span>
-        <span style='color:var(--coral);'>•</span>
-        <span>Dialogo + contenido real</span>
-      </span>
-    </div>
-    <div class='work-grid'>
-      <div class='work-copy' data-reveal>
-        <span class='label'>Experiencias clave</span>
-        <h2>Dos momentos donde la conversion deja de depender de la <em>suerte</em><span class='dot'>.</span></h2>
-        <a class='work-link' href='#reservar'>Reservar diagnóstico</a>
-      </div>
-      <a class='work-card' data-reveal href='#reservar'>
-    <div class='label-row'>
-      <span class='small-label'>Dialogo Continuo</span>
-      <span class='index'>01 / 02</span>
-    </div>
-    <h3>Ana responde antes de que el interés se enfríe</h3>
-    <p>Un WhatsApp 24/7 que responde, califica, agenda y transfiere a tu equipo cuando el paciente lo pide.</p>
-    <div class='img'><img src='./assets/visual-work-1.svg' alt='Placa editorial de Ana, la atencion dedicada por WhatsApp.' /></div>
-    <div class='meta-row'>
-      <span class='year'>&lt;60s · 24/7</span>
-      <span>WHATSAPP</span>
-    </div>
-  </a>
-      <a class='work-card alt' data-reveal href='#reservar'>
-    <div class='label-row'>
-      <span class='small-label'>Creative Studio</span>
-      <span class='index'>02 / 02</span>
-    </div>
-    <h3>Creativos grabados en tu propia clínica</h3>
-    <p>UGC mensual con equipo médico real, subtitulado en español y catalán, listo para rotacion de campañas.</p>
-    <div class='img'><img src='./assets/visual-work-2.svg' alt='Placa editorial de Creative Studio con contact sheet de piezas UGC.' /></div>
-    <div class='meta-row'>
-      <span class='year'>8-12 PIEZAS / MES</span>
-      <span>UGC</span>
-    </div>
-  </a>
-    </div>
-    <div class='work-arrows'>
-      <button class='nav-btn' type='button' aria-label='Experiencia anterior'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.6'><path d='M14 6l-6 6 6 6'/></svg></button>
-      <button class='nav-btn active' type='button' aria-label='Experiencia siguiente'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.6'><path d='M10 6l6 6-6 6'/></svg></button>
-    </div>
-  </div>
-</section>
-
-<section class='testimonial' id='testimonios' data-od-id='testimonial'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>VII.</span>
-    <span class='meta-grp'>
-      <span>Clínicas / Prueba social</span>
-      <span class='dot-mark'>•</span>
-      <span>Resultados que hablan solos</span>
-    </span>
-  </div>
-    <div class='testimonial-grid'>
-      <div class='testimonial-copy' data-reveal>
-        <span class='label'>Lo que dicen las clínicas <span class='ix'>· Nº 06</span></span>
-        <h2 style='margin-top:30px;'>&ldquo;La atencion por WhatsApp es indistinguible de tener a alguien dedicado en plantilla. Mis pacientes me preguntan quien es la chica que les habla con tanta <em>atencion</em>.&rdquo;</h2>
-        <div class='author'>
-          <span class='avatar'>A</span>
-          <p>Dr. Alejandro Soler<br/><span>Director médico · Clínica Soler Facial, Valencia</span></p>
+    <h2 class='services-v2-heading' data-fade>servicios</h2>
+    <ol class='services-v2-list'>
+      <li class='service-item' data-fade>
+        <span class='service-num'>0<em>1</em></span>
+        <div class='service-content'>
+          <h3 class='service-name'>Captación</h3>
+          <p class='service-desc'>Anuncios y piezas grabadas en clínica con tu equipo médico real, optimizadas para atraer pacientes con intención real de valoración.</p>
         </div>
-        <div class='divider'></div>
-        <p class='partners-text'>Prueba social organizada por ciudad, especialidad y problema operativo resuelto.</p>
-        <div class='partners'>
-        <a class='partner' data-reveal href='#testimonios'>
-    <div class='glyph'>
-      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
-        <path d='M5 24L20 6L35 24M12 18h16'/>
-      </svg>
-    </div>
-    <span>Valencia</span>
-    <small>WhatsApp 24/7</small>
-  </a>
-        <a class='partner' data-reveal href='#testimonios'>
-    <div class='glyph'>
-      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
-        <circle cx='20' cy='15' r='10'/><path d='M10 15h20'/>
-      </svg>
-    </div>
-    <span>Barcelona</span>
-    <small>Reactivacion</small>
-  </a>
-        <a class='partner' data-reveal href='#testimonios'>
-    <div class='glyph'>
-      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
-        <rect x='8' y='5' width='24' height='20'/><path d='M14 11h12M14 17h8'/>
-      </svg>
-    </div>
-    <span>Madrid</span>
-    <small>Recepcion</small>
-  </a>
-        <a class='partner' data-reveal href='#testimonios'>
-    <div class='glyph'>
-      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
-        <path d='M8 24l12-18 12 18M14 18h12'/>
-      </svg>
-    </div>
-    <span>Girona</span>
-    <small>No-show</small>
-  </a>
-        <a class='partner' data-reveal href='#garantia'>
-    <div class='glyph'>
-      <svg viewBox='0 0 80 30' fill='none' stroke='currentColor' stroke-width='2'>
-        <path d='M5 8h30M5 15h22M5 22h14'/>
-      </svg>
-    </div>
-    <span>España</span>
-    <small>Exclusividad</small>
-  </a>
+      </li>
+      <li class='service-item' data-fade style='transition-delay:80ms'>
+        <span class='service-num'>0<em>2</em></span>
+        <div class='service-content'>
+          <h3 class='service-name'>Comunicación</h3>
+          <p class='service-desc'>Cada lead recibe una respuesta rápida, clara y humana por WhatsApp, sin depender de que la recepción esté libre.</p>
         </div>
-        <a class='read-more' href='#garantia'>Ver garantia</a>
-      </div>
-      <div class='testimonial-art' data-reveal='right'>
-        <img src='./assets/visual-testimonial.svg' alt='Placa editorial de prueba social organizada por ciudades y problemas clínicos resueltos.' />
-      </div>
+      </li>
+      <li class='service-item' data-fade style='transition-delay:160ms'>
+        <span class='service-num'>0<em>3</em></span>
+        <div class='service-content'>
+          <h3 class='service-name'>Cualificación</h3>
+          <p class='service-desc'>Detectamos necesidad, zona, urgencia y franja horaria antes de empujar la reserva en el calendario conectado.</p>
+        </div>
+      </li>
+      <li class='service-item' data-fade style='transition-delay:240ms'>
+        <span class='service-num'>0<em>4</em></span>
+        <div class='service-content'>
+          <h3 class='service-name'>Asistencia</h3>
+          <p class='service-desc'>Recordatorios, reactivaciones y mensajes previos reducen olvidos, dudas y cancelaciones de última hora.</p>
+        </div>
+      </li>
+      <li class='service-item' data-fade style='transition-delay:320ms'>
+        <span class='service-num'>0<em>5</em></span>
+        <div class='service-content'>
+          <h3 class='service-name'>Cierre</h3>
+          <p class='service-desc'>Llevamos a la persona correcta a una primera consulta preparada. No cerramos tratamientos por chat: protegemos la primera valoración.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Projects — sticky-stacking + scale-down -->
+<section class='projects-v2' id='resultados' data-od-id='projects'>
+  <div class='container'>
+    <h2 class='v2-heading projects-v2-heading' data-fade>casos</h2>
+    <div class='projects-stack' id='projects-stack'>
+
+      <article class='project-card' data-card-idx='0'>
+        <div class='project-header'>
+          <span class='project-num'>0<em style='color:var(--coral);'>1</em></span>
+          <div class='project-meta'>
+            <span class='project-cat'>Clínica facial · Madrid</span>
+            <span class='project-name'>Caso <em>Nº 01</em> · primera respuesta &lt;60s</span>
+          </div>
+          <a class='live-btn' href='#reservar'>Ver caso →</a>
+        </div>
+        <div class='project-grid'>
+          <div class='project-col'>
+            <div class='project-tile small placeholder-1' aria-label='Composición editorial Nº 01.A'></div>
+            <div class='project-tile big placeholder-2' aria-label='Composición editorial Nº 01.B'></div>
+          </div>
+          <div class='project-col'>
+            <div class='project-tile tall placeholder-3' aria-label='Composición editorial Nº 01.C'></div>
+          </div>
+        </div>
+      </article>
+
+      <article class='project-card' data-card-idx='1'>
+        <div class='project-header'>
+          <span class='project-num'>0<em style='color:var(--coral);'>2</em></span>
+          <div class='project-meta'>
+            <span class='project-cat'>Clínica multisede · Cataluña</span>
+            <span class='project-name'>Caso <em>Nº 02</em> · 14 visitas en 30 días</span>
+          </div>
+          <a class='live-btn' href='#reservar'>Ver caso →</a>
+        </div>
+        <div class='project-grid'>
+          <div class='project-col'>
+            <div class='project-tile small placeholder-4' aria-label='Composición editorial Nº 02.A'></div>
+            <div class='project-tile big placeholder-5' aria-label='Composición editorial Nº 02.B'></div>
+          </div>
+          <div class='project-col'>
+            <div class='project-tile tall placeholder-6' aria-label='Composición editorial Nº 02.C'></div>
+          </div>
+        </div>
+      </article>
+
+      <article class='project-card' data-card-idx='2'>
+        <div class='project-header'>
+          <span class='project-num'>0<em style='color:var(--coral);'>3</em></span>
+          <div class='project-meta'>
+            <span class='project-cat'>Clínica boutique · Sevilla</span>
+            <span class='project-name'>Caso <em>Nº 03</em> · no-show por debajo del 12%</span>
+          </div>
+          <a class='live-btn' href='#reservar'>Ver caso →</a>
+        </div>
+        <div class='project-grid'>
+          <div class='project-col'>
+            <div class='project-tile small placeholder-7' aria-label='Composición editorial Nº 03.A'></div>
+            <div class='project-tile big placeholder-8' aria-label='Composición editorial Nº 03.B'></div>
+          </div>
+          <div class='project-col'>
+            <div class='project-tile tall placeholder-9' aria-label='Composición editorial Nº 03.C'></div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -3404,6 +3624,140 @@ body.has-cinema-hero .side-rail { display: none; }
       });
     }, { threshold: 0.1 });
     io.observe(video);
+  })();
+
+  /* ==========================================================
+   *  V2 — FadeIn (IntersectionObserver)
+   * ========================================================== */
+  (function () {
+    var elements = document.querySelectorAll('[data-fade]:not([data-revealed])');
+    if (!elements.length || !('IntersectionObserver' in window)) {
+      for (var i = 0; i < elements.length; i++) elements[i].classList.add('is-revealed');
+      return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (var j = 0; j < elements.length; j++) elements[j].classList.add('is-revealed');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        entry.target.dataset.revealed = 'true';
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+    elements.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ==========================================================
+   *  V2 — Character-by-character scroll reveal (About paragraph)
+   * ========================================================== */
+  (function () {
+    var targets = document.querySelectorAll('[data-char-reveal]');
+    if (!targets.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      targets.forEach(function (t) { t.querySelectorAll('.char').forEach(function (c) { c.classList.add('is-on'); }); });
+      return;
+    }
+
+    targets.forEach(function (target) {
+      var text = target.textContent;
+      target.textContent = '';
+      var frag = document.createDocumentFragment();
+      var chars = [];
+      for (var i = 0; i < text.length; i++) {
+        var ch = text[i];
+        var span = document.createElement('span');
+        span.className = 'char' + (ch === ' ' ? ' space' : '');
+        span.textContent = ch;
+        frag.appendChild(span);
+        chars.push(span);
+      }
+      target.appendChild(frag);
+      target._chars = chars;
+    });
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      targets.forEach(function (target) {
+        var rect = target.getBoundingClientRect();
+        var rangeStart = vh * 0.8;
+        var rangeEnd = vh * 0.2;
+        var startY = rect.top - rangeStart;
+        var endY = rect.bottom - rangeEnd;
+        var span = endY - startY;
+        var p = span > 0 ? Math.min(1, Math.max(0, -startY / span)) : 0;
+        var n = target._chars.length;
+        var lit = Math.round(p * n);
+        for (var i = 0; i < n; i++) {
+          if (i < lit) target._chars[i].classList.add('is-on');
+          else target._chars[i].classList.remove('is-on');
+        }
+      });
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+
+  /* ==========================================================
+   *  V2 — Sticky-stacking project cards with scale-down
+   *  Each card scales toward `1 - (totalCards - 1 - index) * 0.03`
+   *  as the next card is about to take over.
+   * ========================================================== */
+  (function () {
+    var stack = document.getElementById('projects-stack');
+    if (!stack) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cards = Array.prototype.slice.call(stack.querySelectorAll('.project-card'));
+    if (!cards.length) return;
+    var total = cards.length;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      var stackRect = stack.getBoundingClientRect();
+      cards.forEach(function (card, index) {
+        var cardRect = card.getBoundingClientRect();
+        var stickyTop = parseFloat(getComputedStyle(card).top) || 100;
+        var nextCard = cards[index + 1];
+        var targetScale = 1 - (total - 1 - index) * 0.03;
+
+        if (!nextCard) {
+          card.style.transform = 'scale(1)';
+          return;
+        }
+
+        var nextRect = nextCard.getBoundingClientRect();
+        // Scale interpolates from 1 -> targetScale as the next card arrives.
+        // Trigger window: from when next card top hits 1.6× viewport, to when next card top hits stickyTop.
+        var triggerStart = vh * 1.4;
+        var triggerEnd = stickyTop;
+        var t = (triggerStart - nextRect.top) / (triggerStart - triggerEnd);
+        t = Math.max(0, Math.min(1, t));
+        var scale = 1 - (1 - targetScale) * t;
+        card.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      });
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   })();
 </script>
 
