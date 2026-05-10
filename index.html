@@ -38,8 +38,11 @@
   --ink-soft: #1a1a1a;
   --ink-mute: #4a4a4a;
   --ink-faint: #888888;
-  --coral: #2596be;
-  --coral-soft: #6cb6d4;
+  --coral: #fef1e9;
+  --coral-soft: rgba(254, 241, 233, 0.65);
+  /* fallback usado en emphasis y bordes cuando el coral coincide con el fondo cream */
+  --accent-on-light: #010101;
+  --accent-line-on-light: rgba(1, 1, 1, 0.32);
   --mustard: #e9b94a;
   --olive: #6e7448;
   --bone: #f7f1de;
@@ -2687,12 +2690,25 @@ body.has-cinema-hero .side-rail { display: none; }
   text-transform: lowercase;
   letter-spacing: -0.02em;
   line-height: 0.92;
-  background: linear-gradient(180deg, #010101 0%, #4a5754 55%, #2596be 100%);
+  background: linear-gradient(180deg, #010101 0%, #2a2a2a 55%, #6a6a6a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   margin: 0;
+}
+
+/* Override de emphasis en secciones con fondo claro (cream/blanco):
+   el cream coincidiría con el fondo, así que usamos ink + italic
+   Playfair para mantener jerarquía editorial. */
+.strip-v2 em,
+.about-v2 em,
+.services-parallax-intro em,
+.services-v2 em,
+.projects-v2 em,
+.cta em,
+footer em {
+  color: var(--accent-on-light);
 }
 
 /* fade-in driven by IntersectionObserver (vanilla) */
@@ -3038,6 +3054,207 @@ body.has-cinema-hero .side-rail { display: none; }
 @media (max-width: 640px) {
   .service-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
   .service-num { font-size: 64px; }
+}
+
+/* ----------- Cases 3D · animated cards-stack ----------- */
+.cases-3d {
+  background: var(--paper);
+  border-top-left-radius: clamp(40px, 5vw, 60px);
+  border-top-right-radius: clamp(40px, 5vw, 60px);
+  margin-top: clamp(-56px, -5vw, -40px);
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(80px, 10vw, 140px);
+  padding-bottom: 0;
+}
+.cases-3d-intro {
+  text-align: center;
+  margin: 0 auto clamp(40px, 6vw, 80px);
+}
+.cases-3d-heading {
+  font-size: clamp(72px, 14vw, 192px);
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+}
+.cases-3d-lead {
+  max-width: 64ch;
+  margin: 0 auto;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: rgba(1, 1, 1, 0.62);
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.55;
+}
+
+.cases-scroll {
+  position: relative;
+  height: 360vh;          /* 4 cards × ~90vh + buffer */
+  perspective: 1200px;
+  width: 100%;
+}
+.cases-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.cases-stage {
+  position: relative;
+  width: min(420px, 86vw);
+  height: min(560px, 78vh);
+  transform-style: preserve-3d;
+}
+.case-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--ink);
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  transform-origin: center;
+  box-shadow:
+    0 30px 60px -28px rgba(1, 1, 1, 0.35),
+    inset 0 1px 0 rgba(254, 241, 233, 0.08);
+}
+.case-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.92);
+}
+.case-card__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(1, 1, 1, 0.18) 0%, rgba(1, 1, 1, 0.55) 50%, rgba(1, 1, 1, 0.88) 100%);
+}
+.case-card__body {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 3vw, 32px);
+  color: var(--paper);
+}
+.case-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.case-card__num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+.case-card__cat {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(254, 241, 233, 0.72);
+  text-align: right;
+}
+.case-card__core {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.case-card__name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  margin: 0;
+  text-wrap: balance;
+}
+.case-card__name em { color: var(--paper); font-style: italic; }
+.case-card__quote {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.5;
+  color: rgba(254, 241, 233, 0.78);
+  margin: 0;
+  padding-left: 14px;
+  border-left: 1.5px solid rgba(254, 241, 233, 0.55);
+  font-style: italic;
+}
+.case-card__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(254, 241, 233, 0.18);
+}
+.case-card__metric { display: flex; flex-direction: column; gap: 4px; }
+.case-card__metric .metric-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(36px, 4.8vw, 56px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+.case-card__metric .metric-num em { color: var(--paper); font-style: italic; }
+.case-card__metric .metric-lbl {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(254, 241, 233, 0.65);
+}
+.case-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1.5px solid rgba(254, 241, 233, 0.62);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--paper);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.case-card__btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+@media (max-width: 768px) {
+  .cases-scroll { height: 380vh; }
+  .cases-stage { width: 88vw; height: 70vh; min-height: 480px; }
+  .case-card__name { font-size: clamp(22px, 6vw, 28px); }
+  .case-card__quote { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cases-scroll { height: auto; padding: 40px 24px; }
+  .cases-sticky { position: static; height: auto; }
+  .cases-stage { width: 100%; max-width: 480px; height: auto; }
+  .case-card { position: relative; inset: auto; min-height: 480px; margin-bottom: 24px; transform: none !important; filter: none !important; }
 }
 
 /* ----------- Projects-v2 — sticky-stacking + scale-down ----------- */
@@ -3595,136 +3812,106 @@ body.has-cinema-hero .side-rail { display: none; }
 </section>
 
 <!-- Projects — 4 casos: clínicas que pasaron de depender de referidos a un canal predecible -->
-<section class='projects-v2' id='resultados' data-od-id='projects'>
-  <div class='container'>
-    <h2 class='v2-heading projects-v2-heading' data-fade>casos</h2>
-    <p class='projects-v2-lead' data-fade>Cuatro clínicas que dependían de referidos y boca a boca. Hoy tienen un canal de captación medible, predecible y con margen para escalar.</p>
-    <div class='projects-stack' id='projects-stack'>
+<!-- Casos · 3D animated cards-stack (perspective + scroll-driven translateZ/Y/rotate) -->
+<section class='cases-3d' id='resultados' data-od-id='cases'>
+  <div class='container cases-3d-intro'>
+    <h2 class='v2-heading cases-3d-heading' data-fade>casos</h2>
+    <p class='cases-3d-lead' data-fade>Cuatro clínicas que dependían de referidos y boca a boca. Hoy tienen un canal de captación medible, predecible y con margen para escalar.</p>
+  </div>
 
-      <article class='project-card' data-card-idx='0'>
-        <div class='project-header'>
-          <span class='project-num'>0<em>1</em></span>
-          <div class='project-meta'>
-            <span class='project-cat'>Marbella · Medicina estética facial</span>
-            <span class='project-name'>De boca a boca a un canal <em>predecible</em></span>
-          </div>
-          <a class='live-btn' href='#reservar'>Ver caso →</a>
-        </div>
-        <div class='project-body'>
-          <div class='project-story'>
-            <p class='project-quote'>&ldquo;Vivíamos del boca a boca. Cuando llegaba el verano, la agenda se vaciaba y teníamos que esperar a que algún paciente nos recomendara.&rdquo;</p>
-            <p class='project-result'>En 60 días con Aurea Systems pasaron de depender al 100% de referidos a tener un canal medible: piezas grabadas en clínica, WhatsApp 24/7 y un protocolo anti no-show que protege la primera valoración.</p>
-            <div class='project-metrics'>
-              <div class='metric'>
+  <div class='cases-scroll' id='cases-scroll'>
+    <div class='cases-sticky'>
+      <div class='cases-stage' id='cases-stage'>
+
+        <article class='case-card' data-case-idx='0' aria-labelledby='case-1-title'>
+          <div class='case-card__bg' style="background-image:url('https://images.unsplash.com/photo-1612538498456-e861df91d4d0?q=80&amp;w=1600&amp;auto=format&amp;fit=crop');"></div>
+          <div class='case-card__veil'></div>
+          <div class='case-card__body'>
+            <header class='case-card__head'>
+              <span class='case-card__num'>01</span>
+              <span class='case-card__cat'>Marbella · Med. estética facial</span>
+            </header>
+            <div class='case-card__core'>
+              <h3 class='case-card__name' id='case-1-title'>De boca a boca a un canal <em>predecible</em>.</h3>
+              <blockquote class='case-card__quote'>&ldquo;Vivíamos del boca a boca. En verano la agenda se vaciaba y teníamos que esperar a que algún paciente nos recomendara.&rdquo;</blockquote>
+            </div>
+            <footer class='case-card__foot'>
+              <div class='case-card__metric'>
                 <span class='metric-num'>+22<em>%</em></span>
                 <span class='metric-lbl'>facturación · 60 días</span>
               </div>
-              <div class='metric'>
-                <span class='metric-num'>18</span>
-                <span class='metric-lbl'>visitas asistidas / mes</span>
-              </div>
-            </div>
+              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+            </footer>
           </div>
-          <div class='project-images'>
-            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1612538498456-e861df91d4d0?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de tratamiento estético facial'></div>
-            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Interior de clínica de medicina estética'></div>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class='project-card' data-card-idx='1'>
-        <div class='project-header'>
-          <span class='project-num'>0<em>2</em></span>
-          <div class='project-meta'>
-            <span class='project-cat'>Barcelona · Multisede</span>
-            <span class='project-name'>De agenda local a <em>agenda escalable</em></span>
-          </div>
-          <a class='live-btn' href='#reservar'>Ver caso →</a>
-        </div>
-        <div class='project-body'>
-          <div class='project-story'>
-            <p class='project-quote'>&ldquo;Una sede llena, otra vacía. Sin un canal nuevo, abrir más sedes era impensable: solo nos llegaban los pacientes que recomendaban los pacientes.&rdquo;</p>
-            <p class='project-result'>Activamos Meta Ads con UGC real grabado en cada sede y conectamos las dos agendas a un único flujo de WhatsApp. La segunda sede dejó de depender del flujo de la primera y arrancó con sus propios pacientes desde la semana 3.</p>
-            <div class='project-metrics'>
-              <div class='metric'>
+        <article class='case-card' data-case-idx='1' aria-labelledby='case-2-title'>
+          <div class='case-card__bg' style="background-image:url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&amp;w=1600&amp;auto=format&amp;fit=crop');"></div>
+          <div class='case-card__veil'></div>
+          <div class='case-card__body'>
+            <header class='case-card__head'>
+              <span class='case-card__num'>02</span>
+              <span class='case-card__cat'>Barcelona · Multisede</span>
+            </header>
+            <div class='case-card__core'>
+              <h3 class='case-card__name' id='case-2-title'>De agenda local a <em>agenda escalable</em>.</h3>
+              <blockquote class='case-card__quote'>&ldquo;Una sede llena, otra vacía. Sin un canal nuevo, abrir más sedes era impensable.&rdquo;</blockquote>
+            </div>
+            <footer class='case-card__foot'>
+              <div class='case-card__metric'>
                 <span class='metric-num'>14</span>
-                <span class='metric-lbl'>visitas asistidas · mes 1</span>
+                <span class='metric-lbl'>visitas · mes 1</span>
               </div>
-              <div class='metric'>
-                <span class='metric-num'>2<em>×</em></span>
-                <span class='metric-lbl'>sedes activas en pipeline</span>
-              </div>
-            </div>
+              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+            </footer>
           </div>
-          <div class='project-images'>
-            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Espacio interior de clínica con luz natural'></div>
-            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Composición editorial de espacio profesional'></div>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class='project-card' data-card-idx='2'>
-        <div class='project-header'>
-          <span class='project-num'>0<em>3</em></span>
-          <div class='project-meta'>
-            <span class='project-cat'>Sevilla · Boutique facial</span>
-            <span class='project-name'>De Instagram orgánico a <em>leads cualificados</em></span>
-          </div>
-          <a class='live-btn' href='#reservar'>Ver caso →</a>
-        </div>
-        <div class='project-body'>
-          <div class='project-story'>
-            <p class='project-quote'>&ldquo;Toda la captación dependía de que recepción contestara mensajes a tiempo. Si entraba alguien al salir de jornada, lo perdíamos. Y de Instagram orgánico no sale una agenda llena.&rdquo;</p>
-            <p class='project-result'>Mismo presupuesto en ads, mejor pieza creativa y un sistema de respuesta 24/7 que filtra antes de empujar al calendario. Lo que entraba pasó a estar mejor cualificado y la recepción se centró en cerrar visitas, no en perseguirlas.</p>
-            <div class='project-metrics'>
-              <div class='metric'>
+        <article class='case-card' data-case-idx='2' aria-labelledby='case-3-title'>
+          <div class='case-card__bg' style="background-image:url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&amp;w=1600&amp;auto=format&amp;fit=crop');"></div>
+          <div class='case-card__veil'></div>
+          <div class='case-card__body'>
+            <header class='case-card__head'>
+              <span class='case-card__num'>03</span>
+              <span class='case-card__cat'>Sevilla · Boutique facial</span>
+            </header>
+            <div class='case-card__core'>
+              <h3 class='case-card__name' id='case-3-title'>De Instagram orgánico a <em>leads cualificados</em>.</h3>
+              <blockquote class='case-card__quote'>&ldquo;De Instagram orgánico no sale una agenda llena. Recepción no daba abasto y los leads se enfriaban.&rdquo;</blockquote>
+            </div>
+            <footer class='case-card__foot'>
+              <div class='case-card__metric'>
                 <span class='metric-num'>4<em>×</em></span>
                 <span class='metric-lbl'>leads cualificados / mes</span>
               </div>
-              <div class='metric'>
-                <span class='metric-num'>&lt;12<em>%</em></span>
-                <span class='metric-lbl'>no-show medio</span>
-              </div>
-            </div>
+              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+            </footer>
           </div>
-          <div class='project-images'>
-            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle facial editorial con luz suave'></div>
-            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de cuidado facial premium'></div>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class='project-card' data-card-idx='3'>
-        <div class='project-header'>
-          <span class='project-num'>0<em>4</em></span>
-          <div class='project-meta'>
-            <span class='project-cat'>Valencia · Centro multidisciplinar</span>
-            <span class='project-name'>Del verano vacío a la agenda <em>protegida</em></span>
-          </div>
-          <a class='live-btn' href='#reservar'>Ver caso →</a>
-        </div>
-        <div class='project-body'>
-          <div class='project-story'>
-            <p class='project-quote'>&ldquo;Julio y agosto la facturación caía un 35%. Vivíamos de pacientes recurrentes y boca a boca, así que en cuanto el ruido bajaba, bajaban las visitas.&rdquo;</p>
-            <p class='project-result'>Activamos un calendario editorial constante y el protocolo anti no-show con cuatro puntos de contacto antes de cada cita. La agenda se sostuvo durante el verano y la captación dejó de depender de los meses fuertes para tirar del año entero.</p>
-            <div class='project-metrics'>
-              <div class='metric'>
+        <article class='case-card' data-case-idx='3' aria-labelledby='case-4-title'>
+          <div class='case-card__bg' style="background-image:url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&amp;w=1600&amp;auto=format&amp;fit=crop');"></div>
+          <div class='case-card__veil'></div>
+          <div class='case-card__body'>
+            <header class='case-card__head'>
+              <span class='case-card__num'>04</span>
+              <span class='case-card__cat'>Valencia · Centro multidisciplinar</span>
+            </header>
+            <div class='case-card__core'>
+              <h3 class='case-card__name' id='case-4-title'>Del verano vacío a la agenda <em>protegida</em>.</h3>
+              <blockquote class='case-card__quote'>&ldquo;Julio y agosto caíamos un 35%. Dependíamos de pacientes recurrentes y boca a boca.&rdquo;</blockquote>
+            </div>
+            <footer class='case-card__foot'>
+              <div class='case-card__metric'>
                 <span class='metric-num'>18<em>+</em></span>
-                <span class='metric-lbl'>visitas / mes en verano</span>
+                <span class='metric-lbl'>visitas / mes verano</span>
               </div>
-              <div class='metric'>
-                <span class='metric-num'>0</span>
-                <span class='metric-lbl'>caída en julio-agosto</span>
-              </div>
-            </div>
+              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+            </footer>
           </div>
-          <div class='project-images'>
-            <div class='project-img main' style="background-image:url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Tratamiento estético en clínica'></div>
-            <div class='project-img alt' style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&amp;w=2000&amp;auto=format&amp;fit=crop');" aria-label='Detalle de aparato médico-estético'></div>
-          </div>
-        </div>
-      </article>
+        </article>
 
+      </div>
     </div>
   </div>
 </section>
@@ -4204,9 +4391,86 @@ body.has-cinema-hero .side-rail { display: none; }
   })();
 
   /* ==========================================================
-   *  V2 — Sticky-stacking project cards with scale-down
-   *  Each card scales toward `1 - (totalCards - 1 - index) * 0.03`
-   *  as the next card is about to take over.
+   *  V2 — Cases 3D animated cards-stack
+   *  Replica vanilla del componente animated-cards-stack:
+   *  · Container con perspective 1200px (h: 360vh) y un sticky 100vh.
+   *  · scrollYProgress mapeado con offset ['start center', 'end end']
+   *    en [0, 1] para la sección.
+   *  · Por cada card (index i, N total):
+   *      range = [i/(N+1), (i+1)/(N+1)]
+   *      rotateRange = [range[0]-1.5, range[1]/1.5]
+   *      incrementRotation = -i + 90  (90, 89, 88, 87)
+   *      y           = lerp(progress in range)        0%   ->  -180%
+   *      rotate      = lerp(progress in rotateRange)  90°  ->  0°
+   *      translateZ  = i * 10px
+   *  · drop-shadow + blur dinámicos sutiles (pequeño paralaje de luz).
+   * ========================================================== */
+  (function () {
+    var scrollEl = document.getElementById('cases-scroll');
+    var stage = document.getElementById('cases-stage');
+    if (!scrollEl || !stage) return;
+    var cards = Array.prototype.slice.call(stage.querySelectorAll('.case-card'));
+    if (!cards.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var N = cards.length;
+    var ticking = false;
+
+    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function update() {
+      ticking = false;
+      var rect = scrollEl.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var height = scrollEl.offsetHeight;
+      /* offset: ['start center', 'end end']
+         start center: rect.top = vh/2   -> progress 0
+         end end:      rect.bottom = vh  -> rect.top = vh - height -> progress 1 */
+      var top0 = vh / 2;
+      var top1 = vh - height;
+      var progress = clamp01((top0 - rect.top) / (top0 - top1));
+
+      cards.forEach(function (card, i) {
+        var start = i / (N + 1);
+        var end = (i + 1) / (N + 1);
+        var rotateStart = start - 1.5;
+        var rotateEnd = end / 1.5;
+        var incrementRotation = -i + 90;
+
+        var yT = clamp01((progress - start) / (end - start));
+        var yPct = lerp(0, -180, yT);
+
+        var rT = clamp01((progress - rotateStart) / (rotateEnd - rotateStart));
+        var rotateDeg = lerp(incrementRotation, 0, rT);
+
+        var z = i * 10;
+        var topPx = i * 10;
+
+        card.style.top = topPx + 'px';
+        card.style.zIndex = String((N - i) * 10);
+        card.style.transform =
+          'translateZ(' + z + 'px) translateY(' + yPct.toFixed(2) + '%) rotate(' + rotateDeg.toFixed(2) + 'deg)';
+
+        // sutil sombra dinámica como en el componente original
+        var dy = lerp(4, 12, rT);
+        var blur = lerp(2, 24, rT);
+        var alpha = lerp(0.15, 0.22, rT);
+        card.style.filter =
+          'drop-shadow(0 ' + dy.toFixed(1) + 'px ' + blur.toFixed(1) + 'px rgba(0,0,0,' + alpha.toFixed(3) + '))';
+      });
+    }
+    function onScroll() {
+      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+
+  /* ==========================================================
+   *  V2 — Sticky-stacking project cards with scale-down (LEGACY)
+   *  Mantenido como no-op; el id 'projects-stack' ya no existe
+   *  pero el bloque queda para no romper si vuelve a usarse.
    * ========================================================== */
   (function () {
     var stack = document.getElementById('projects-stack');
