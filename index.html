@@ -2711,6 +2711,23 @@ footer em {
   color: var(--accent-on-light);
 }
 
+/* =====================================================================
+ *  MagneticButton (vanilla)
+ *  Cada CTA con [data-magnetic="strength"] aplica una traslación
+ *  hacia el cursor mientras éste está sobre el botón.
+ *  El movimiento se conduce por un rAF loop con damping (~spring
+ *  stiffness 400, damping 100 del componente original).
+ * ===================================================================== */
+[data-magnetic] {
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+  will-change: transform;
+}
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  [data-magnetic] {
+    transform: none !important;
+  }
+}
+
 /* fade-in driven by IntersectionObserver (vanilla) */
 [data-fade] {
   opacity: 0;
@@ -3643,8 +3660,8 @@ footer em {
       </ul>
     </nav>
     <div class='nav-side'>
-      <a class='nav-cta ghost' href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a>
-      <a class='nav-cta' href='#reservar'>Reservar llamada</a>
+      <a class='nav-cta ghost' data-magnetic='0.25' href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a>
+      <a class='nav-cta' data-magnetic='0.25' href='#reservar'>Reservar llamada</a>
       <span class='status-dot' aria-hidden='true'></span>
     </div>
   </div>
@@ -3667,11 +3684,11 @@ footer em {
         <h1 data-reveal>Llena tu agenda con <em>pacientes cualificados</em><span class='dot'>.</span></h1>
         <p class='lead' data-reveal>El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.</p>
         <div class='hero-actions' data-reveal>
-          <a class='btn btn-primary' href='#reservar'>
+          <a class='btn btn-primary' data-magnetic='0.4' href='#reservar'>
             Reservar llamada
             <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
           </a>
-          <a class='btn btn-ghost' href='#sistema'>
+          <a class='btn btn-ghost' data-magnetic='0.4' href='#sistema'>
             Descubrir el sistema
             <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
           </a>
@@ -3736,7 +3753,7 @@ footer em {
   <div class='container about-v2-inner'>
     <h2 class='v2-heading about-v2-heading' data-fade>sobre aurea</h2>
     <p class='about-v2-text' data-char-reveal>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
-    <a class='contact-v2-btn' href='#reservar' data-fade>
+    <a class='contact-v2-btn' data-magnetic='0.4' href='#reservar' data-fade>
       Reservar diagnóstico
       <span class='arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke-linecap='round' stroke-linejoin='round'/></svg></span>
     </a>
@@ -3840,7 +3857,7 @@ footer em {
                 <span class='metric-num'>+22<em>%</em></span>
                 <span class='metric-lbl'>facturación · 60 días</span>
               </div>
-              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
             </footer>
           </div>
         </article>
@@ -3862,7 +3879,7 @@ footer em {
                 <span class='metric-num'>14</span>
                 <span class='metric-lbl'>visitas · mes 1</span>
               </div>
-              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
             </footer>
           </div>
         </article>
@@ -3884,7 +3901,7 @@ footer em {
                 <span class='metric-num'>4<em>×</em></span>
                 <span class='metric-lbl'>leads cualificados / mes</span>
               </div>
-              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
             </footer>
           </div>
         </article>
@@ -3906,7 +3923,7 @@ footer em {
                 <span class='metric-num'>18<em>+</em></span>
                 <span class='metric-lbl'>visitas / mes verano</span>
               </div>
-              <a class='case-card__btn' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
             </footer>
           </div>
         </article>
@@ -3947,11 +3964,11 @@ footer em {
           </article>
         </div>
         <div class='cta-actions'>
-          <a class='btn btn-primary' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
+          <a class='btn btn-primary' data-magnetic='0.45' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
             Reservar llamada de descubrimiento
             <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
           </a>
-          <a class='email-pill' href='mailto:hola@aureasystems.es' target='_blank' rel='noreferrer noopener'>
+          <a class='email-pill' data-magnetic='0.3' href='mailto:hola@aureasystems.es' target='_blank' rel='noreferrer noopener'>
             hola@aureasystems.es
             <span class='arrow-circle'>→</span>
           </a>
@@ -4388,6 +4405,77 @@ footer em {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     update();
+  })();
+
+  /* ==========================================================
+   *  MagneticButton — vanilla equivalente a useMotionValue + useSpring
+   *  Para cada [data-magnetic="N"] sigue al cursor a N veces la
+   *  distancia desde el centro del botón. Damping vía rAF + lerp
+   *  (~simula spring stiffness 400 / damping 100).
+   * ========================================================== */
+  (function () {
+    // No magnetismo en táctiles ni con prefers-reduced-motion.
+    if (window.matchMedia('(hover: none)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-magnetic]'));
+    if (!els.length) return;
+
+    var state = els.map(function (el) {
+      var raw = parseFloat(el.getAttribute('data-magnetic'));
+      return {
+        el: el,
+        distance: isNaN(raw) ? 0.35 : raw,
+        targetX: 0, targetY: 0,
+        currentX: 0, currentY: 0,
+        hovered: false,
+        mouseX: 0, mouseY: 0
+      };
+    });
+
+    state.forEach(function (s) {
+      s.el.addEventListener('mouseenter', function (e) {
+        s.hovered = true;
+        s.mouseX = e.clientX;
+        s.mouseY = e.clientY;
+      });
+      s.el.addEventListener('mouseleave', function () { s.hovered = false; });
+      s.el.addEventListener('mousemove', function (e) {
+        s.mouseX = e.clientX;
+        s.mouseY = e.clientY;
+      });
+    });
+
+    /* lerp factor ~0.18 reproduce un damping comparable al spring de
+       Framer Motion con stiffness:400 damping:100 — el botón llega
+       a su objetivo en ~10 frames con una salida ligeramente
+       sobreamortiguada. */
+    var K = 0.18;
+    var EPS = 0.01;
+    function tick() {
+      for (var i = 0; i < state.length; i++) {
+        var s = state[i];
+        if (s.hovered) {
+          var rect = s.el.getBoundingClientRect();
+          var cx = rect.left + rect.width / 2;
+          var cy = rect.top + rect.height / 2;
+          s.targetX = (s.mouseX - cx) * s.distance;
+          s.targetY = (s.mouseY - cy) * s.distance;
+        } else {
+          s.targetX = 0;
+          s.targetY = 0;
+        }
+        s.currentX += (s.targetX - s.currentX) * K;
+        s.currentY += (s.targetY - s.currentY) * K;
+        // Evita repintar con cifras minúsculas.
+        if (Math.abs(s.currentX) < EPS) s.currentX = 0;
+        if (Math.abs(s.currentY) < EPS) s.currentY = 0;
+        s.el.style.setProperty('--mag-x', s.currentX.toFixed(2) + 'px');
+        s.el.style.setProperty('--mag-y', s.currentY.toFixed(2) + 'px');
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   })();
 
   /* ==========================================================
