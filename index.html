@@ -1983,29 +1983,80 @@ footer {
   vertical-align: middle;
 }
 .foot-mega {
-  margin-top: 60px;
+  margin-top: 48px;
   padding-top: 0;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
   border-top: 1px solid var(--line);
   overflow-x: hidden;
   overflow-y: visible;
+  text-align: center;
 }
 .foot-mega .word {
   font-family: var(--sans);
-  font-weight: 900;
-  font-size: clamp(70px, 13vw, 200px);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-weight: 800;
+  font-size: clamp(38px, 6.4vw, 96px);
+  letter-spacing: -0.035em;
+  line-height: 1.0;
   color: var(--ink);
   white-space: nowrap;
-  margin-top: 30px;
-  padding-bottom: 0.18em;
+  margin-top: 26px;
+  padding-bottom: 0.12em;
+  opacity: 0.92;
 }
 .foot-mega .word em {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
-  color: var(--coral);
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(1, 1, 1, 0.05);
+}
+
+/* foot-cta — botón prominente en el bloque brand del footer */
+.foot-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 16px 26px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.foot-cta:hover {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: 0 18px 28px -18px rgba(1, 1, 1, 0.45);
+}
+.foot-cta .foot-cta-meta {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  border-left: 1px solid currentColor;
+  padding-left: 14px;
+  margin-left: -2px;
+  font-weight: 400;
+}
+.foot-cta .foot-cta-arrow {
+  width: 14px; height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.foot-cta .foot-cta-arrow svg { width: 14px; height: 14px; }
+@media (max-width: 640px) {
+  .foot-cta { gap: 10px; padding: 14px 20px; font-size: 12px; }
+  .foot-cta .foot-cta-meta { padding-left: 10px; font-size: 9.5px; }
 }
 
 /* ---------- calendar modal ---------- */
@@ -3769,7 +3820,7 @@ footer em {
   <div class='container about-v2-inner'>
     <h2 class='v2-heading about-v2-heading' data-fade>sobre aurea</h2>
     <p class='about-v2-text' data-char-reveal>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
-    <a class='contact-v2-btn' data-magnetic='0.65' href='#reservar' data-fade>
+    <a class='contact-v2-btn' data-magnetic='0.65' href='#reservar'>
       Reservar diagnóstico
       <span class='arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke-linecap='round' stroke-linejoin='round'/></svg></span>
     </a>
@@ -4014,8 +4065,12 @@ footer em {
           <span class='brand-mark'><img class='brand-logo' src='./assets/aurea-logo-mark.png' alt='' /></span>
           <span>Aurea Systems</span>
         </a>
-        <p style='margin-top:18px;'>Sistemas editoriales de captación para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp 24/7, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.</p>
-        <a class='foot-cta' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>Reservar llamada<span class='meta'>30 min · sin compromiso</span></a>
+        <p style='margin-top:18px;'>Sistemas de captación para medicina estética facial. Aurea Systems une contenido real, Meta Ads, WhatsApp 24/7, protocolo anti no-show y cierre asistido para convertir inversión publicitaria en primeras valoraciones reales.</p>
+        <a class='foot-cta' data-magnetic='0.55' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
+          <span class='foot-cta-label'>Reservar llamada</span>
+          <span class='foot-cta-meta'>30 min · sin compromiso</span>
+          <span class='foot-cta-arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg></span>
+        </a>
       </div>
       <div class='foot-col'>
     <h5>Producto</h5>
