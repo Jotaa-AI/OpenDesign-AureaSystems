@@ -3139,7 +3139,9 @@ footer em {
   position: absolute;
   inset: 0;
   border-radius: 28px;
-  overflow: hidden;
+  /* overflow:hidden eliminado para que las CTAs magnéticas puedan
+     extenderse fuera del card. El recorte redondeado de la imagen
+     se mantiene en los layers __bg y __veil. */
   background: var(--ink);
   backface-visibility: hidden;
   will-change: transform, filter;
@@ -3154,10 +3156,13 @@ footer em {
   background-size: cover;
   background-position: center;
   filter: saturate(0.92);
+  border-radius: 28px;
+  overflow: hidden;
 }
 .case-card__veil {
   position: absolute;
   inset: 0;
+  border-radius: 28px;
   background:
     linear-gradient(180deg, rgba(1, 1, 1, 0.18) 0%, rgba(1, 1, 1, 0.55) 50%, rgba(1, 1, 1, 0.88) 100%);
 }
@@ -4420,12 +4425,19 @@ footer em {
 
   /* ==========================================================
    *  MagneticButton — vanilla equivalente a useMotionValue + useSpring
-   *  Para cada [data-magnetic="N"] sigue al cursor a N veces la
-   *  distancia desde el centro del botón. Damping vía rAF + lerp
-   *  (~simula spring stiffness 400 / damping 100).
+   *  Para cada [data-magnetic="N"] sigue al cursor con intensidad N.
+   *
+   *  Diferencias clave respecto a la primera iteración:
+   *   · mousemove se escucha en `document` (no en el botón), igual
+   *     que el componente original. Así el seguimiento es continuo
+   *     aunque el botón se desplace bajo el cursor.
+   *   · target se calcula contra el centro de LAYOUT (no el visual),
+   *     restando la transform actual al rect. Con eso `data-magnetic="0.6"`
+   *     significa de verdad 60% del desplazamiento en equilibrio,
+   *     no 38% como cuando se mide contra el visual transformado.
+   *   · Spring conservador (K=0.2) para una salida más perceptible.
    * ========================================================== */
   (function () {
-    // No magnetismo en táctiles ni con prefers-reduced-motion.
     if (window.matchMedia('(hover: none)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -4436,51 +4448,51 @@ footer em {
       var raw = parseFloat(el.getAttribute('data-magnetic'));
       return {
         el: el,
-        distance: isNaN(raw) ? 0.35 : raw,
+        distance: isNaN(raw) ? 0.4 : raw,
         targetX: 0, targetY: 0,
         currentX: 0, currentY: 0,
-        hovered: false,
-        mouseX: 0, mouseY: 0
+        hovered: false
       };
     });
 
+    /* Posición del cursor a nivel documento: se actualiza incluso
+       cuando el cursor no está sobre el botón, lo que permite que
+       el muelle vuelva suavemente a 0,0 y que el seguimiento no se
+       interrumpa mientras el botón se está moviendo. */
+    var gx = 0, gy = 0;
+    document.addEventListener('mousemove', function (e) {
+      gx = e.clientX;
+      gy = e.clientY;
+    }, { passive: true });
+
     state.forEach(function (s) {
-      s.el.addEventListener('mouseenter', function (e) {
-        s.hovered = true;
-        s.mouseX = e.clientX;
-        s.mouseY = e.clientY;
-      });
+      s.el.addEventListener('mouseenter', function () { s.hovered = true; });
       s.el.addEventListener('mouseleave', function () { s.hovered = false; });
-      s.el.addEventListener('mousemove', function (e) {
-        s.mouseX = e.clientX;
-        s.mouseY = e.clientY;
-      });
     });
 
-    /* lerp factor ~0.18 reproduce un damping comparable al spring de
-       Framer Motion con stiffness:400 damping:100 — el botón llega
-       a su objetivo en ~10 frames con una salida ligeramente
-       sobreamortiguada. */
-    var K = 0.18;
+    var K = 0.2;        // damping del muelle (≈10 frames a target)
     var EPS = 0.01;
+
     function tick() {
       for (var i = 0; i < state.length; i++) {
         var s = state[i];
         if (s.hovered) {
           var rect = s.el.getBoundingClientRect();
-          var cx = rect.left + rect.width / 2;
-          var cy = rect.top + rect.height / 2;
-          s.targetX = (s.mouseX - cx) * s.distance;
-          s.targetY = (s.mouseY - cy) * s.distance;
+          /* Centro de LAYOUT: visual − transform actual. Sin esta
+             corrección, la transform se realimenta y el efecto
+             reduce a ~distance/(1+distance) de la fuerza real. */
+          var lx = rect.left + rect.width / 2 - s.currentX;
+          var ly = rect.top + rect.height / 2 - s.currentY;
+          s.targetX = (gx - lx) * s.distance;
+          s.targetY = (gy - ly) * s.distance;
         } else {
           s.targetX = 0;
           s.targetY = 0;
         }
         s.currentX += (s.targetX - s.currentX) * K;
         s.currentY += (s.targetY - s.currentY) * K;
-        // Evita repintar con cifras minúsculas.
-        if (Math.abs(s.currentX) < EPS) s.currentX = 0;
-        if (Math.abs(s.currentY) < EPS) s.currentY = 0;
+        if (Math.abs(s.currentX) < EPS && s.targetX === 0) s.currentX = 0;
+        if (Math.abs(s.currentY) < EPS && s.targetY === 0) s.currentY = 0;
         s.el.style.setProperty('--mag-x', s.currentX.toFixed(2) + 'px');
         s.el.style.setProperty('--mag-y', s.currentY.toFixed(2) + 'px');
       }
