@@ -3166,7 +3166,8 @@ footer em {
 
 .cases-scroll {
   position: relative;
-  height: 360vh;          /* 4 cards × ~90vh + buffer */
+  height: 280vh;          /* 3 transiciones × ~93vh c/u → card 04 queda
+                             visible justo al final del scroll, sin gap. */
   perspective: 1200px;
   width: 100%;
 }
@@ -3184,7 +3185,9 @@ footer em {
   position: relative;
   width: min(420px, 86vw);
   height: min(560px, 78vh);
-  transform-style: preserve-3d;
+  /* preserve-3d ELIMINADO: hacía que translateZ ganara sobre zIndex
+     y la card 04 (z más alto) quedara al frente en vez de la 01.
+     Sin preserve-3d, el zIndex decide el stacking. */
 }
 .case-card {
   position: absolute;
@@ -3819,7 +3822,7 @@ footer em {
 <section class='about-v2' id='problema' data-od-id='about'>
   <div class='container about-v2-inner'>
     <h2 class='v2-heading about-v2-heading' data-fade>sobre aurea</h2>
-    <p class='about-v2-text' data-char-reveal>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
+    <p class='about-v2-text'>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
     <a class='contact-v2-btn' data-magnetic='0.65' href='#reservar'>
       Reservar diagnóstico
       <span class='arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke-linecap='round' stroke-linejoin='round'/></svg></span>
@@ -4479,18 +4482,21 @@ footer em {
   })();
 
   /* ==========================================================
-   *  MagneticButton — vanilla equivalente a useMotionValue + useSpring
-   *  Para cada [data-magnetic="N"] sigue al cursor con intensidad N.
+   *  MagneticButton — vanilla con activación por proximidad
    *
-   *  Diferencias clave respecto a la primera iteración:
-   *   · mousemove se escucha en `document` (no en el botón), igual
-   *     que el componente original. Así el seguimiento es continuo
-   *     aunque el botón se desplace bajo el cursor.
-   *   · target se calcula contra el centro de LAYOUT (no el visual),
-   *     restando la transform actual al rect. Con eso `data-magnetic="0.6"`
-   *     significa de verdad 60% del desplazamiento en equilibrio,
-   *     no 38% como cuando se mide contra el visual transformado.
-   *   · Spring conservador (K=0.2) para una salida más perceptible.
+   *  Cambios desde la versión anterior:
+   *   · Activación por DISTANCIA al bounding box, no por
+   *     mouseenter/leave. Con un radio de proximidad de 50px el
+   *     botón comienza a reaccionar cuando el cursor está cerca
+   *     desde CUALQUIER dirección del perímetro, no sólo cuando
+   *     entra al box (que provocaba la asimetría reportada).
+   *   · Sin listeners mouseenter/leave. Sólo un mousemove global.
+   *     Esto elimina dependencias del orden de stacking entre
+   *     elementos (un card por delante ya no roba el hover del
+   *     botón de otro card).
+   *   · Sigue calculando contra el centro de LAYOUT (rect − transform
+   *     actual) para que `data-magnetic="N"` represente el % real
+   *     de desplazamiento en equilibrio.
    * ========================================================== */
   (function () {
     if (window.matchMedia('(hover: none)').matches) return;
@@ -4505,37 +4511,35 @@ footer em {
         el: el,
         distance: isNaN(raw) ? 0.4 : raw,
         targetX: 0, targetY: 0,
-        currentX: 0, currentY: 0,
-        hovered: false
+        currentX: 0, currentY: 0
       };
     });
 
-    /* Posición del cursor a nivel documento: se actualiza incluso
-       cuando el cursor no está sobre el botón, lo que permite que
-       el muelle vuelva suavemente a 0,0 y que el seguimiento no se
-       interrumpa mientras el botón se está moviendo. */
-    var gx = 0, gy = 0;
+    /* Cursor a nivel documento. Inicia fuera de pantalla para que
+       ningún botón se active antes de que el usuario mueva el
+       ratón. */
+    var gx = -9999, gy = -9999;
     document.addEventListener('mousemove', function (e) {
       gx = e.clientX;
       gy = e.clientY;
     }, { passive: true });
 
-    state.forEach(function (s) {
-      s.el.addEventListener('mouseenter', function () { s.hovered = true; });
-      s.el.addEventListener('mouseleave', function () { s.hovered = false; });
-    });
-
-    var K = 0.2;        // damping del muelle (≈10 frames a target)
+    var K = 0.22;          // damping
     var EPS = 0.01;
+    var PROX = 50;         // radio de proximidad (px) alrededor del botón
 
     function tick() {
       for (var i = 0; i < state.length; i++) {
         var s = state[i];
-        if (s.hovered) {
-          var rect = s.el.getBoundingClientRect();
-          /* Centro de LAYOUT: visual − transform actual. Sin esta
-             corrección, la transform se realimenta y el efecto
-             reduce a ~distance/(1+distance) de la fuerza real. */
+        var rect = s.el.getBoundingClientRect();
+        /* Distancia del cursor al bounding box: 0 si está dentro,
+           positiva fuera. Se mide al borde más cercano. */
+        var dx = Math.max(rect.left - gx, 0, gx - rect.right);
+        var dy = Math.max(rect.top - gy, 0, gy - rect.bottom);
+        var d = Math.sqrt(dx * dx + dy * dy);
+
+        if (d <= PROX) {
+          /* Centro de LAYOUT (anulando realimentación de la transform) */
           var lx = rect.left + rect.width / 2 - s.currentX;
           var ly = rect.top + rect.height / 2 - s.currentY;
           s.targetX = (gx - lx) * s.distance;
@@ -4557,19 +4561,17 @@ footer em {
   })();
 
   /* ==========================================================
-   *  V2 — Cases 3D animated cards-stack
-   *  Replica vanilla del componente animated-cards-stack:
-   *  · Container con perspective 1200px (h: 360vh) y un sticky 100vh.
-   *  · scrollYProgress mapeado con offset ['start center', 'end end']
-   *    en [0, 1] para la sección.
-   *  · Por cada card (index i, N total):
-   *      range = [i/(N+1), (i+1)/(N+1)]
-   *      rotateRange = [range[0]-1.5, range[1]/1.5]
-   *      incrementRotation = -i + 90  (90, 89, 88, 87)
-   *      y           = lerp(progress in range)        0%   ->  -180%
-   *      rotate      = lerp(progress in rotateRange)  90°  ->  0°
-   *      translateZ  = i * 10px
-   *  · drop-shadow + blur dinámicos sutiles (pequeño paralaje de luz).
+   *  V2 — Cases stack (orden 01→04, primera al frente)
+   *  · Container 320vh con sticky 100vh.
+   *  · Progress mapeado offset ['start center', 'end end'] → [0,1].
+   *  · Por cada card i:
+   *      range = [i/N, (i+1)/N]                — sin huecos al final
+   *      y     = lerp(0%, -130%)               — sale hacia arriba
+   *      rot   = lerp(0°, -5°)                 — ligera caída a la izquierda
+   *      top   = i * 6px                       — peek mínimo del card detrás
+   *      zIndex = (N - i) * 10                 — card 0 SIEMPRE encima
+   *  · Sin preserve-3d en el stage → zIndex manda sobre translateZ
+   *    y la card 01 queda al frente como pide el cliente.
    * ========================================================== */
   (function () {
     var scrollEl = document.getElementById('cases-scroll');
@@ -4589,38 +4591,38 @@ footer em {
       var rect = scrollEl.getBoundingClientRect();
       var vh = window.innerHeight;
       var height = scrollEl.offsetHeight;
-      /* offset: ['start center', 'end end']
-         start center: rect.top = vh/2   -> progress 0
-         end end:      rect.bottom = vh  -> rect.top = vh - height -> progress 1 */
+      /* offset start-center → end-end */
       var top0 = vh / 2;
       var top1 = vh - height;
       var progress = clamp01((top0 - rect.top) / (top0 - top1));
 
+      /* Con N cards hay N-1 transiciones (01→02, 02→03, 03→04).
+         La última card no transiciona: queda visible al final del
+         scroll para que el usuario pueda leerla antes de salir
+         al footer. */
+      var T = N - 1;
       cards.forEach(function (card, i) {
-        var start = i / (N + 1);
-        var end = (i + 1) / (N + 1);
-        var rotateStart = start - 1.5;
-        var rotateEnd = end / 1.5;
-        var incrementRotation = -i + 90;
+        var isLast = (i === N - 1);
+        var start = isLast ? 1 : i / T;
+        var end = isLast ? 1 : (i + 1) / T;
 
-        var yT = clamp01((progress - start) / (end - start));
-        var yPct = lerp(0, -180, yT);
+        var yT = isLast ? 0 : clamp01((progress - start) / (end - start));
+        var yPct = lerp(0, -130, yT);          // slide off screen up
+        var rotateDeg = lerp(0, -5, yT);        // ligera caída a la izquierda al salir
 
-        var rT = clamp01((progress - rotateStart) / (rotateEnd - rotateStart));
-        var rotateDeg = lerp(incrementRotation, 0, rT);
-
-        var z = i * 10;
-        var topPx = i * 10;
+        /* peek pequeño: 6px por card detrás → da sensación de stack
+           sin que las cards inferiores invadan el botón de la frontal. */
+        var topPx = i * 6;
 
         card.style.top = topPx + 'px';
         card.style.zIndex = String((N - i) * 10);
         card.style.transform =
-          'translateZ(' + z + 'px) translateY(' + yPct.toFixed(2) + '%) rotate(' + rotateDeg.toFixed(2) + 'deg)';
+          'translateY(' + yPct.toFixed(2) + '%) rotate(' + rotateDeg.toFixed(2) + 'deg)';
 
-        // sutil sombra dinámica como en el componente original
-        var dy = lerp(4, 12, rT);
-        var blur = lerp(2, 24, rT);
-        var alpha = lerp(0.15, 0.22, rT);
+        // sombra dinámica: más profunda mientras la card está en su tramo activo
+        var dy = lerp(8, 14, yT);
+        var blur = lerp(12, 28, yT);
+        var alpha = lerp(0.22, 0.12, yT);       // fade out conforme se aleja
         card.style.filter =
           'drop-shadow(0 ' + dy.toFixed(1) + 'px ' + blur.toFixed(1) + 'px rgba(0,0,0,' + alpha.toFixed(3) + '))';
       });
