@@ -399,22 +399,26 @@ body::before {
   letter-spacing: -0.005em;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  /* sin transform en transition para no chocar con [data-magnetic] */
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   cursor: pointer;
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--coral);
-  color: #fff;
-  box-shadow: 0 14px 26px -16px rgba(237, 111, 92, 1);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 14px 26px -16px rgba(1, 1, 1, 0.55);
 }
-.btn-primary:hover { transform: translateY(-1px); background: #e25e4a; }
+.btn-primary:hover {
+  background: #1a1a1a;
+  box-shadow: 0 18px 34px -16px rgba(1, 1, 1, 0.7);
+}
 .btn-ghost {
   background: transparent;
   color: var(--ink);
-  border-color: rgba(21, 20, 15, 0.2);
+  border-color: rgba(1, 1, 1, 0.25);
 }
-.btn-ghost:hover { background: rgba(21, 20, 15, 0.04); }
+.btn-ghost:hover { background: rgba(1, 1, 1, 0.04); border-color: rgba(1, 1, 1, 0.45); }
 .btn .arrow {
   width: 16px; height: 16px;
   display: inline-flex;
@@ -2717,9 +2721,16 @@ footer em {
  *  hacia el cursor mientras éste está sobre el botón.
  *  El movimiento se conduce por un rAF loop con damping (~spring
  *  stiffness 400, damping 100 del componente original).
+ *
+ *  !important para ganar sobre reglas más específicas como
+ *  .btn-primary:hover { transform: translateY(-1px) } o
+ *  .contact-v2-btn:hover { transform: translateY(-2px) }.
+ *  Sin esto, el efecto magnético es invisible al hover (porque
+ *  el hover transform de mayor especificidad lo pisa).
  * ===================================================================== */
 [data-magnetic] {
-  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0) !important;
+  transition: none !important;
   will-change: transform;
 }
 @media (hover: none), (prefers-reduced-motion: reduce) {
@@ -2854,12 +2865,12 @@ footer em {
   text-transform: uppercase;
   text-decoration: none;
   border: 2px solid var(--ink);
-  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+  transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
 }
 .contact-v2-btn:hover {
   background: transparent;
   color: var(--ink);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 28px -18px rgba(1, 1, 1, 0.45);
 }
 .contact-v2-btn .arrow {
   width: 14px; height: 14px; display: inline-flex;
@@ -3660,8 +3671,8 @@ footer em {
       </ul>
     </nav>
     <div class='nav-side'>
-      <a class='nav-cta ghost' data-magnetic='0.25' href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a>
-      <a class='nav-cta' data-magnetic='0.25' href='#reservar'>Reservar llamada</a>
+      <a class='nav-cta ghost' data-magnetic='0.4' href='https://aureasystems.es/blog/' target='_blank' rel='noreferrer noopener'>Blog</a>
+      <a class='nav-cta' data-magnetic='0.4' href='#reservar'>Reservar llamada</a>
       <span class='status-dot' aria-hidden='true'></span>
     </div>
   </div>
@@ -3684,11 +3695,11 @@ footer em {
         <h1 data-reveal>Llena tu agenda con <em>pacientes cualificados</em><span class='dot'>.</span></h1>
         <p class='lead' data-reveal>El sistema que convierte tu inversión publicitaria en primeras valoraciones reales para tu clínica: contenido, Meta Ads, WhatsApp 24/7, agenda conectada y protocolo anti no-show.</p>
         <div class='hero-actions' data-reveal>
-          <a class='btn btn-primary' data-magnetic='0.4' href='#reservar'>
+          <a class='btn btn-primary' data-magnetic='0.65' href='#reservar'>
             Reservar llamada
             <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
           </a>
-          <a class='btn btn-ghost' data-magnetic='0.4' href='#sistema'>
+          <a class='btn btn-ghost' data-magnetic='0.65' href='#sistema'>
             Descubrir el sistema
             <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
           </a>
@@ -3753,7 +3764,7 @@ footer em {
   <div class='container about-v2-inner'>
     <h2 class='v2-heading about-v2-heading' data-fade>sobre aurea</h2>
     <p class='about-v2-text' data-char-reveal>Aurea Systems conecta captación, conversación, cualificación y seguimiento en un sistema único, medido y exclusivo. Diseñado para clínicas de medicina estética que quieren convertir cada interés en una primera visita real. Construyamos algo memorable juntos.</p>
-    <a class='contact-v2-btn' data-magnetic='0.4' href='#reservar' data-fade>
+    <a class='contact-v2-btn' data-magnetic='0.65' href='#reservar' data-fade>
       Reservar diagnóstico
       <span class='arrow' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11' stroke-linecap='round' stroke-linejoin='round'/></svg></span>
     </a>
@@ -3857,7 +3868,7 @@ footer em {
                 <span class='metric-num'>+22<em>%</em></span>
                 <span class='metric-lbl'>facturación · 60 días</span>
               </div>
-              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.6' href='#reservar'>Reservar diagnóstico →</a>
             </footer>
           </div>
         </article>
@@ -3879,7 +3890,7 @@ footer em {
                 <span class='metric-num'>14</span>
                 <span class='metric-lbl'>visitas · mes 1</span>
               </div>
-              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.6' href='#reservar'>Reservar diagnóstico →</a>
             </footer>
           </div>
         </article>
@@ -3901,7 +3912,7 @@ footer em {
                 <span class='metric-num'>4<em>×</em></span>
                 <span class='metric-lbl'>leads cualificados / mes</span>
               </div>
-              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.6' href='#reservar'>Reservar diagnóstico →</a>
             </footer>
           </div>
         </article>
@@ -3923,7 +3934,7 @@ footer em {
                 <span class='metric-num'>18<em>+</em></span>
                 <span class='metric-lbl'>visitas / mes verano</span>
               </div>
-              <a class='case-card__btn' data-magnetic='0.3' href='#reservar'>Ver caso →</a>
+              <a class='case-card__btn' data-magnetic='0.6' href='#reservar'>Reservar diagnóstico →</a>
             </footer>
           </div>
         </article>
@@ -3964,11 +3975,11 @@ footer em {
           </article>
         </div>
         <div class='cta-actions'>
-          <a class='btn btn-primary' data-magnetic='0.45' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
+          <a class='btn btn-primary' data-magnetic='0.7' href='https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems' target='_blank' rel='noreferrer noopener' data-calendar-open>
             Reservar llamada de descubrimiento
             <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
           </a>
-          <a class='email-pill' data-magnetic='0.3' href='mailto:hola@aureasystems.es' target='_blank' rel='noreferrer noopener'>
+          <a class='email-pill' data-magnetic='0.6' href='mailto:hola@aureasystems.es' target='_blank' rel='noreferrer noopener'>
             hola@aureasystems.es
             <span class='arrow-circle'>→</span>
           </a>
