@@ -215,13 +215,40 @@
     }
     .legal-footer a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 
+    @media (max-width: 768px) {
+      .page-nav-inner { padding: 14px 18px; gap: 12px; }
+      .brand-link { font-size: 14px; gap: 10px; }
+      .brand-mark { width: 28px; height: 28px; }
+      .back-link { font-size: 10.5px; letter-spacing: 0.18em; }
+      .legal-shell { padding: 56px 18px 72px; }
+      .legal-head { margin-bottom: 36px; }
+      .legal-title { font-size: clamp(32px, 9vw, 52px); }
+      .legal-kicker { font-size: 10px; letter-spacing: 0.22em; }
+      .legal-meta { font-size: 10.5px; letter-spacing: 0.14em; }
+      .legal-content { font-size: 15.5px; line-height: 1.65; }
+      .legal-content p { margin-bottom: 18px; }
+      .data-card { padding: 20px 22px; font-size: 12.5px; }
+      .cta-block { margin: 32px 0 16px; }
+      .cta-button { padding: 14px 22px; font-size: 11.5px; letter-spacing: 0.16em; }
+      .related-strip {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+        gap: 14px;
+        padding: 22px 20px;
+        font-size: 13px;
+      }
+      .related-strip a { font-size: 11.5px; letter-spacing: 0.16em; }
+    }
     @media (max-width: 640px) {
-      .page-nav-inner { padding: 14px 18px; }
-      .legal-content { font-size: 16px; }
       .data-card .row { flex-direction: column; gap: 2px; padding: 6px 0; }
       .data-card dt { min-width: 0; }
-      .related-strip { flex-direction: column; text-align: center; gap: 14px; align-items: stretch; }
-      .cta-button { padding: 16px 24px; font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .legal-shell { padding: 40px 14px 56px; }
+      .legal-title { font-size: clamp(28px, 9vw, 40px); }
+      .legal-content { font-size: 15px; }
+      .cta-button { padding: 13px 18px; font-size: 11px; width: 100%; justify-content: center; }
     }
   </style>
 </head>

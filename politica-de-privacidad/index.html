@@ -284,11 +284,45 @@
     }
     .legal-footer a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 
+    @media (max-width: 768px) {
+      .page-nav-inner { padding: 14px 18px; gap: 12px; }
+      .brand-link { font-size: 14px; gap: 10px; }
+      .brand-mark { width: 28px; height: 28px; }
+      .back-link { font-size: 10.5px; letter-spacing: 0.18em; }
+      .legal-shell { padding: 56px 18px 80px; }
+      .legal-head { margin-bottom: 44px; }
+      .legal-title { font-size: clamp(34px, 9vw, 60px); }
+      .legal-kicker { font-size: 10px; letter-spacing: 0.22em; }
+      .legal-meta { font-size: 10.5px; letter-spacing: 0.14em; }
+      .legal-toc { padding: 20px 22px; }
+      .legal-toc h2 { font-size: 11px; }
+      .legal-toc li { font-size: 14px; }
+      .legal-section { padding: 36px 0 28px; }
+      .legal-section h2 { font-size: clamp(24px, 6vw, 34px); margin-bottom: 22px; }
+      .legal-section h3 { font-size: 16px; margin: 22px 0 8px; }
+      .legal-section p, .legal-section li { font-size: 15px; }
+      .legal-section ul, .legal-section ol { margin-left: 18px; }
+      /* Tablas: scroll horizontal en móvil para que no rompan el layout */
+      .legal-section table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 13px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .legal-section th, .legal-section td { padding: 10px 12px; }
+    }
     @media (max-width: 640px) {
-      .page-nav-inner { padding: 14px 18px; }
       .legal-toc ol { flex-direction: column; gap: 4px; }
       .data-card .row { flex-direction: column; gap: 2px; padding: 6px 0; }
       .data-card dt { min-width: 0; }
+    }
+    @media (max-width: 480px) {
+      .legal-shell { padding: 44px 14px 64px; }
+      .legal-title { font-size: clamp(28px, 9vw, 44px); }
+      .legal-section h2 { font-size: clamp(20px, 6.5vw, 28px); }
+      .legal-section p, .legal-section li { font-size: 14.5px; }
+      .legal-section table { font-size: 12px; }
     }
   </style>
 </head>
