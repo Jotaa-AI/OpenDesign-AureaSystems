@@ -61,8 +61,14 @@ jobs:
           '
 
       - name: Deploy files to VPS
+        # Sincroniza TODO el contenido del repo con excludes explícitos.
+        # Cualquier carpeta nueva (ej. /eliminacion-de-datos/) se incluye
+        # automáticamente sin tocar este workflow.
+        # NOTA: NO usamos --delete porque conviven en /dist/ archivos del
+        # sistema viejo (sitemap.xml, robots.txt, llms.txt, favicon.ico,
+        # styles.css, script.js) que queremos preservar.
         run: |
-          rsync -avz --delete-after \
+          rsync -avz \
             --exclude=".git" \
             --exclude=".github" \
             --exclude=".claude" \
@@ -76,11 +82,9 @@ jobs:
             --exclude="videos/" \
             --exclude="moy*" \
             --exclude="LICENSE" \
-            --rsync-path="rsync" \
-            index.html \
-            politica-de-privacidad \
-            blog \
-            assets \
+            --exclude=".vercel/" \
+            --exclude="*.py" \
+            ./ \
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/aureasystems.es/dist/
 
       - name: Fix permissions & reload nginx
@@ -98,6 +102,7 @@ jobs:
           URLS=(
             "https://aureasystems.es/"
             "https://aureasystems.es/politica-de-privacidad/"
+            "https://aureasystems.es/eliminacion-de-datos/"
             "https://aureasystems.es/blog/"
             "https://aureasystems.es/blog/ia-respuesta-leads-clinica-estetica/"
           )
