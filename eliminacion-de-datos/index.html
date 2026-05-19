@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliminación de datos de usuario — Aurea Systems</title>
+  <meta name="description" content="Cómo solicitar la eliminación de tus datos personales asociados a Aurea Systems conforme al RGPD. Instrucciones, plazos y canal de contacto." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aureasystems.es/eliminacion-de-datos/" />
+  <link rel="icon" type="image/png" href="/assets/aurea-logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #fef1e9;
+      --paper-warm: #fae9dc;
+      --ink: #010101;
+      --ink-soft: #1a1a1a;
+      --ink-mute: #4a4a4a;
+      --ink-faint: #888888;
+      --accent: #2596be;
+      --line: rgba(1, 1, 1, 0.16);
+      --line-soft: rgba(1, 1, 1, 0.08);
+      --serif: 'Playfair Display', 'Times New Roman', serif;
+      --sans: 'Inter Tight', 'Inter', -apple-system, system-ui, sans-serif;
+      --body: 'Inter', -apple-system, system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: opacity 200ms ease; }
+    a:hover { opacity: 0.6; }
+
+    .page-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(254, 241, 233, 0.86);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .page-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-link {
+      display: inline-flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+      font-family: var(--sans); font-weight: 700; font-size: 16px;
+      letter-spacing: -0.005em;
+    }
+    .brand-mark { width: 32px; height: 32px; border: 1.5px solid var(--ink); border-radius: 50%; background: #fff8f0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+    .brand-mark img { width: 70%; height: 70%; object-fit: contain; }
+    .back-link {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-mute); text-decoration: none;
+    }
+    .back-link:hover { color: var(--ink); opacity: 1; }
+
+    .legal-shell {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 96px) 24px clamp(80px, 10vw, 140px);
+    }
+    .legal-head {
+      margin: 0 auto clamp(40px, 6vw, 64px);
+      text-align: center;
+    }
+    .legal-kicker {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--ink-mute); margin-bottom: 18px;
+    }
+    .legal-title {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: clamp(40px, 7vw, 88px); line-height: 0.95;
+      letter-spacing: -0.02em; color: var(--ink);
+      text-wrap: balance;
+    }
+    .legal-meta {
+      margin-top: 22px;
+      font-family: var(--mono); font-size: 11.5px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .legal-content {
+      max-width: 640px;
+      margin: 0 auto;
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .legal-content p { margin-bottom: 22px; }
+    .legal-content strong { color: var(--ink); font-weight: 600; }
+    .legal-content em { font-style: italic; color: var(--ink); }
+    .legal-content code {
+      font-family: var(--mono); font-size: 14px;
+      background: var(--paper-warm);
+      padding: 3px 8px; border-radius: 5px;
+      color: var(--ink);
+    }
+
+    .data-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px 26px;
+      background: #fff8f0;
+      margin: 28px 0;
+      font-family: var(--mono); font-size: 13.5px;
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+    }
+    .data-card dt {
+      display: inline-block;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 10.5px;
+      min-width: 110px;
+    }
+    .data-card dd { display: inline; color: var(--ink); margin: 0; font-weight: 500; }
+    .data-card .row { display: flex; gap: 12px; align-items: baseline; padding: 4px 0; }
+    .data-card .row + .row { border-top: 1px dashed var(--line-soft); margin-top: 4px; padding-top: 8px; }
+
+    .cta-block {
+      margin: 40px 0 24px;
+      text-align: center;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 30px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid var(--ink);
+      transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+    }
+    .cta-button:hover {
+      background: transparent;
+      color: var(--ink);
+      box-shadow: 0 18px 28px -18px rgba(1, 1, 1, 0.45);
+      opacity: 1;
+    }
+    .cta-button .arrow { width: 14px; height: 14px; display: inline-flex; }
+    .cta-button .arrow svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 2; }
+    .cta-helper {
+      margin-top: 18px;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
+      color: var(--ink-mute);
+    }
+
+    .related-strip {
+      max-width: 760px;
+      margin: clamp(48px, 6vw, 80px) auto 0;
+      padding: 28px 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      color: var(--ink-mute);
+    }
+    .related-strip a {
+      font-family: var(--sans); font-weight: 500;
+      font-size: 12.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink);
+      text-decoration: none; white-space: nowrap;
+    }
+    .related-strip a:hover { opacity: 0.6; }
+
+    .legal-footer {
+      max-width: 760px;
+      margin: clamp(48px, 6vw, 80px) auto 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .legal-footer a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+
+    @media (max-width: 640px) {
+      .page-nav-inner { padding: 14px 18px; }
+      .legal-content { font-size: 16px; }
+      .data-card .row { flex-direction: column; gap: 2px; padding: 6px 0; }
+      .data-card dt { min-width: 0; }
+      .related-strip { flex-direction: column; text-align: center; gap: 14px; align-items: stretch; }
+      .cta-button { padding: 16px 24px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="brand-link">
+      <span class="brand-mark"><img src="/assets/aurea-logo-mark.png" alt="" /></span>
+      <span>Aurea Systems</span>
+    </a>
+    <a href="/" class="back-link">← Volver al inicio</a>
+  </div>
+</header>
+
+<main class="legal-shell">
+  <div class="legal-head">
+    <div class="legal-kicker">· Documento legal ·</div>
+    <h1 class="legal-title">Eliminación de datos de usuario.</h1>
+    <div class="legal-meta">Última actualización: 19 de mayo de 2026</div>
+  </div>
+
+  <article class="legal-content">
+    <p>Si deseas solicitar la eliminación de tus datos personales asociados a Aurea Systems, puedes escribirnos a <a href="mailto:hola@aureasystems.es?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20datos">hola@aureasystems.es</a> con el asunto <strong>"Solicitud de eliminación de datos"</strong>.</p>
+
+    <p>En el mensaje, indícanos los siguientes datos para poder localizar y verificar tu identidad:</p>
+
+    <div class="data-card" aria-label="Información a incluir en la solicitud">
+      <div class="row"><dt>Nombre</dt><dd>Tu nombre completo</dd></div>
+      <div class="row"><dt>Correo</dt><dd>Email asociado</dd></div>
+      <div class="row"><dt>Teléfono</dt><dd>Móvil asociado</dd></div>
+    </div>
+
+    <p>Una vez recibida la solicitud, revisaremos la información y eliminaremos los datos personales correspondientes <strong>dentro del plazo legal aplicable</strong> conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD).</p>
+
+    <div class="cta-block">
+      <a class="cta-button" href="mailto:hola@aureasystems.es?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20datos&body=Hola%2C%0D%0A%0D%0ASolicito%20la%20eliminaci%C3%B3n%20de%20mis%20datos%20personales%20asociados%20a%20Aurea%20Systems.%0D%0A%0D%0ANombre%3A%20%0D%0ACorreo%20electr%C3%B3nico%3A%20%0D%0ATel%C3%A9fono%20asociado%3A%20%0D%0A%0D%0AGracias.">
+        Enviar solicitud
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <div class="cta-helper">Se abrirá tu cliente de correo con el asunto y la plantilla precargados.</div>
+    </div>
+  </article>
+
+  <aside class="related-strip">
+    <span>¿Quieres ejercer otros derechos RGPD (acceso, rectificación, oposición, portabilidad…)?</span>
+    <a href="/politica-de-privacidad/#derechos">Ver política completa →</a>
+  </aside>
+
+  <footer class="legal-footer">
+    <p>© 2026 Aurea Systems · <a href="/">aureasystems.es</a> · <a href="mailto:hola@aureasystems.es">hola@aureasystems.es</a></p>
+  </footer>
+</main>
+
+</body>
+</html>
