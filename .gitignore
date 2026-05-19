@@ -4,4 +4,7 @@
 .claude/
 node_modules/
 *.log
-.vercel
+.vercel/
+# Local snapshot del estado del VPS, no debe ir al repo
+../server-snapshot/
+server-snapshot/

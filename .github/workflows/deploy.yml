@@ -1,0 +1,120 @@
+name: Deploy aureasystems.es
+
+# Cada push a main despliega automáticamente al VPS Contabo.
+# También se puede disparar manualmente desde la pestaña Actions.
+
+on:
+  push:
+    branches: [main]
+    # Solo dispara si cambia algo que se sirve (no docs ni configuración interna)
+    paths:
+      - 'index.html'
+      - 'politica-de-privacidad/**'
+      - 'blog/**'
+      - 'assets/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-aureasystems-es
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Sync to VPS
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH agent with deploy key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Verify SSH connectivity
+        run: |
+          ssh -o ConnectTimeout=10 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            'echo "✓ SSH OK · $(hostname) · $(date -u +%Y-%m-%dT%H:%M:%SZ)"'
+
+      - name: Backup current production (rolling, keep last 5)
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
+            set -e
+            TS=$(date +%Y%m%d-%H%M%S)
+            BACKUP_DIR=/var/www/aureasystems.es/backups
+            mkdir -p "$BACKUP_DIR"
+            cp -a /var/www/aureasystems.es/dist "$BACKUP_DIR/dist-pre-deploy-$TS"
+            echo "✓ Backup: dist-pre-deploy-$TS ($(du -sh $BACKUP_DIR/dist-pre-deploy-$TS | cut -f1))"
+            # Mantén solo los 5 backups más recientes generados por este workflow
+            cd "$BACKUP_DIR"
+            ls -1tr | grep "^dist-pre-deploy-" | head -n -5 | xargs -r rm -rf
+          '
+
+      - name: Deploy files to VPS
+        run: |
+          rsync -avz --delete-after \
+            --exclude=".git" \
+            --exclude=".github" \
+            --exclude=".claude" \
+            --exclude=".gitignore" \
+            --exclude=".DS_Store" \
+            --exclude="server-snapshot/" \
+            --exclude="*.md" \
+            --exclude="inputs.json" \
+            --exclude="brand-spec.md" \
+            --exclude="index-editorial-v1.html" \
+            --exclude="videos/" \
+            --exclude="moy*" \
+            --exclude="LICENSE" \
+            --rsync-path="rsync" \
+            index.html \
+            politica-de-privacidad \
+            blog \
+            assets \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/aureasystems.es/dist/
+
+      - name: Fix permissions & reload nginx
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
+            set -e
+            chown -R deploy:deploy /var/www/aureasystems.es/dist/
+            nginx -t
+            systemctl reload nginx
+            echo "✓ nginx reloaded"
+          '
+
+      - name: Smoke test (verifica HTTP 200 desde fuera)
+        run: |
+          URLS=(
+            "https://aureasystems.es/"
+            "https://aureasystems.es/politica-de-privacidad/"
+            "https://aureasystems.es/blog/"
+            "https://aureasystems.es/blog/ia-respuesta-leads-clinica-estetica/"
+          )
+          for url in "${URLS[@]}"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 15 "$url")
+            if [[ "$code" != "200" ]]; then
+              echo "✗ FAIL: $url → $code"
+              exit 1
+            fi
+            echo "✓ $url → $code"
+          done
+
+      - name: Deploy summary
+        if: success()
+        run: |
+          echo "## ✅ Deploy completed" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Author:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Live:** https://aureasystems.es" >> $GITHUB_STEP_SUMMARY
+          echo "**Backup retained on VPS:** \`/var/www/aureasystems.es/backups/dist-pre-deploy-*\`" >> $GITHUB_STEP_SUMMARY

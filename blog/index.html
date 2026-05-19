@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — Aurea Systems</title>
+  <meta name="description" content="Estrategias, sistemas y aprendizajes para llenar la agenda de tu clínica de medicina estética con pacientes cualificados. Captación, operativa, diálogo continuo y métricas." />
+  <link rel="canonical" href="https://aureasystems.es/blog/" />
+  <link rel="icon" type="image/png" href="/assets/aurea-logo-mark.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — Aurea Systems" />
+  <meta property="og:description" content="Estrategias y sistemas para llenar la agenda de tu clínica de medicina estética con pacientes cualificados." />
+  <meta property="og:url" content="https://aureasystems.es/blog/" />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="Blog Aurea Systems" href="/blog/feed.xml" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog de Aurea Systems",
+    "description": "Estrategias y sistemas para clínicas de medicina estética.",
+    "url": "https://aureasystems.es/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aurea Systems",
+      "logo": { "@type": "ImageObject", "url": "https://aureasystems.es/assets/aurea-logo-mark.png" }
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --paper: #fef1e9;
+      --paper-warm: #fae9dc;
+      --ink: #010101;
+      --ink-soft: #1a1a1a;
+      --ink-mute: #4a4a4a;
+      --ink-faint: #888888;
+      --accent: #2596be;
+      --line: rgba(1, 1, 1, 0.16);
+      --line-soft: rgba(1, 1, 1, 0.08);
+      --serif: 'Playfair Display', 'Times New Roman', serif;
+      --sans: 'Inter Tight', 'Inter', -apple-system, system-ui, sans-serif;
+      --body: 'Inter', -apple-system, system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    a { color: inherit; text-decoration: none; }
+
+    .page-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(254, 241, 233, 0.86);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .page-nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand-link { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sans); font-weight: 700; font-size: 16px; letter-spacing: -0.005em; }
+    .brand-mark { width: 32px; height: 32px; border: 1.5px solid var(--ink); border-radius: 50%; background: #fff8f0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+    .brand-mark img { width: 70%; height: 70%; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink-mute); transition: color 200ms ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.is-active { color: var(--ink); }
+    .nav-cta-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 18px; background: var(--ink); color: var(--paper);
+      border-radius: 999px; font-family: var(--sans); font-weight: 500;
+      font-size: 12.5px; letter-spacing: 0.04em; transition: background 200ms ease;
+    }
+    .nav-cta-pill:hover { background: #1a1a1a; }
+    @media (max-width: 768px) { .nav-links { display: none; } .page-nav-inner { padding: 14px 20px; } }
+
+    /* HERO LISTING */
+    .blog-hero { padding: clamp(60px, 9vw, 120px) 32px clamp(48px, 6vw, 80px); text-align: center; max-width: 1100px; margin: 0 auto; }
+    .blog-hero .kicker { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 22px; }
+    .blog-hero h1 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(48px, 9vw, 128px); line-height: 0.94; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 22px; text-wrap: balance; }
+    .blog-hero .dek { max-width: 56ch; margin: 0 auto; font-family: var(--sans); font-weight: 300; color: var(--ink-mute); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.55; }
+
+    /* FEATURED + GRID */
+    .blog-section { max-width: 1280px; margin: 0 auto; padding: 0 32px clamp(80px, 10vw, 140px); }
+    @media (max-width: 768px) { .blog-section { padding: 0 20px 64px; } }
+
+    .post-featured { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 56px); align-items: center; padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 7vw, 96px); border-bottom: 1px solid var(--line); margin-bottom: clamp(56px, 7vw, 96px); }
+    @media (max-width: 900px) { .post-featured { grid-template-columns: 1fr; } }
+    .post-featured__media { aspect-ratio: 4 / 3; border-radius: 24px; overflow: hidden; background: var(--paper-warm); position: relative; }
+    .post-featured__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .post-featured:hover .post-featured__media img { transform: scale(1.03); }
+    .post-featured__body { display: flex; flex-direction: column; gap: 20px; }
+    .post-meta { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
+    .post-meta .cat { padding: 6px 12px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); font-weight: 500; }
+    .post-meta .sep { color: var(--ink-faint); }
+    .post-featured h2 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+    .post-featured h2 a { transition: opacity 200ms ease; }
+    .post-featured h2 a:hover { opacity: 0.7; }
+    .post-featured .excerpt { font-family: var(--sans); font-weight: 300; color: var(--ink-soft); font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; max-width: 56ch; }
+    .post-author { display: inline-flex; align-items: center; gap: 12px; margin-top: 6px; }
+    .post-author .avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-family: var(--sans); font-weight: 700; font-size: 12px; letter-spacing: 0.04em; }
+    .post-author .name { font-family: var(--sans); font-weight: 500; font-size: 13.5px; color: var(--ink); }
+    .post-author .name small { display: block; color: var(--ink-faint); font-weight: 400; font-size: 11px; letter-spacing: 0.04em; }
+
+    .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
+    @media (max-width: 900px) { .post-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .post-grid { grid-template-columns: 1fr; } }
+    .post-card { display: flex; flex-direction: column; gap: 16px; }
+    .post-card__media { aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: var(--paper-warm); }
+    .post-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .post-card:hover .post-card__media img { transform: scale(1.04); }
+    .post-card h3 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+    .post-card h3 a { transition: opacity 200ms ease; }
+    .post-card h3 a:hover { opacity: 0.7; }
+    .post-card .excerpt { font-family: var(--sans); font-weight: 300; color: var(--ink-mute); font-size: 14.5px; line-height: 1.55; }
+
+    /* NEWSLETTER STRIP */
+    .blog-newsletter { max-width: 1280px; margin: 0 auto clamp(80px, 10vw, 140px); padding: 0 32px; }
+    .blog-newsletter-inner { background: var(--ink); color: var(--paper); border-radius: 28px; padding: clamp(40px, 6vw, 80px); text-align: center; }
+    .blog-newsletter h2 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(28px, 4vw, 48px); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 14px; text-wrap: balance; }
+    .blog-newsletter p { font-family: var(--sans); font-weight: 300; max-width: 52ch; margin: 0 auto 28px; opacity: 0.8; font-size: clamp(14px, 1.3vw, 17px); line-height: 1.6; }
+    .blog-newsletter .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--paper); color: var(--ink); border-radius: 999px; font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; transition: opacity 200ms ease; }
+    .blog-newsletter .btn:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer.site-footer { border-top: 1px solid var(--line); padding: 56px 32px 32px; background: var(--paper); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .footer-col h5 { font-family: var(--sans); font-weight: 600; font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-family: var(--sans); font-size: 14.5px; color: var(--ink-soft); transition: opacity 200ms ease; }
+    .footer-col a:hover { opacity: 0.65; }
+    .footer-col p { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; max-width: 32ch; }
+    .footer-bottom { max-width: 1280px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid var(--line-soft); display: flex; justify-content: space-between; gap: 16px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<header class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="brand-link"><span class="brand-mark"><img src="/assets/aurea-logo-mark.png" alt="" /></span><span>Aurea Systems</span></a>
+    <nav class="nav-links">
+      <a href="/#problema">Problema</a>
+      <a href="/#sistema">Sistema</a>
+      <a href="/#resultados">Casos</a>
+      <a href="/blog/" class="is-active">Blog</a>
+    </nav>
+    <a href="/#reservar" class="nav-cta-pill">Reservar llamada →</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="blog-hero">
+    <div class="kicker">· Aurea Insights ·</div>
+    <h1>sistemas para llenar la agenda de tu clínica.</h1>
+    <p class="dek">Estrategias, casos reales y aprendizajes operativos para dueños y dueñas de clínicas de medicina estética que quieren crecer sin depender de descuentos.</p>
+  </section>
+
+  <section class="blog-section">
+
+    <article class="post-featured">
+      <a class="post-featured__media" href="/blog/ia-respuesta-leads-clinica-estetica/" aria-hidden="true" tabindex="-1">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Persona consultando un dashboard de mensajería" />
+      </a>
+      <div class="post-featured__body">
+        <div class="post-meta">
+          <span class="cat">Diálogo Continuo</span>
+          <span class="sep">·</span>
+          <span>4 may 2026</span>
+          <span class="sep">·</span>
+          <span>6 min lectura</span>
+        </div>
+        <h2><a href="/blog/ia-respuesta-leads-clinica-estetica/">Cómo responder leads en 60 segundos en una clínica estética.</a></h2>
+        <p class="excerpt">La velocidad de respuesta ha pasado de ser ventaja a ser mínimo para sobrevivir captando pacientes. Te explico cómo montar un sistema de respuesta que conteste bien y rápido sin perder el tono humano.</p>
+        <div class="post-author">
+          <span class="avatar">JJ</span>
+          <span class="name">Joel Jiménez<small>Co-fundador Aurea Systems</small></span>
+        </div>
+      </div>
+    </article>
+
+    <div class="post-grid">
+
+      <article class="post-card">
+        <a class="post-card__media" href="/blog/leads-formulario-primera-valoracion/" aria-hidden="true" tabindex="-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="" />
+        </a>
+        <div class="post-meta">
+          <span class="cat">Conversión</span>
+          <span class="sep">·</span>
+          <span>1 may 2026</span>
+          <span class="sep">·</span>
+          <span>6 min</span>
+        </div>
+        <h3><a href="/blog/leads-formulario-primera-valoracion/">Por qué tu clínica pierde el 60% de los leads entre el formulario y la primera valoración.</a></h3>
+        <p class="excerpt">El agujero más silencioso del embudo no es la captación: es lo que pasa después. Dónde se fuga y cómo cerrarlo.</p>
+        <div class="post-author">
+          <span class="avatar">LL</span>
+          <span class="name">Lluc Lafuente<small>Co-fundador Aurea Systems</small></span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <a class="post-card__media" href="/blog/como-reducir-no-shows-clinica-medicina-estetica/" aria-hidden="true" tabindex="-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="" />
+        </a>
+        <div class="post-meta">
+          <span class="cat">Operativa</span>
+          <span class="sep">·</span>
+          <span>28 abr 2026</span>
+          <span class="sep">·</span>
+          <span>4 min</span>
+        </div>
+        <h3><a href="/blog/como-reducir-no-shows-clinica-medicina-estetica/">Cómo reducir los no-shows en una clínica de medicina estética.</a></h3>
+        <p class="excerpt">Los no-shows pueden hundir el margen. Protocolo en 5 pasos, con números reales, para bajarlos del 30% al 8%.</p>
+        <div class="post-author">
+          <span class="avatar">JJ</span>
+          <span class="name">Joel Jiménez<small>Co-fundador Aurea Systems</small></span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <a class="post-card__media" href="/blog/kpis-clinica-medicina-estetica/" aria-hidden="true" tabindex="-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="" />
+        </a>
+        <div class="post-meta">
+          <span class="cat">Métricas</span>
+          <span class="sep">·</span>
+          <span>22 abr 2026</span>
+          <span class="sep">·</span>
+          <span>5 min</span>
+        </div>
+        <h3><a href="/blog/kpis-clinica-medicina-estetica/">Los 7 KPIs que toda clínica de medicina estética debería medir cada semana.</a></h3>
+        <p class="excerpt">Si solo miras facturación, estás ciego. Estos 7 indicadores te dicen si vas a crecer el mes que viene o vas a perder dinero.</p>
+        <div class="post-author">
+          <span class="avatar">LL</span>
+          <span class="name">Lluc Lafuente<small>Co-fundador Aurea Systems</small></span>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="blog-newsletter">
+    <div class="blog-newsletter-inner">
+      <h2>¿Quieres llenar la agenda de tu clínica?</h2>
+      <p>Reservamos 30 minutos. Revisamos tu zona, tu volumen actual, tu ticket medio y si Aurea Systems puede sostener exclusividad territorial en tu radio.</p>
+      <a href="/#reservar" class="btn">Reservar llamada →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a href="/" class="brand-link"><span class="brand-mark"><img src="/assets/aurea-logo-mark.png" alt="" /></span><span>Aurea Systems</span></a>
+      <p style="margin-top: 14px;">Sistemas de captación para medicina estética facial. Convertimos inversión publicitaria en primeras valoraciones reales.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Producto</h5>
+      <ul>
+        <li><a href="/#sistema">Cómo funciona</a></li>
+        <li><a href="/#resultados">Casos</a></li>
+        <li><a href="/#garantia">Garantía</a></li>
+        <li><a href="/#reservar">Reservar llamada</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contenido</h5>
+      <ul>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/como-reducir-no-shows-clinica-medicina-estetica/">No-shows</a></li>
+        <li><a href="/blog/kpis-clinica-medicina-estetica/">KPIs clínica</a></li>
+        <li><a href="/blog/ia-respuesta-leads-clinica-estetica/">Diálogo continuo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="/politica-de-privacidad">Política de privacidad</a></li>
+        <li><a href="/politica-de-privacidad#aviso-legal">Aviso legal</a></li>
+        <li><a href="/politica-de-privacidad#cookies">Cookies</a></li>
+        <li><a href="/politica-de-privacidad#derechos">Derechos RGPD</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Aurea Systems · España</span>
+    <span><a href="mailto:hola@aureasystems.es">hola@aureasystems.es</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
