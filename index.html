@@ -2077,7 +2077,10 @@ body.calendar-open {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 220ms ease, visibility 220ms ease;
+  /* IMPORTANTE: NO transitionar visibility — bug del navegador
+     hace que el opacity se quede atascado en 0 al abrir el modal.
+     visibility cambia inmediatamente, opacity hace su fade limpio. */
+  transition: opacity 220ms ease;
 }
 .calendar-modal.is-open {
   opacity: 1;
