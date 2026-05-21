@@ -187,6 +187,21 @@
     });
   }
 
+  /* ---------- "Gestionar cookies" link wiring ---------- */
+  function wireRevisitLinks() {
+    document.addEventListener('click', function (e) {
+      var t = findActionable(e.target);
+      if (!t) return;
+      if (
+        t.hasAttribute('data-cookies-revisit') ||
+        (t.matches('a[href]') && t.getAttribute('href') === '#cookies-settings')
+      ) {
+        e.preventDefault();
+        window.aureaConsent.revisit();
+      }
+    });
+  }
+
   /* ---------- CTA tracking (event delegation) ---------- */
   function findActionable(node) {
     while (node && node !== document) {
@@ -239,6 +254,7 @@
     }
     /* denied → do nothing */
     wireCtaTracking();
+    wireRevisitLinks();
   }
 
   if (document.readyState === 'loading') {
