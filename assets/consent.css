@@ -1,0 +1,91 @@
+/* Aurea consent banner — paper card fixed at the bottom */
+.aurea-consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  padding: 16px;
+  pointer-events: none;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+.aurea-consent.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.aurea-consent__inner {
+  pointer-events: auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fef1e9;
+  color: #010101;
+  border: 1px solid rgba(1, 1, 1, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(1, 1, 1, 0.18);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.aurea-consent__copy { flex: 1; min-width: 0; }
+.aurea-consent__title {
+  display: block;
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+.aurea-consent__text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+.aurea-consent__text a {
+  color: #010101;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.aurea-consent__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.aurea-consent__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #010101;
+  background: transparent;
+  color: #010101;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.aurea-consent__btn:hover { transform: translateY(-1px); }
+.aurea-consent__btn--solid {
+  background: #010101;
+  color: #fef1e9;
+}
+.aurea-consent__btn--solid:hover { background: #1a1a1a; }
+.aurea-consent__btn--ghost:hover { background: rgba(1, 1, 1, 0.05); }
+
+@media (max-width: 720px) {
+  .aurea-consent { padding: 12px; }
+  .aurea-consent__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+  .aurea-consent__actions { width: 100%; }
+  .aurea-consent__btn { flex: 1; padding: 12px 16px; }
+}

@@ -75,6 +75,7 @@ jobs:
             --exclude=".gitignore" \
             --exclude=".DS_Store" \
             --exclude="server-snapshot/" \
+            --exclude="capi-server/" \
             --exclude="*.md" \
             --exclude="inputs.json" \
             --exclude="brand-spec.md" \
@@ -105,6 +106,8 @@ jobs:
             "https://aureasystems.es/eliminacion-de-datos/"
             "https://aureasystems.es/blog/"
             "https://aureasystems.es/blog/ia-respuesta-leads-clinica-estetica/"
+            "https://aureasystems.es/assets/consent.js"
+            "https://aureasystems.es/assets/consent.css"
           )
           for url in "${URLS[@]}"; do
             code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 15 "$url")

@@ -1,0 +1,26 @@
+[Unit]
+Description=Aurea Systems — Meta Conversions API proxy
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/aurea-capi
+EnvironmentFile=/opt/aurea-capi/.env
+ExecStart=/usr/bin/node /opt/aurea-capi/server.js
+Restart=on-failure
+RestartSec=5s
+User=deploy
+Group=deploy
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=aurea-capi
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/opt/aurea-capi
+
+[Install]
+WantedBy=multi-user.target
