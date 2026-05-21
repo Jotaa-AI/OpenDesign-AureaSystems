@@ -43,8 +43,11 @@
 .aurea-consent__text {
   margin: 0;
   font-size: 13.5px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: #1a1a1a;
+}
+.aurea-consent__text + .aurea-consent__text {
+  margin-top: 8px;
 }
 .aurea-consent__text a {
   color: #010101;

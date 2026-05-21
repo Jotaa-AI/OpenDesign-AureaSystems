@@ -152,8 +152,9 @@
     var html =
       '<div class="aurea-consent__inner">' +
         '<div class="aurea-consent__copy">' +
-          '<strong class="aurea-consent__title">Cookies y medición</strong>' +
-          '<p class="aurea-consent__text">Usamos cookies propias y de terceros (Meta) para analizar el tráfico y mejorar la web. Puedes aceptar todas o rechazarlas. Más información en nuestra <a href="/politica-de-privacidad/">política de privacidad</a>.</p>' +
+          '<strong class="aurea-consent__title">Este sitio utiliza cookies</strong>' +
+          '<p class="aurea-consent__text">Aurea Systems utiliza cookies propias y de terceros de tipo técnico que son necesarias para el correcto funcionamiento de la web y también cookies de tipo analítico y de publicidad con la intención de mostrar información relevante y atractiva para mejorar su experiencia de usuario.</p>' +
+          '<p class="aurea-consent__text">Al aceptar, confirmas que estás de acuerdo con la <a href="/politica-de-privacidad/">política de cookies de Aurea Systems</a>. Puedes modificar tus preferencias cuando quieras.</p>' +
         '</div>' +
         '<div class="aurea-consent__actions">' +
           '<button type="button" class="aurea-consent__btn aurea-consent__btn--ghost" data-consent-reject>Rechazar</button>' +
