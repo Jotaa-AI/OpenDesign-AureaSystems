@@ -4046,8 +4046,8 @@ footer em {
       </ul>
     </nav>
     <div class='nav-side'>
-      <a class='nav-cta ghost' data-magnetic='0.4' href='/blog/'>Blog</a>
-      <a class='nav-cta' data-magnetic='0.4' href='#reservar'>Reservar llamada</a>
+      <a class='nav-cta ghost' href='/blog/'>Blog</a>
+      <a class='nav-cta' href='#reservar'>Reservar llamada</a>
       <span class='status-dot' aria-hidden='true'></span>
     </div>
   </div>
@@ -4504,13 +4504,22 @@ footer em {
       if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
     }
 
-    var bookingLinks = document.querySelectorAll(
-      'a[href="#reservar"], a[href^="https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems"], [data-calendar-open]'
-    );
-    for (var i = 0; i < bookingLinks.length; i++) {
-      bookingLinks[i].setAttribute('aria-haspopup', 'dialog');
-      bookingLinks[i].addEventListener('click', openCalendar);
+    /* Accessibility hint on static CTAs */
+    var BOOKING_SELECTOR = 'a[href="#reservar"], a[href^="https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems"], [data-calendar-open]';
+    var staticLinks = document.querySelectorAll(BOOKING_SELECTOR);
+    for (var i = 0; i < staticLinks.length; i++) {
+      staticLinks[i].setAttribute('aria-haspopup', 'dialog');
     }
+
+    /* Event delegation — catches dynamically-inserted CTAs (e.g. the
+       discovery popup) without re-binding. */
+    document.addEventListener('click', function (event) {
+      var trigger = event.target.closest && event.target.closest(BOOKING_SELECTOR);
+      if (trigger) openCalendar(event);
+    });
+
+    /* Public API so other scripts can open/close the modal directly */
+    window.aureaCalendar = { open: openCalendar, close: closeCalendar };
 
     if (close) close.addEventListener('click', closeCalendar);
     if (frame) frame.addEventListener('load', sizeCalendarFrame);

@@ -1,10 +1,11 @@
-/* Aurea consent banner — paper card fixed at the bottom */
+/* Aurea consent banner — paper card fixed at the bottom
+   z-index < calendar modal (120) so the modal opens above it. */
 .aurea-consent {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 200;
+  z-index: 90;
   padding: 16px;
   pointer-events: none;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
@@ -91,4 +92,144 @@
   }
   .aurea-consent__actions { width: 100%; }
   .aurea-consent__btn { flex: 1; padding: 12px 16px; }
+}
+
+/* ----------------------------------------------------------------
+ * Discovery popup — paper card centered, fades in 5 s after load.
+ * z-index 130, above the consent banner (90) and the calendar
+ * modal (120), but the calendar modal opens *on top* once invoked.
+ * ---------------------------------------------------------------- */
+.aurea-discovery {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
+.aurea-discovery.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.aurea-discovery__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 9, 8, 0.62);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+.aurea-discovery__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  background: #fef1e9;
+  color: #010101;
+  border: 1px solid rgba(1, 1, 1, 0.12);
+  border-radius: 24px;
+  padding: 40px 36px 30px;
+  box-shadow: 0 30px 80px rgba(1, 1, 1, 0.35);
+  transform: translateY(14px) scale(0.985);
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.aurea-discovery.is-visible .aurea-discovery__card {
+  transform: translateY(0) scale(1);
+}
+.aurea-discovery__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  color: #010101;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 180ms ease;
+}
+.aurea-discovery__close:hover { background: rgba(1, 1, 1, 0.06); }
+.aurea-discovery__eyebrow {
+  display: inline-block;
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  margin-bottom: 14px;
+}
+.aurea-discovery__title {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #010101;
+}
+.aurea-discovery__text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0 0 24px;
+}
+.aurea-discovery__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #010101;
+  color: #fef1e9;
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  letter-spacing: 0.01em;
+  padding: 14px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+.aurea-discovery__cta:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  color: #fef1e9;
+}
+.aurea-discovery__arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+.aurea-discovery__cta:hover .aurea-discovery__arrow { transform: translateX(4px); }
+.aurea-discovery__dismiss {
+  display: block;
+  margin: 14px auto 0;
+  background: transparent;
+  border: 0;
+  color: #4a4a4a;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 6px 8px;
+}
+.aurea-discovery__dismiss:hover { color: #010101; }
+
+@media (max-width: 520px) {
+  .aurea-discovery { padding: 16px; align-items: flex-end; }
+  .aurea-discovery__card {
+    padding: 28px 24px 22px;
+    border-radius: 20px;
+  }
+  .aurea-discovery__title { font-size: 26px; }
+  .aurea-discovery__text { font-size: 14.5px; }
+  .aurea-discovery__cta { width: 100%; justify-content: center; padding: 14px 20px; }
 }

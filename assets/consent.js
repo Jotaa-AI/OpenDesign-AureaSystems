@@ -244,6 +244,81 @@
     }, { capture: true });
   }
 
+  /* ---------- Discovery popup (5 s after load) ---------- */
+  var DISCOVERY_DELAY_MS = 5000;
+  var DISCOVERY_KEY = 'aurea-discovery-shown';
+  var CLEESAAS_URL = 'https://link.cleesaas.com/widget/bookings/reunion-descubrimiento-aurea-systems';
+
+  function isLegalPath() {
+    return /^\/(politica-de-privacidad|eliminacion-de-datos)/.test(location.pathname);
+  }
+
+  function maybeShowDiscoveryPopup() {
+    try { if (sessionStorage.getItem(DISCOVERY_KEY)) return; } catch (e) {}
+    if (isLegalPath()) return;
+    if (document.getElementById('aurea-discovery-popup')) return;
+    /* Wait until consent banner is dismissed */
+    if (document.getElementById('aurea-consent-banner')) {
+      setTimeout(maybeShowDiscoveryPopup, 1500);
+      return;
+    }
+    renderDiscoveryPopup();
+  }
+
+  function renderDiscoveryPopup() {
+    try { sessionStorage.setItem(DISCOVERY_KEY, '1'); } catch (e) {}
+
+    var wrap = document.createElement('div');
+    wrap.id = 'aurea-discovery-popup';
+    wrap.className = 'aurea-discovery';
+    wrap.innerHTML =
+      '<div class="aurea-discovery__backdrop" data-discovery-dismiss></div>' +
+      '<div class="aurea-discovery__card" role="dialog" aria-modal="true" aria-labelledby="aurea-discovery-title">' +
+        '<button type="button" class="aurea-discovery__close" aria-label="Cerrar" data-discovery-dismiss>&times;</button>' +
+        '<span class="aurea-discovery__eyebrow">Llamada de descubrimiento · 30 min</span>' +
+        '<h2 id="aurea-discovery-title" class="aurea-discovery__title">Una llamada para verlo claro.</h2>' +
+        '<p class="aurea-discovery__text">Revisamos tu zona, tu volumen actual y si Aurea Systems puede sostener exclusividad territorial con tu clínica. Sin compromiso.</p>' +
+        '<a class="aurea-discovery__cta" href="' + CLEESAAS_URL + '" target="_blank" rel="noreferrer noopener" data-calendar-open>' +
+          'Reservar llamada de descubrimiento ' +
+          '<span class="aurea-discovery__arrow" aria-hidden="true">→</span>' +
+        '</a>' +
+        '<button type="button" class="aurea-discovery__dismiss" data-discovery-dismiss>Ahora no</button>' +
+      '</div>';
+    document.body.appendChild(wrap);
+
+    function escHandler(e) { if (e.key === 'Escape') dismiss(); }
+    function dismiss() {
+      wrap.classList.remove('is-visible');
+      document.removeEventListener('keydown', escHandler);
+      setTimeout(function () { if (wrap.parentNode) wrap.remove(); }, 320);
+    }
+    document.addEventListener('keydown', escHandler);
+
+    wrap.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t && t.closest && t.closest('[data-discovery-dismiss]')) {
+        dismiss();
+        return;
+      }
+      if (t && t.closest && t.closest('.aurea-discovery__cta')) {
+        /* Track + close. The calendar opens via the global delegated
+           click handler installed in index.html (or via Cleesaas link
+           directly on pages without the modal). */
+        window.aureaConsent.track('Lead', {
+          content_name: 'discovery_popup',
+          content_category: 'cta_high_intent'
+        });
+        dismiss();
+      }
+    });
+
+    requestAnimationFrame(function () {
+      wrap.classList.add('is-visible');
+      var cta = wrap.querySelector('.aurea-discovery__cta');
+      if (cta) cta.focus();
+    });
+  }
+
   /* ---------- bootstrap ---------- */
   function init() {
     var c = getConsent();
@@ -255,6 +330,7 @@
     /* denied → do nothing */
     wireCtaTracking();
     wireRevisitLinks();
+    setTimeout(maybeShowDiscoveryPopup, DISCOVERY_DELAY_MS);
   }
 
   if (document.readyState === 'loading') {
