@@ -182,9 +182,9 @@
       setTimeout(function () { if (banner.parentNode) banner.remove(); }, 300);
     });
 
-    requestAnimationFrame(function () {
+    setTimeout(function () {
       banner.classList.add('is-visible');
-    });
+    }, 16);
   }
 
   /* ---------- "Gestionar cookies" link wiring ---------- */
@@ -312,11 +312,14 @@
       }
     });
 
-    requestAnimationFrame(function () {
+    /* setTimeout instead of rAF — rAF is paused while the tab is in the
+       background, leaving the popup invisible until the user returns
+       and interacts with the page. setTimeout keeps firing. */
+    setTimeout(function () {
       wrap.classList.add('is-visible');
       var cta = wrap.querySelector('.aurea-discovery__cta');
       if (cta) cta.focus();
-    });
+    }, 16);
   }
 
   /* ---------- bootstrap ---------- */
